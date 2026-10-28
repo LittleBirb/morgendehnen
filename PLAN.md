@@ -37,7 +37,7 @@ Genutzt wird die Seite auf dem iPhone in Safari. Eine iOS-Kurzbefehl-Automation 
 |---|---|---|
 | Nachrichten | „Was jetzt?“ (ZEIT) oder „15 Minuten“ (tagesschau), zufällig beim Start | App wählt zufällig unter den Quellen des Kanals |
 | Welt (`welt`) | „Quarks Daily“ (WDR) oder „The Moth“ (Geschichten, englisch), zufällig | The Moth hat `skipShort` und läuft nicht bei der kurzen Runde; Folge = eine der letzten 10, tagesabhängig |
-| Meditation (`meditation`) | „Daily Meditation Podcast“ (englisch, ~11 Min., täglich) | Feed ist riesig, Skript liest nur den Anfang |
+| Meditation (`meditation`) | „Mindful Minutes“ (englisch, ~8 Min., täglich) | Ersetzt „Daily Meditation Podcast“ (zu leise, Feed riesig) |
 | Radio | egoFM, `https://streams.egofm.de/egoFM-hq` | Stream-URL direkt im `<audio>`, CORS offen, verifiziert |
 | Lo-Fi | bestehende Web-Audio-Synthese | Standard-Fallback |
 
@@ -52,6 +52,9 @@ Genutzt wird die Seite auf dem iPhone in Safari. Eine iOS-Kurzbefehl-Automation 
 - Lo-Fi-Synthese läuft nur im Lo-Fi-Kanal.
 - Pause/Überspringen/Beenden müssen Podcast und Timer gemeinsam steuern.
 - Media Session API (Titel der Folge auf dem Sperrbildschirm) ist ein Nice-to-have.
+
+## Nach der Runde
+Podcast und Radio laufen weiter (Lo-Fi klingt aus). Eine zufällige Nachricht aus `AFFIRMATIONS` (index.html) wird angezeigt und vorgelesen; „Ton beenden“ stoppt den Ton.
 
 ## Fehlerfälle
 - `today.json` fehlt oder ist älter als 36 h: trotzdem die letzte bekannte Folge spielen und klein „Folge von gestern“ anzeigen.

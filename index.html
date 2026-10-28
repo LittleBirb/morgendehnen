@@ -161,6 +161,11 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
   font-size: 0.7rem; font-weight: 600; background: rgba(255, 255, 255, 0.75);
   border-radius: 999px; padding: 0.05rem 0.55rem;
 }
+.affirm {
+  font-size: 1.25rem; font-weight: 600; line-height: 1.35; margin: 0 0 1.4rem; padding: 1.1rem 1.2rem;
+  border-radius: 1.5rem; color: var(--on-sun); box-shadow: var(--shadow);
+  background: linear-gradient(140deg, var(--pink), var(--peach) 60%, var(--sun));
+}
 .now { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.4rem; }
 .notice { color: var(--coral); font-size: 0.9rem; font-weight: 600; margin: 0 0 0.8rem; }
 .toggles { display: flex; gap: 0.5rem; margin: 1.1rem 0 1.75rem; flex-wrap: wrap; }
@@ -287,6 +292,9 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
 <main class="wrap" id="done" hidden>
   <p class="done-title">Geschafft.</p>
   <p class="lede js-donetext">Das war deine Runde für heute.</p>
+  <p class="affirm js-affirm"></p>
+  <p class="now js-donenow" hidden></p>
+  <button class="go secondary" id="stopAudio" hidden>Ton beenden</button>
   <section class="week" aria-label="Wochenziel">
     <div class="week-head"><strong>Diese Woche</strong><span class="js-weekcount">0 von 5 Runden</span></div>
     <div class="bar js-bar"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
@@ -462,7 +470,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   }
   function podPause() { if (podActive) podEl.pause(); }
   function podResume() {
-    if (!podActive || !running || pausedAt !== null) return;
+    if (!podActive || (!running && !afterglow) || pausedAt !== null) return;
     if (podIsLive) podEl.src = podUrl; // Livestream nach Pause neu verbinden
     podPlay();
   }
@@ -716,11 +724,29 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     count: document.querySelector(".js-count"), cue: document.querySelector(".js-cue"),
     next: document.querySelector(".js-next"), sun: document.querySelector(".js-sun"),
     halo: document.querySelector(".js-halo"), doneText: document.querySelector(".js-donetext"),
+    affirm: document.querySelector(".js-affirm"), doneNow: document.querySelector(".js-donenow"),
+    stopAudio: document.getElementById("stopAudio"),
     now: document.querySelector(".js-now"), notice: document.querySelector(".js-notice")
   };
   var pauseBtn = document.getElementById("pause"), muteBtn = document.getElementById("mute");
 
-  var mood = "lofi", soundMuted = false;
+  var mood = "lofi", soundMuted = false, afterglow = false;
+  var AFFIRMATIONS = [
+    "Du hast dir gerade Zeit für dich genommen. Das ist ein Geschenk an dich selbst.",
+    "Dein Körper trägt dich jeden Tag. Danke, dass du dich heute um ihn gekümmert hast.",
+    "Du musst nicht perfekt sein, um stolz auf dich zu sein. Du warst da, und das zählt.",
+    "Du darfst dir heute freundlich begegnen. Du machst das gut, genau so, wie du bist.",
+    "Kleine Schritte zählen. Und heute hast du einen gemacht.",
+    "Du verdienst Ruhe, Wärme und Zeit. Auch heute.",
+    "Atme einmal tief durch. Du bist genau richtig, so wie du heute bist.",
+    "Was auch immer heute kommt: Du bringst genug mit. Du schaffst das.",
+    "Beweglich, stark und weich zu dir selbst. Das ist ein guter Start in den Tag.",
+    "Du bist mehr als deine To-do-Liste. Schön, dass du dich zuerst um dich gekümmert hast.",
+    "Dein Tag darf leicht beginnen. Du hast schon etwas Gutes für dich getan.",
+    "Sei stolz auf dich. Du bist drangeblieben, und das ist nicht selbstverständlich.",
+    "Du bist liebenswert, auch an Tagen, an denen nicht alles gelingt.",
+    "Heute reicht es, dein Bestes zu geben. Mehr verlangt niemand von dir, auch du nicht."
+  ];
   var steps = [], idx = 0, stepStart = 0, pausedAt = null, pausedTotal = 0;
   var running = false, spokeTen = false, holdSec = 60, holdCount = 0, rafId = null;
 
@@ -758,7 +784,8 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     initAudio();
     if (actx && actx.state === "suspended") actx.resume();
     soundMuted = false; musicMuted = false; setMuteLabel();
-    running = true; pausedAt = null; podHeld = false;
+    running = true; pausedAt = null; podHeld = false; afterglow = false;
+    el.doneNow.hidden = el.stopAudio.hidden = true;
     setNotice(""); el.now.textContent = "";
     var eps = chosen === "lofi" ? [] : episodesFor(chosen);
     var ep = eps.length ? eps[Math.floor(Math.random() * eps.length)] : null; // zufällige Quelle
@@ -844,15 +871,27 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     running = false;
     cancelAnimationFrame(rafId);
     recordToday(holdSec / 60);
+    // Podcast/Radio laufen nach der Runde weiter; Lo-Fi-Musik klingt aus.
+    afterglow = mood !== "lofi" && podActive;
     if (mood !== "lofi") gong();
-    podStop();
-    say(holdSec >= 60 ? "Geschafft. Das war deine Runde für heute." : "Geschafft. Auch die kurze Runde zählt.");
+    var msg = AFFIRMATIONS[Math.floor(Math.random() * AFFIRMATIONS.length)];
+    el.affirm.textContent = msg;
     el.doneText.textContent = holdSec >= 60 ? "Das war deine Runde für heute." : "Auch die kurze Runde zählt.";
-    stopMusic(); unlockScreen(); setTimeout(releaseIOSAudio, 2600);
+    el.doneNow.hidden = el.stopAudio.hidden = !afterglow;
+    if (afterglow) el.doneNow.textContent = "Weiter läuft: " + el.now.textContent.replace(/^[^\wÄÖÜäöü]+/, "");
+    // Nach dem Gong die Nachricht sprechen; der Podcast pausiert dafür kurz.
+    setTimeout(function () { if (!done.hidden) say("Geschafft. " + msg, afterglow); }, mood !== "lofi" ? 2000 : 0);
+    stopMusic(); unlockScreen();
+    if (!afterglow) setTimeout(releaseIOSAudio, 2600);
     show(done);
   }
+  function endAfterglow() {
+    afterglow = false; podStop(); cancelSpeech();
+    el.doneNow.hidden = el.stopAudio.hidden = true;
+    setTimeout(releaseIOSAudio, 300);
+  }
   function stop() {
-    running = false;
+    running = false; afterglow = false;
     cancelAnimationFrame(rafId);
     podStop(); cancelSpeech();
     stopMusic(); unlockScreen(); setTimeout(releaseIOSAudio, 2600);
@@ -863,14 +902,19 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     b.addEventListener("click", function () { start(shortRound ? 30 : 60, b.dataset.mood); });
   });
   document.getElementById("stop").addEventListener("click", stop);
-  document.getElementById("back").addEventListener("click", function () { show(home); });
+  document.getElementById("back").addEventListener("click", function () { endAfterglow(); show(home); });
+  el.stopAudio.addEventListener("click", endAfterglow);
   document.getElementById("skip").addEventListener("click", function () {
     if (!running) return;
     if (pausedAt !== null) { pausedTotal += performance.now() - pausedAt; pausedAt = null; pauseBtn.textContent = "Pause"; if (actx) actx.resume(); podResume(); }
     if (idx + 1 < steps.length) startStep(idx + 1); else finish();
   });
   function togglePause() {
-    if (!running) return;
+    if (!running) {
+      // Nach der Runde: Sperrbildschirm-Tasten pausieren/starten nur noch den Ton
+      if (afterglow) { if (podEl.paused) podResume(); else podEl.pause(); }
+      return;
+    }
     if (pausedAt === null) {
       pausedAt = performance.now();
       pauseBtn.textContent = "Weiter";
