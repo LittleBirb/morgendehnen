@@ -162,9 +162,15 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 .info-title { font-size: 1.4rem; font-weight: 800; margin: 0 0 0.4rem; letter-spacing: -0.01em; }
 .info-setup, .info-cue { margin: 0 0 0.5rem; }
 .info-setup { color: var(--muted); }
-.fig .b { stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.fig .lm, .fig .far, .fig .tr, .fig .hl, .fig .towel { stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.fig .lm { stroke: var(--ink); stroke-width: 9; }
+.fig .far { stroke: var(--muted); stroke-width: 9; opacity: 0.55; }
+.fig .tr { stroke: var(--ink); stroke-width: 17; }
+.fig .towel { stroke: var(--mint); stroke-width: 4; stroke-dasharray: 1 7; }
+.fig .arrow { stroke: var(--coral); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.fig .hl2 { stroke: var(--coral); stroke-width: 7; stroke-linecap: round; fill: none; }
 .fig .h { fill: var(--sun); stroke: var(--ink); stroke-width: 3; }
-.fig .hl { stroke: var(--coral); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.fig .hl { stroke: var(--coral); stroke-width: 13; opacity: 0.9; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 .fig .fl { stroke: var(--muted); stroke-width: 3; stroke-linecap: round; opacity: 0.5; }
 .fig .wall { stroke: var(--muted); stroke-width: 5; stroke-linecap: round; fill: none; }
 .pick { font-weight: 600; margin: 0 0 0.7rem; }
@@ -394,25 +400,75 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   var SHORT_PROGRAM = ["hams", "hip", "calf", "foot", "rest"];
   Object.keys(EXERCISES).forEach(function (k) { EXERCISES[k].id = k; });
 
-  // Einfache Skizzen (Strichfiguren) für das „i“-Fenster; Rot = die Zone, die gedehnt/trainiert wird.
+  // Skizzen für das „i“-Fenster. Dunkel = Körper, grau = abgewandte Seite, Rot = Zone, die gedehnt/trainiert wird.
   function pl(c, pts) { return '<polyline class="' + c + '" points="' + pts + '"/>'; }
-  function hd(x, y) { return '<circle class="h" cx="' + x + '" cy="' + y + '" r="9"/>'; }
-  function fig(inner, label) {
-    return '<svg class="fig" viewBox="0 0 200 110" role="img" aria-label="Skizze: ' + label + '"><line class="fl" x1="6" y1="102" x2="194" y2="102"/>' + inner + "</svg>";
+  function hd(x, y) { return '<circle class="h" cx="' + x + '" cy="' + y + '" r="11"/>'; }
+  function fig(inner, label, noFloor) {
+    return '<svg class="fig" viewBox="0 0 240 130" role="img" aria-label="Skizze: ' + label + '">' +
+      (noFloor ? "" : '<line class="fl" x1="6" y1="120" x2="234" y2="120"/>') + inner + "</svg>";
   }
-  var CALF_BODY = hd(138, 18) + pl("b", "108,62 142,32") + pl("b", "142,32 166,38") + pl("wall", "168,8 168,100") + pl("b", "108,62 126,82 126,99");
+  var WALL = pl("wall", "212,6 212,118");
   var FIGS = {
-    bws: fig(pl("b", "50,94 112,94") + hd(125, 90) + pl("b", "50,94 88,76 54,76") + pl("b", "112,94 152,94") + pl("hl", "112,94 100,56 78,36"), "Seitlage, oberer Arm klappt wie ein Buch auf"),
-    quad: fig(pl("b", "60,94 118,94") + hd(131, 90) + pl("b", "60,94 88,97 64,99") + pl("hl", "60,94 34,94") + pl("b", "34,94 54,74") + pl("b", "118,94 92,72 58,74"), "Seitlage, oberer Fuß zum Po"),
-    hams: fig(pl("b", "75,95 135,95") + hd(150, 91) + pl("b", "75,95 24,95") + pl("b", "75,95 66,36") + pl("hl", "72,78 68,52") + pl("b", "135,95 104,62 68,38"), "Rückenlage, Bein mit Handtuch nach oben"),
-    hip: fig(hd(85, 13) + pl("b", "85,60 85,26") + pl("b", "85,60 58,98 28,98") + pl("b", "85,60 125,72 125,99") + pl("b", "125,99 142,99") + pl("b", "85,30 108,50 125,72") + pl("hl", "95,60 108,58"), "Kniender Ausfallschritt"),
-    chest: fig(pl("wall", "40,8 40,100") + hd(92, 17) + pl("b", "104,62 96,30") + pl("b", "104,62 86,99") + pl("b", "104,62 128,99") + pl("b", "96,30 62,30 62,8") + pl("hl", "98,36 100,48"), "Unterarm am Türrahmen"),
-    calf: fig(CALF_BODY + pl("b", "108,62 52,99") + pl("b", "52,99 68,99") + pl("hl", "78,83 56,97"), "Wade gestreckt an der Wand"),
-    soleus: fig(CALF_BODY + pl("b", "108,62 90,88 64,99") + pl("b", "64,99 78,99") + pl("hl", "88,92 68,99"), "Wade mit gebeugtem Knie an der Wand"),
-    foot: fig(pl("wall", "52,70 108,70") + pl("wall", "56,70 56,100") + pl("wall", "104,70 104,100") + hd(80, 17) + pl("b", "80,66 80,28") + pl("b", "80,66 126,66") + pl("b", "126,66 126,99") + pl("b", "126,99 152,99") + pl("b", "80,32 100,52 112,64") + '<path class="hl" d="M130,98 Q141,82 152,98"/>', "Sitzend, Fußgewölbe heben"),
-    abd: fig(pl("b", "60,94 118,94") + hd(131, 90) + pl("b", "60,94 36,98 58,99") + pl("hl", "60,94 12,64") + pl("b", "118,94 140,98"), "Seitlage, oberes Bein heben"),
-    bridge: fig(hd(166, 91) + pl("b", "150,96 98,60") + pl("b", "98,60 66,66 62,99") + pl("b", "62,99 78,99") + pl("hl", "98,60 30,44") + pl("b", "150,96 122,98"), "Rückenlage, Becken heben, ein Bein in der Luft"),
-    rest: fig(pl("b", "55,99 102,99") + pl("b", "102,88 55,99") + pl("b", "102,88 60,84") + hd(47, 92) + pl("b", "60,84 16,99"), "Kindshaltung")
+    // Draufsicht: Seitlage, Beine 90° angewinkelt, der obere Arm klappt vom Boden nach hinten auf
+    bws: fig(
+      pl("far", "60,64 64,98 36,100") + pl("lm", "58,62 54,96 26,98") +
+      pl("tr", "58,62 122,62") + hd(140, 62) + pl("lm", "122,62 124,104") +
+      pl("hl", "122,62 124,22") + '<path class="arrow" d="M150,98 Q172,62 150,26"/><path class="arrow" d="M143,32 L150,26 L158,33"/>',
+      "Seitlage von oben, oberer Arm klappt nach hinten auf", true),
+    // Seitlage, oberer Fuß zum Po, Hand hält den Fuß
+    quad: fig(
+      pl("far", "78,108 112,114 86,117") + pl("tr", "78,110 136,110") + hd(152,108) +
+      pl("lm", "78,110 56,114 80,98") + pl("hl", "76,110 58,114") + pl("lm", "136,110 116,92 84,98"),
+      "Seitlage, oberer Fuß wird zum Po gezogen"),
+    // Rückenlage, ein Bein mit Handtuch nach oben, anderes Bein flach
+    hams: fig(
+      pl("far", "88,110 30,111") + pl("tr", "88,110 150,110") + hd(168,108) +
+      pl("lm", "88,110 96,44 108,42") + pl("hl", "89,100 93,64") +
+      pl("lm", "150,110 142,88 124,68") + pl("towel", "124,68 97,46"),
+      "Rückenlage, gestrecktes Bein mit Handtuch nach oben ziehen"),
+    // Kniender Ausfallschritt, aufrechter Oberkörper
+    hip: fig(
+      pl("lm", "98,80 80,116 46,114") + pl("hl", "96,84 86,104") +
+      pl("tr", "98,78 100,40") + hd(102,23) + pl("lm", "98,80 140,84 140,118 156,118") +
+      pl("lm", "100,44 118,60 136,80"),
+      "Kniender Ausfallschritt"),
+    // Unterarm am Türrahmen, Brust öffnet sich
+    chest: fig(
+      pl("wall", "44,6 44,118") +
+      pl("far", "106,84 116,102 124,118 114,118") + pl("tr", "106,84 98,46") + hd(94,29) +
+      pl("lm", "106,84 98,102 86,118 76,118") + pl("lm", "98,48 60,48 60,16") + pl("hl", "96,48 100,66"),
+      "Unterarm am Türrahmen, Brust öffnet sich"),
+    // Wade gestreckt: hinteres Bein gestreckt, Ferse am Boden
+    calf: fig(
+      WALL + pl("far", "144,74 170,92 172,118 184,118") + pl("tr", "144,74 174,44") + hd(186,30) +
+      pl("lm", "176,46 208,52") + pl("lm", "144,74 82,116 96,116") + pl("hl", "112,95 90,111"),
+      "Wade gestreckt an der Wand"),
+    // Wade gebeugt: hinteres Knie gebeugt
+    soleus: fig(
+      WALL + pl("far", "146,86 172,98 172,118 184,118") + pl("tr", "146,86 176,54") + hd(188,40) +
+      pl("lm", "178,56 208,60") + pl("lm", "146,86 132,108 98,116 112,116") + pl("hl", "120,112 102,116"),
+      "Wade mit gebeugtem Knie an der Wand"),
+    // Sitzend, Fußgewölbe heben
+    foot: fig(
+      pl("wall", "56,76 124,76") + pl("wall", "62,76 62,118") + pl("wall", "118,76 118,118") +
+      pl("tr", "90,70 90,32") + hd(92,16) + pl("lm", "90,70 136,70 136,112 128,116 160,116") +
+      pl("lm", "90,38 108,54 118,68") + '<path class="hl2" d="M134,114 Q147,96 160,114"/>',
+      "Sitzend, Fußgewölbe heben"),
+    // Seitlage, oberes Bein gestreckt heben
+    abd: fig(
+      pl("far", "72,110 46,114 72,117") + pl("tr", "72,110 128,110") + hd(144,108) +
+      pl("lm", "72,110 12,76") + pl("hl", "66,106 36,89") + pl("lm", "128,110 112,94 86,96"),
+      "Seitlage, oberes Bein heben"),
+    // Rückenlage, Becken heben, ein Bein gestreckt in der Luft
+    bridge: fig(
+      pl("tr", "158,112 108,78") + hd(176,112) + pl("lm", "158,112 128,116") +
+      pl("lm", "108,78 78,82 76,116 90,116") + pl("hl", "112,82 88,82") + pl("lm", "108,78 40,52"),
+      "Rückenlage, Becken heben, ein Bein in der Luft"),
+    // Kindshaltung
+    rest: fig(
+      pl("lm", "82,116 134,116 150,116") + pl("lm", "82,116 130,100") + pl("tr", "130,100 86,92") +
+      hd(68,104) + pl("lm", "88,92 58,106 30,116") + pl("hl", "118,98 100,94"),
+      "Kindshaltung")
   };
   var SIDES = ["rechts", "links"];
   var SIDE_SPOKEN = { rechts: "rechte Seite", links: "linke Seite" };
@@ -469,7 +525,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.textContent = count > 5 ? "5 von 5 Runden, +" + (count - 5) : count + " von 5 Runden";
     });
     var note;
-    var who = " (gezählt für Oberschenkel-Rückseite und Hüftbeuger, die in jeder Runde 1 Min. pro Seite drankommen)";
+    var who = " (gilt für Oberschenkel-Rückseite und Hüftbeuger)";
     if (count === 0) note = "Pro Muskel ab etwa 5 Minuten in der Woche wird’s wirksam" + who + ".";
     else if (count >= 5) note = "Wochenziel erreicht. Alles darüber ist Bonus.";
     else note = "Pro Muskel diese Woche: " + minsTxt + " Min. Ab etwa 5 Min. wird’s wirksam" + who + ".";
