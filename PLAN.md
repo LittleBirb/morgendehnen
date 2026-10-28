@@ -7,7 +7,7 @@ Genutzt wird die Seite auf dem iPhone in Safari. Eine iOS-Kurzbefehl-Automation 
 
 ## Ausgangslage
 `index.html` ist eine fertige, in sich geschlossene Seite (Vanilla JS/CSS, kein Build):
-- 5 Dehnungen × 2 Seiten, Haltezeit 60 s (kurze Runde: 30 s), Vorbereitungsphasen 10 s bzw. 6 s
+- Programm A/B im Wechsel (ca. 12 Min., 8 Übungen: Dehnen, Kräftigen für Fuß und Hüfte, ruhiger Abschluss); kurze Runde ca. 5 Min. Haltezeiten je Übung in `EXERCISES`, Reihenfolge in `PROGRAM`/`SHORT_PROGRAM` (index.html)
 - Deutsche Sprachansage über `speechSynthesis`
 - Lo-Fi-Musik live per Web Audio API synthetisiert, inkl. Ducking bei Sprache
 - Stilles `<audio>`-Element als iOS-Workaround gegen den Stummschalter (muss erhalten bleiben)
