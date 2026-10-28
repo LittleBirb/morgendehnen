@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Morgendehnen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #EDF6FC;
+  --surface: #FFFFFF;
+  --ink: #22324A;
+  --muted: #5A6A80;
+  --line: #D2E2EE;
+  --sun: #FFBE3B;
+  --sun-soft: #FFE5A8;
+  --sage: #3FAE8C;
+  --ground: #CBE8D6;
+  --on-sun: #2B2410;
+  --coral: #D2603F;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #162236;
+    --surface: #1F2F48;
+    --ink: #F1F5FA;
+    --muted: #A5B3C7;
+    --line: #2E405E;
+    --sun: #FFC64F;
+    --sun-soft: #6A5422;
+    --sage: #6ACDAE;
+    --ground: #1C3A35;
+    --on-sun: #2B2410;
+    --coral: #FF9F80;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #162236;
+  --surface: #1F2F48;
+  --ink: #F1F5FA;
+  --muted: #A5B3C7;
+  --line: #2E405E;
+  --sun: #FFC64F;
+  --sun-soft: #6A5422;
+  --sage: #6ACDAE;
+  --ground: #1C3A35;
+  --on-sun: #2B2410;
+  --coral: #FF9F80;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 30rem; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem; }
+[hidden] { display: none !important; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, summary:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+
+/* Start */
+h1 {
+  font-size: clamp(2.6rem, 11vw, 3.4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 1.25rem 0 0.75rem;
+}
+.lede { color: var(--muted); margin: 0 0 1.75rem; max-width: 26rem; }
+
+.week { background: var(--surface); border-radius: 1.25rem; padding: 1.1rem 1.1rem 1rem; margin-bottom: 1.5rem; }
+.week-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.7rem; }
+.week-head strong { font-size: 1.05rem; font-weight: 600; }
+.week-head span { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35rem; }
+.seg { height: 0.85rem; border-radius: 0.5rem; background: var(--line); transition: background 0.4s ease; }
+.seg.on { background: var(--sun); }
+.bar.full .seg.on { background: var(--sage); }
+.week-note { margin: 0.7rem 0 0; font-size: 0.9rem; color: var(--muted); }
+
+.go {
+  display: flex; justify-content: space-between; align-items: center; width: 100%;
+  border: 0; border-radius: 999px; padding: 1.05rem 1.4rem; margin-bottom: 0.7rem;
+  font-size: 1.15rem; font-weight: 600; text-align: left;
+}
+.go small { font-weight: 400; font-size: 0.95rem; opacity: 0.8; }
+.go.primary { background: var(--sun); color: var(--on-sun); }
+.go.secondary { background: transparent; border: 2px solid var(--line); }
+
+.toggles { display: flex; gap: 0.5rem; margin: 1.1rem 0 1.75rem; flex-wrap: wrap; }
+.pill {
+  border: 2px solid var(--line); background: transparent; border-radius: 999px;
+  padding: 0.45rem 0.95rem; font-size: 0.95rem; color: var(--muted);
+}
+.pill[aria-pressed="true"] { border-color: var(--sage); color: var(--ink); }
+.pill[aria-pressed="true"]::before { content: "✓ "; color: var(--sage); }
+
+details { border-top: 1px solid var(--line); padding-top: 1rem; }
+summary { font-weight: 600; cursor: pointer; list-style-position: outside; }
+ol.list { padding-left: 1.3rem; margin: 0.9rem 0 0; }
+ol.list li { margin-bottom: 0.8rem; }
+ol.list li b { font-weight: 600; display: block; }
+ol.list li span { color: var(--muted); font-size: 0.95rem; }
+.fine { color: var(--muted); font-size: 0.88rem; margin-top: 1rem; }
+
+/* Session */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.top span { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.ghost { background: transparent; border: 0; color: var(--muted); padding: 0.5rem 0; font-size: 0.95rem; text-decoration: underline; text-underline-offset: 3px; }
+
+.sky { display: block; width: 100%; height: auto; margin: 0.5rem 0 0; }
+.sky .ground { fill: var(--ground); }
+.sky .horizon { stroke: var(--line); stroke-width: 2; }
+.sky .sunbody { fill: var(--sun); }
+.sky .halo { fill: var(--sun-soft); }
+
+.phase { color: var(--muted); font-size: 0.95rem; margin: 0.25rem 0 0; }
+.exname { font-size: clamp(1.8rem, 8vw, 2.3rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 0.15rem 0 0; }
+.side { font-size: 1.15rem; font-weight: 600; color: var(--coral); margin: 0.2rem 0 0; }
+.count {
+  font-size: clamp(4.5rem, 24vw, 6.5rem); font-weight: 800; line-height: 1;
+  font-variant-numeric: tabular-nums; letter-spacing: -0.04em; margin: 0.6rem 0 0.4rem;
+}
+.cue { margin: 0 0 0.6rem; max-width: 28rem; }
+.next { color: var(--muted); font-size: 0.95rem; margin: 0 0 1.4rem; }
+.controls { display: flex; gap: 0.6rem; }
+.ctrl {
+  flex: 1; border: 2px solid var(--line); background: var(--surface); border-radius: 999px;
+  padding: 0.85rem 0.5rem; font-size: 1rem; font-weight: 600;
+}
+.ctrl.main { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* Done */
+.done-title { font-size: clamp(2.8rem, 12vw, 3.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin: 1rem 0 0.6rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seg { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Startansicht -->
+<main class="wrap" id="home">
+  <h1>Morgen&shy;dehnen</h1>
+  <p class="lede">Fünf Dehnungen, je eine Minute pro Seite. Du musst nur zuhören und mitmachen.</p>
+
+  <section class="week" aria-label="Wochenziel">
+    <div class="week-head"><strong>Diese Woche</strong><span class="js-weekcount">0 von 5 Runden</span></div>
+    <div class="bar js-bar"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+    <p class="week-note js-weeknote"></p>
+  </section>
+
+  <button class="go primary" id="startFull">Ganze Runde starten <small>11 Min.</small></button>
+  <button class="go secondary" id="startShort">Kurze Runde <small>6 Min. für müde Tage</small></button>
+
+  <div class="toggles">
+    <button class="pill" id="tMusic" aria-pressed="true">Lo-Fi-Musik</button>
+    <button class="pill" id="tVoice" aria-pressed="true">Sprachansage</button>
+  </div>
+
+  <details>
+    <summary>Die fünf Dehnungen</summary>
+    <ol class="list" id="exList"></ol>
+    <p class="fine">„Rechts“ und „links“ meinen immer die Seite, die gedehnt wird. Dehn sanft bis zu einem deutlichen Ziehen, nie bis es wehtut, und nicht wippen. Wie stark du dehnst, macht laut Studien kaum einen Unterschied; die Zeit pro Muskel zählt.</p>
+    <p class="fine">Kein Ton? Prüf den Stummschalter am iPhone.</p>
+  </details>
+</main>
+
+<!-- Übungsansicht -->
+<main class="wrap" id="session" hidden>
+  <div class="top">
+    <span class="js-step">Schritt 1 von 10</span>
+    <button class="ghost" id="stop">Beenden</button>
+  </div>
+
+  <svg class="sky" viewBox="0 0 300 150" aria-hidden="true">
+    <defs><clipPath id="above"><rect x="0" y="0" width="300" height="118"/></clipPath></defs>
+    <rect class="ground" x="0" y="118" width="300" height="32"/>
+    <g clip-path="url(#above)">
+      <circle class="halo js-halo" cx="150" cy="160" r="52" opacity="0.6"/>
+      <circle class="sunbody js-sun" cx="150" cy="160" r="30"/>
+    </g>
+    <line class="horizon" x1="0" y1="118" x2="300" y2="118"/>
+  </svg>
+
+  <p class="phase js-phase">Als Nächstes</p>
+  <p class="exname js-name">Oberschenkel-Rückseite</p>
+  <p class="side js-side">rechts</p>
+  <p class="count js-count" aria-live="off">10</p>
+  <p class="cue js-cue"></p>
+  <p class="next js-next"></p>
+
+  <div class="controls">
+    <button class="ctrl main" id="pause">Pause</button>
+    <button class="ctrl" id="skip">Überspringen</button>
+    <button class="ctrl" id="mute" aria-pressed="false">Musik aus</button>
+  </div>
+</main>
+
+<!-- Fertig -->
+<main class="wrap" id="done" hidden>
+  <p class="done-title">Geschafft.</p>
+  <p class="lede js-donetext">Das war deine Runde für heute.</p>
+  <section class="week" aria-label="Wochenziel">
+    <div class="week-head"><strong>Diese Woche</strong><span class="js-weekcount">0 von 5 Runden</span></div>
+    <div class="bar js-bar"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+    <p class="week-note js-weeknote"></p>
+  </section>
+  <button class="go primary" id="back">Zurück zum Start</button>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Übungen ---------- */
+  var EX = [
+    { name: "Oberschenkel-Rückseite",
+      setup: "Auf den Rücken legen, Handtuch um die Fußsohle.",
+      cue: "Bein gestreckt nach oben ziehen, bis es deutlich zieht. Schultern bleiben locker." },
+    { name: "Gesäß",
+      setup: "In Rückenlage den Knöchel aufs andere Knie legen.",
+      cue: "Das untere Bein mit beiden Händen zur Brust ziehen. Kopf bleibt am Boden." },
+    { name: "Brustwirbelsäule",
+      setup: "Auf die Seite legen, Knie angewinkelt, Arme nach vorn.",
+      cue: "Den oberen Arm wie ein Buch nach hinten aufklappen. Die Knie bleiben liegen." },
+    { name: "Hüftbeuger",
+      setup: "Kniender Ausfallschritt, das hintere Knie gern auf ein Kissen.",
+      cue: "Po anspannen und das Becken leicht nach vorne schieben. Oberkörper aufrecht." },
+    { name: "Wade",
+      setup: "Hände an die Wand, ein Bein weit nach hinten stellen.",
+      cue: "Hintere Ferse bleibt am Boden, das Bein gestreckt. Hüfte Richtung Wand." }
+  ];
+  var SIDES = ["rechts", "links"];
+  var SIDE_SPOKEN = { rechts: "rechte Seite", links: "linke Seite" };
+
+  var list = document.getElementById("exList");
+  EX.forEach(function (e) {
+    var li = document.createElement("li");
+    var b = document.createElement("b"); b.textContent = e.name;
+    var s = document.createElement("span"); s.textContent = e.setup + " " + e.cue;
+    li.appendChild(b); li.appendChild(s); list.appendChild(li);
+  });
+
+  /* ---------- Fortschritt ---------- */
+  var KEY = "morgendehnen-days";
+  var days = {}; // "YYYY-MM-DD" -> Minuten pro Muskel
+
+  function loadLocal() {
+    try { var raw = localStorage.getItem(KEY); if (raw) days = JSON.parse(raw) || {}; } catch (e) { days = {}; }
+  }
+  function saveLocal() {
+    try { localStorage.setItem(KEY, JSON.stringify(days)); } catch (e) {}
+  }
+  function trim() {
+    var keys = Object.keys(days).sort();
+    while (keys.length > 120) { delete days[keys.shift()]; }
+  }
+  function dateKey(d) {
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function weekKeys() {
+    var d = new Date(); d.setHours(12, 0, 0, 0);
+    var dow = (d.getDay() + 6) % 7; // Montag = 0
+    d.setDate(d.getDate() - dow);
+    var out = [];
+    for (var i = 0; i < 7; i++) { out.push(dateKey(d)); d.setDate(d.getDate() + 1); }
+    return out;
+  }
+  function renderWeek() {
+    var keys = weekKeys();
+    var count = 0, minutes = 0;
+    keys.forEach(function (k) { if (days[k]) { count++; minutes += days[k]; } });
+    var mins = Math.round(minutes * 10) / 10;
+    var minsTxt = String(mins).replace(".", ",");
+    document.querySelectorAll(".js-bar").forEach(function (bar) {
+      bar.classList.toggle("full", count >= 5);
+      bar.querySelectorAll(".seg").forEach(function (seg, i) { seg.classList.toggle("on", i < count); });
+    });
+    document.querySelectorAll(".js-weekcount").forEach(function (el) {
+      el.textContent = count > 5 ? "5 von 5 Runden, +" + (count - 5) : count + " von 5 Runden";
+    });
+    var note;
+    if (count === 0) note = "Pro Muskel ab etwa 5 Minuten in der Woche wird’s wirksam. Die erste Runde zählt am meisten.";
+    else if (count >= 5) note = "Wochenziel erreicht: " + minsTxt + " Min. pro Muskel. Alles darüber ist Bonus.";
+    else note = "Pro Muskel diese Woche: " + minsTxt + " Min. Ab etwa 5 Min. wird’s wirksam.";
+    document.querySelectorAll(".js-weeknote").forEach(function (el) { el.textContent = note; });
+  }
+  function recordToday(minPerMuscle) {
+    var k = dateKey(new Date());
+    days[k] = Math.max(days[k] || 0, minPerMuscle);
+    trim(); saveLocal(); renderWeek();
+  }
+
+  loadLocal(); renderWeek();
+
+  /* ---------- Einstellungen ---------- */
+  var musicOn = true, voiceOn = true;
+  try {
+    if (localStorage.getItem("morgendehnen-music") === "0") musicOn = false;
+    if (localStorage.getItem("morgendehnen-voice") === "0") voiceOn = false;
+  } catch (e) {}
+  var tMusic = document.getElementById("tMusic"), tVoice = document.getElementById("tVoice");
+  function syncToggles() {
+    tMusic.setAttribute("aria-pressed", String(musicOn));
+    tVoice.setAttribute("aria-pressed", String(voiceOn));
+  }
+  syncToggles();
+  tMusic.addEventListener("click", function () {
+    musicOn = !musicOn; syncToggles();
+    try { localStorage.setItem("morgendehnen-music", musicOn ? "1" : "0"); } catch (e) {}
+  });
+  tVoice.addEventListener("click", function () {
+    voiceOn = !voiceOn; syncToggles();
+    try { localStorage.setItem("morgendehnen-voice", voiceOn ? "1" : "0"); } catch (e) {}
+  });
+
+  /* ---------- Sprache ---------- */
+  var deVoice = null;
+  function pickVoice() {
+    if (!("speechSynthesis" in window)) return;
+    var vs = speechSynthesis.getVoices().filter(function (v) { return /^de/i.test(v.lang); });
+    deVoice = vs.find(function (v) { return /anna|petra|helena|katja/i.test(v.name); }) ||
+              vs.find(function (v) { return v.localService; }) || vs[0] || null;
+  }
+  if ("speechSynthesis" in window) {
+    pickVoice();
+    speechSynthesis.onvoiceschanged = pickVoice;
+  }
+  function say(text) {
+    if (!voiceOn || !("speechSynthesis" in window)) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = "de-DE";
+    if (deVoice) u.voice = deVoice;
+    u.rate = 0.95;
+    u.onstart = function () { duck(true); };
+    u.onend = function () { duck(false); };
+    u.onerror = function () { duck(false); };
+    speechSynthesis.speak(u);
+  }
+
+  /* ---------- Lo-Fi-Musik (Web Audio) ---------- */
+  var actx = null, musicBus = null, noiseBuf = null, crackleSrc = null;
+  var schedTimer = null, nextTime = 0, step16 = 0, chordIdx = 0, musicMuted = false;
+  var BPM = 72, SIX = 60 / BPM / 4, MUSIC_VOL = 0.55;
+  var CHORDS = [
+    { bass: 38, notes: [53, 57, 60, 64] }, // Dm9
+    { bass: 43, notes: [53, 59, 64, 69] }, // G13
+    { bass: 36, notes: [52, 55, 59, 62] }, // Cmaj9
+    { bass: 45, notes: [55, 60, 64, 71] }  // Am9
+  ];
+  function mtof(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+
+  // iOS: Ein laufendes (stilles) Media-Element schaltet die Audio-Session auf "Wiedergabe",
+  // damit Web Audio nicht vom Stummschalter bzw. der App-Audio-Session stummgeschaltet wird.
+  var silentEl = null;
+  function unlockIOSAudio() {
+    try {
+      if (!silentEl) {
+        var sr = 8000, n = sr / 2, buf = new ArrayBuffer(44 + n * 2), v = new DataView(buf);
+        function str(o, s) { for (var i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); }
+        str(0, "RIFF"); v.setUint32(4, 36 + n * 2, true); str(8, "WAVE"); str(12, "fmt ");
+        v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+        v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+        str(36, "data"); v.setUint32(40, n * 2, true);
+        var bytes = new Uint8Array(buf), bin = "";
+        for (var j = 0; j < bytes.length; j++) bin += String.fromCharCode(bytes[j]);
+        silentEl = new Audio("data:audio/wav;base64," + btoa(bin));
+        silentEl.loop = true;
+        silentEl.setAttribute("playsinline", "");
+      }
+      var p = silentEl.play(); if (p && p.catch) p.catch(function () {});
+    } catch (e) {}
+  }
+  function releaseIOSAudio() { try { if (silentEl) silentEl.pause(); } catch (e) {} }
+
+  function initAudio() {
+    if (actx) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
+    actx = new AC();
+    var warm = actx.createBiquadFilter(); warm.type = "lowpass"; warm.frequency.value = 2000; warm.Q.value = 0.6;
+    musicBus = actx.createGain(); musicBus.gain.value = 0;
+    musicBus.connect(warm); warm.connect(actx.destination);
+    noiseBuf = actx.createBuffer(1, actx.sampleRate, actx.sampleRate);
+    var nd = noiseBuf.getChannelData(0);
+    for (var i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+  }
+
+  function startCrackle() {
+    var len = actx.sampleRate * 3;
+    var buf = actx.createBuffer(1, len, actx.sampleRate);
+    var d = buf.getChannelData(0);
+    for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * 0.0015;
+    for (var c = 0; c < 14; c++) {
+      var p = Math.floor(Math.random() * (len - 200)), a = (Math.random() * 0.15 + 0.04) * (Math.random() < 0.5 ? -1 : 1);
+      for (var j = 0; j < 90; j++) d[p + j] += a * Math.exp(-j / 14);
+    }
+    crackleSrc = actx.createBufferSource(); crackleSrc.buffer = buf; crackleSrc.loop = true;
+    var hp = actx.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 400;
+    var lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 3000;
+    var g = actx.createGain(); g.gain.value = 0.12;
+    crackleSrc.connect(hp); hp.connect(lp); lp.connect(g); g.connect(musicBus);
+    crackleSrc.start();
+  }
+
+  function keys(t, midi, dur, vel) {
+    var f = mtof(midi);
+    var g = actx.createGain();
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vel, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(vel * 0.3, t + 0.9);
+    g.gain.setValueAtTime(vel * 0.3, t + dur);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur + 0.6);
+    var o1 = actx.createOscillator(); o1.type = "sine"; o1.frequency.value = f; o1.detune.value = (Math.random() - 0.5) * 8;
+    var o2 = actx.createOscillator(); o2.type = "sine"; o2.frequency.value = f * 2.001;
+    var g2 = actx.createGain();
+    g2.gain.setValueAtTime(vel * 0.5, t); g2.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
+    o1.connect(g); o2.connect(g2); g2.connect(g); g.connect(musicBus);
+    o1.start(t); o2.start(t); o1.stop(t + dur + 0.7); o2.stop(t + 0.4);
+  }
+  function bass(t, midi, dur) {
+    var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = mtof(midi);
+    var g = actx.createGain();
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.22, t + 0.02);
+    g.gain.setValueAtTime(0.2, t + dur * 0.7); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(musicBus); o.start(t); o.stop(t + dur + 0.05);
+  }
+  function kick(t) {
+    var o = actx.createOscillator(); o.type = "sine";
+    o.frequency.setValueAtTime(110, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.14);
+    var g = actx.createGain();
+    g.gain.setValueAtTime(0.55, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
+    o.connect(g); g.connect(musicBus); o.start(t); o.stop(t + 0.4);
+  }
+  function noiseHit(t, type, freq, vol, len) {
+    var s = actx.createBufferSource(); s.buffer = noiseBuf;
+    var f = actx.createBiquadFilter(); f.type = type; f.frequency.value = freq; f.Q.value = 0.8;
+    var g = actx.createGain();
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + len);
+    s.connect(f); f.connect(g); g.connect(musicBus);
+    s.start(t, Math.random() * 0.5); s.stop(t + len + 0.02);
+  }
+  function scheduleStep(s, t) {
+    if (s % 4 === 2) t += SIX * 0.33; // Swing
+    var ch = CHORDS[chordIdx];
+    if (s === 0) {
+      ch.notes.forEach(function (n, i) { keys(t + i * 0.018, n, SIX * 9, 0.07); });
+      bass(t, ch.bass, SIX * 6);
+    }
+    if (s === 10) {
+      ch.notes.forEach(function (n, i) { if (i > 0) keys(t + i * 0.015, n, SIX * 5, 0.04); });
+      bass(t, ch.bass, SIX * 3);
+    }
+    if (s === 0 || s === 10) kick(t);
+    if (s === 4 || s === 12) noiseHit(t, "bandpass", 1700, 0.16, 0.18);
+    if (s % 2 === 0) noiseHit(t, "highpass", 7000, 0.025 + Math.random() * 0.02, 0.05);
+  }
+  function scheduler() {
+    while (nextTime < actx.currentTime + 0.15) {
+      scheduleStep(step16, nextTime);
+      nextTime += SIX;
+      step16 = (step16 + 1) % 16;
+      if (step16 === 0) chordIdx = (chordIdx + 1) % CHORDS.length;
+    }
+  }
+  function musicTarget() { return musicMuted ? 0 : MUSIC_VOL; }
+  function startMusic() {
+    if (!actx || schedTimer) return;
+    if (!crackleSrc) startCrackle();
+    nextTime = actx.currentTime + 0.1; step16 = 0; chordIdx = 0;
+    schedTimer = setInterval(scheduler, 30);
+    musicBus.gain.cancelScheduledValues(actx.currentTime);
+    musicBus.gain.setTargetAtTime(musicTarget(), actx.currentTime, 0.8);
+  }
+  function stopMusic() {
+    if (!actx) return;
+    musicBus.gain.cancelScheduledValues(actx.currentTime);
+    musicBus.gain.setTargetAtTime(0, actx.currentTime, 0.6);
+    var timer = schedTimer; schedTimer = null;
+    setTimeout(function () { if (timer) clearInterval(timer); if (!schedTimer && crackleSrc) { try { crackleSrc.stop(); } catch (e) {} crackleSrc = null; } }, 2500);
+  }
+  function duck(on) {
+    if (!actx || !schedTimer) return;
+    musicBus.gain.setTargetAtTime(on ? musicTarget() * 0.35 : musicTarget(), actx.currentTime, 0.15);
+  }
+
+  /* ---------- Bildschirm wach halten ---------- */
+  var wakeLock = null;
+  async function lockScreen() {
+    try { if ("wakeLock" in navigator) wakeLock = await navigator.wakeLock.request("screen"); } catch (e) {}
+  }
+  function unlockScreen() { try { if (wakeLock) wakeLock.release(); } catch (e) {} wakeLock = null; }
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible" && running && !pausedAt) lockScreen();
+  });
+
+  /* ---------- Ablauf ---------- */
+  var home = document.getElementById("home"), session = document.getElementById("session"), done = document.getElementById("done");
+  var el = {
+    step: document.querySelector(".js-step"), phase: document.querySelector(".js-phase"),
+    name: document.querySelector(".js-name"), side: document.querySelector(".js-side"),
+    count: document.querySelector(".js-count"), cue: document.querySelector(".js-cue"),
+    next: document.querySelector(".js-next"), sun: document.querySelector(".js-sun"),
+    halo: document.querySelector(".js-halo"), doneText: document.querySelector(".js-donetext")
+  };
+  var pauseBtn = document.getElementById("pause"), muteBtn = document.getElementById("mute");
+
+  var steps = [], idx = 0, stepStart = 0, pausedAt = null, pausedTotal = 0;
+  var running = false, spokeTen = false, holdSec = 60, holdCount = 0, rafId = null;
+
+  function buildSteps(hold) {
+    var out = [];
+    EX.forEach(function (ex, ei) {
+      SIDES.forEach(function (side, si) {
+        out.push({ type: "prep", dur: si === 0 ? 10 : 6, ex: ex, side: side, first: si === 0, isStart: ei === 0 && si === 0 });
+        out.push({ type: "hold", dur: hold, ex: ex, side: side });
+      });
+    });
+    return out;
+  }
+  function show(view) {
+    home.hidden = view !== home; session.hidden = view !== session; done.hidden = view !== done;
+    window.scrollTo(0, 0);
+  }
+  function nextLabel(i) {
+    var n = steps[i + 2]; // nächste Halte-Phase
+    if (!n) return "Danach: geschafft";
+    return n.ex === steps[i].ex ? "Danach: " + n.side : "Danach: " + n.ex.name;
+  }
+  function start(hold) {
+    holdSec = hold;
+    steps = buildSteps(hold);
+    holdCount = steps.filter(function (s) { return s.type === "hold"; }).length;
+    unlockIOSAudio();
+    initAudio();
+    if (actx) {
+      if (actx.state === "suspended") actx.resume();
+      musicMuted = !musicOn;
+      muteBtn.textContent = musicMuted ? "Musik an" : "Musik aus";
+      muteBtn.setAttribute("aria-pressed", String(musicMuted));
+      startMusic();
+    }
+    running = true; pausedAt = null;
+    pauseBtn.textContent = "Pause";
+    show(session);
+    lockScreen();
+    startStep(0);
+    loop();
+  }
+  function startStep(i) {
+    idx = i; stepStart = performance.now(); pausedTotal = 0; spokeTen = false;
+    var s = steps[i];
+    var holdNo = Math.floor(i / 2) + 1;
+    el.step.textContent = "Schritt " + holdNo + " von " + holdCount;
+    el.name.textContent = s.ex.name;
+    el.side.textContent = s.side;
+    if (s.type === "prep") {
+      el.phase.textContent = s.first ? "Als Nächstes" : "Seite wechseln";
+      el.cue.textContent = s.first ? s.ex.setup : "Gleiche Übung, andere Seite.";
+      el.next.textContent = "";
+      if (s.isStart) say("Guten Morgen. Los geht's mit: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup);
+      else if (s.first) say("Als Nächstes: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup);
+      else say("Seite wechseln. " + SIDE_SPOKEN[s.side] + ".");
+    } else {
+      el.phase.textContent = "Halten";
+      el.cue.textContent = s.ex.cue;
+      el.next.textContent = nextLabel(i);
+      say("Und halten. " + s.ex.cue);
+    }
+  }
+  function elapsed() {
+    var now = pausedAt !== null ? pausedAt : performance.now();
+    return (now - stepStart - pausedTotal) / 1000;
+  }
+  function setSun(p) {
+    // p: 0 = unter dem Horizont, 1 = oben
+    var cy = 160 - p * 112;
+    el.sun.setAttribute("cy", cy.toFixed(1));
+    el.halo.setAttribute("cy", cy.toFixed(1));
+    el.halo.setAttribute("r", (40 + p * 18).toFixed(1));
+  }
+  function loop() {
+    if (!running) return;
+    var s = steps[idx], e = elapsed(), rem = Math.max(0, s.dur - e);
+    el.count.textContent = Math.ceil(rem);
+    if (s.type === "hold") {
+      setSun(Math.min(1, e / s.dur));
+      if (s.dur >= 45 && rem <= 10 && !spokeTen) { spokeTen = true; say("Noch zehn Sekunden."); }
+    } else {
+      setSun(0.08 * Math.min(1, e / s.dur));
+    }
+    if (rem <= 0 && pausedAt === null) {
+      if (idx + 1 < steps.length) startStep(idx + 1);
+      else { finish(); return; }
+    }
+    rafId = requestAnimationFrame(loop);
+  }
+  function finish() {
+    running = false;
+    cancelAnimationFrame(rafId);
+    recordToday(holdSec / 60);
+    say(holdSec >= 60 ? "Geschafft. Das war deine Runde für heute." : "Geschafft. Auch die kurze Runde zählt.");
+    el.doneText.textContent = holdSec >= 60 ? "Das war deine Runde für heute." : "Auch die kurze Runde zählt.";
+    stopMusic(); unlockScreen(); setTimeout(releaseIOSAudio, 2600);
+    show(done);
+  }
+  function stop() {
+    running = false;
+    cancelAnimationFrame(rafId);
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    stopMusic(); unlockScreen(); setTimeout(releaseIOSAudio, 2600);
+    show(home);
+  }
+
+  document.getElementById("startFull").addEventListener("click", function () { start(60); });
+  document.getElementById("startShort").addEventListener("click", function () { start(30); });
+  document.getElementById("stop").addEventListener("click", stop);
+  document.getElementById("back").addEventListener("click", function () { show(home); });
+  document.getElementById("skip").addEventListener("click", function () {
+    if (!running) return;
+    if (pausedAt !== null) { pausedTotal += performance.now() - pausedAt; pausedAt = null; pauseBtn.textContent = "Pause"; if (actx) actx.resume(); }
+    if (idx + 1 < steps.length) startStep(idx + 1); else finish();
+  });
+  pauseBtn.addEventListener("click", function () {
+    if (!running) return;
+    if (pausedAt === null) {
+      pausedAt = performance.now();
+      pauseBtn.textContent = "Weiter";
+      if ("speechSynthesis" in window) speechSynthesis.cancel();
+      if (actx) actx.suspend();
+      unlockScreen();
+    } else {
+      pausedTotal += performance.now() - pausedAt;
+      pausedAt = null;
+      pauseBtn.textContent = "Pause";
+      if (actx) actx.resume();
+      lockScreen();
+    }
+  });
+  muteBtn.addEventListener("click", function () {
+    if (!actx) return;
+    musicMuted = !musicMuted;
+    muteBtn.textContent = musicMuted ? "Musik an" : "Musik aus";
+    muteBtn.setAttribute("aria-pressed", String(musicMuted));
+    if (!schedTimer && !musicMuted) startMusic();
+    musicBus.gain.setTargetAtTime(musicTarget(), actx.currentTime, 0.3);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "news": [
+    { "show": "Was jetzt?", "url": "https://feeds.simplecast.com/Xtqjn37O" },
+    { "show": "15 Minuten", "url": "https://www.tagesschau.de/multimedia/podcast/15-minuten/index~podcast.xml" }
+  ],
+  "welt": [
+    { "show": "ABC News Daily", "url": "https://www.abc.net.au/feeds/9443166/podcast.xml" }
+  ],
+  "radio": { "title": "egoFM", "stream": "https://streams.egofm.de/egoFM-hq" }
+}
