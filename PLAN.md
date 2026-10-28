@@ -15,6 +15,23 @@ Genutzt wird die Seite auf dem iPhone in Safari. Eine iOS-Kurzbefehl-Automation 
 - Wochenziel-Balken (5 Runden/Woche) in `localStorage`
 - Enthält noch Code für die claude.ai-Runtime (`window.claude.use("db")`). Der ist außerhalb von claude.ai wirkungslos und kann entfernt werden.
 
+## Übungen: Zielmuskel und warum sie drin sind
+Persönlicher Hintergrund: Plattfüße, Knieschmerzen beim Joggen, Rundrücken, viel Sitzen, 31 Jahre, Ziel Vorbeugung. Die Begründungen sind plausible Zusammenhänge aus der Recherche, keine Diagnose; Evidenzlage siehe Chat-Verlauf bzw. Plan (Dehnen allein hilft bei Knieschmerz kaum, Kräftigen am meisten).
+
+| Prog. | Übung | Zeit/Seite | Zielmuskel | Warum für dich |
+|---|---|---|---|---|
+| A | Brustwirbelsäule („Buch aufklappen“) | 40 s | Brustwirbelsäule, Rumpfdrehung, Zwischenrippenmuskeln | Rundrücken und Sitzalltag: ein beweglicher oberer Rücken richtet auf. Leichter, angenehmer Einstieg. |
+| B | Oberschenkel-Vorderseite | 40 s | Quadrizeps | Der Quadrizeps zieht an der Kniescheibe; verkürzt belastet er das Knie beim Joggen mehr. |
+| A, B | Oberschenkel-Rückseite | 60 s | Hamstrings | Dein Wunsch. Wird beim Sitzen kurz, spielt beim Laufen und für ein stabiles Becken mit. |
+| A, B | Hüftbeuger | 60 s | Hüftbeuger (Iliopsoas, gerader Oberschenkelmuskel) | Durch langes Sitzen verkürzt, kippt das Becken und verstärkt den Rundrücken-/Hohlkreuz-Zug; beim Laufen fehlt Hüftstreckung. |
+| A | Brustmuskel (Türrahmen) | 40 s | Großer Brustmuskel | Rundrücken: Schultern rutschen nach vorn, die Brust ist vorn verkürzt. |
+| A, B | Wade gestreckt | 45 s | Zwillingswadenmuskel (Gastrocnemius) | Plattfüße: Der Fuß kippt nach innen und das Knie dreht mit. Kurze Waden verstärken das vermutlich. Dazu Joggen. |
+| B | Wade gebeugt | 40 s | Schollenmuskel (Soleus) | Wie oben; der Soleus trägt beim Laufen viel Last und wird beim Strecken des Knies nicht erreicht. |
+| A, B | Kurzer Fuß | 30 s | Kleine Fußmuskeln, Fußgewölbe (Tibialis posterior) | Plattfüße: stärkt das Gewölbe aktiv. Kleine Studien zeigen einen Effekt auf das Absinken. |
+| A | Seitlage-Beinheben | 30 s | Mittlerer Gesäßmuskel (Gluteus medius) | Hält das Knie beim Laufen in Linie. Kräftigung der Hüfte hat bei Knieschmerz die beste Evidenz. |
+| B | Einbeinige Brücke | 30 s | Großer und mittlerer Gesäßmuskel, hintere Oberschenkel | Sitzen „schaltet“ das Gesäß aus; einbeinig trainiert es zugleich die Stabilität wie beim Laufen. |
+| A, B | Zur Ruhe kommen (Kindshaltung) | 30 s (einmal) | Unterer Rücken, Atmung | Ruhiger Abschluss; senkt die Anspannung zum Start in den Tag. |
+
 ## Architektur
 - **Hosting:** GitHub Pages (statisch). Hinweis: Pages für private Repos braucht einen bezahlten GitHub-Plan; sonst ist das Repo öffentlich.
 - **Datenbeschaffung:** GitHub Action per Cron holt jeden Morgen die Podcast-Feeds (der Browser kann die RSS-Feeds wegen CORS meist nicht direkt lesen) und schreibt `data/today.json` ins Repo. Die MP3s selbst spielt der Browser direkt von den Original-URLs ab.
