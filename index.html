@@ -151,9 +151,10 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 .mood[data-mood="welt"] { background: linear-gradient(140deg, var(--lilac), var(--pink)); }
 .mood[data-mood="radio"] { background: linear-gradient(140deg, var(--sun), var(--peach)); }
 .mood[data-mood="meditation"] { background: linear-gradient(140deg, var(--mint), var(--lilac)); }
-.mood.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.9rem; min-height: 0; background: var(--surface); border: 2px dashed var(--lilac); color: var(--ink); }
-.mood.wide .em { margin: 0; font-size: 1.7rem; }
-.mood.wide b { display: block; margin: 0; }
+.mood.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.7rem; min-height: 0; padding: 0.6rem 1rem; border-radius: 999px; background: var(--surface); border: 2px dashed var(--lilac); color: var(--ink); box-shadow: none; }
+.mood.wide .em { margin: 0; font-size: 1.3rem; }
+.mood.wide b { margin: 0; font-size: 1rem; }
+.mood.wide.last::after { position: static; margin-left: auto; }
 .mood.last { outline: 3px solid var(--ink); outline-offset: 2px; }
 .mood.last::after {
   content: "zuletzt"; position: absolute; top: 0.65rem; right: 0.7rem;
@@ -233,7 +234,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     <button class="mood" data-mood="meditation"><span class="em" aria-hidden="true">🧘</span><b>Meditation</b><small>geführt · englisch</small></button>
     <button class="mood" data-mood="welt"><span class="em" aria-hidden="true">🌏</span><b>Welt</b><small>Quarks Daily oder The Moth</small></button>
     <button class="mood" data-mood="radio"><span class="em" aria-hidden="true">📻</span><b>Radio</b><small>egoFM</small></button>
-    <button class="mood wide" data-mood="lofi"><span class="em" aria-hidden="true">🎧</span><span><b>Nichts gewählt? Einfach Lo-Fi</b><small>Entspannte Musik ohne Stimmen. Das läuft auch, wenn ein Podcast mal nicht lädt.</small></span></button>
+    <button class="mood wide" data-mood="lofi"><span class="em" aria-hidden="true">🎧</span><b>Nichts gewählt? Einfach Lo-Fi</b></button>
   </div>
 
   <div class="toggles">
@@ -526,17 +527,27 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   }
 
   /* ---------- Gong (statt Sprache, wenn Podcast läuft) ---------- */
+  // Tiefer, weicher Klangschalen-Gong. Nach einer Sprachausgabe kann iOS den AudioContext
+  // unterbrechen – deshalb vorher bei Bedarf wieder aufwecken.
   function gong() {
     if (!actx) return;
+    if (actx.state !== "running") {
+      try { actx.resume().then(playGong).catch(function () {}); } catch (e) {}
+      return;
+    }
+    playGong();
+  }
+  function playGong() {
     var t = actx.currentTime, g = actx.createGain();
+    var lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 1100; lp.Q.value = 0.5;
     g.gain.setValueAtTime(0.0001, t);
-    g.gain.exponentialRampToValueAtTime(0.6, t + 0.02);
-    g.gain.exponentialRampToValueAtTime(0.0001, t + 2.2);
-    g.connect(actx.destination);
-    [523.25, 784.0, 1046.5].forEach(function (f, i) {
-      var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = f;
-      var og = actx.createGain(); og.gain.value = i === 0 ? 1 : i === 1 ? 0.5 : 0.25;
-      o.connect(og); og.connect(g); o.start(t); o.stop(t + 2.3);
+    g.gain.linearRampToValueAtTime(0.9, t + 0.06);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 3.6);
+    g.connect(lp); lp.connect(actx.destination);
+    [[196, 1], [294.5, 0.45], [393, 0.3], [590, 0.12]].forEach(function (p, i) {
+      var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = p[0]; o.detune.value = i ? i * 3 : 0;
+      var og = actx.createGain(); og.gain.value = p[1];
+      o.connect(og); og.connect(g); o.start(t); o.stop(t + 3.7);
     });
   }
 
@@ -781,7 +792,14 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.next.textContent = "";
       var pod = mood !== "lofi"; // Podcast/Radio: Ansage nur bei neuer Übung, sonst Gong
       if (s.isStart) say("Guten Morgen. Los geht's mit: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup, pod);
-      else if (s.first) say("Als Nächstes: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup, pod);
+      else if (s.first && pod) {
+        // Gong zum Pausenbeginn, danach (nach dem Ausklang) die Ansage
+        cancelSpeech(); gong();
+        setTimeout(function () {
+          if (running && idx === i) say("Als Nächstes: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup, true);
+        }, 2000);
+      }
+      else if (s.first) say("Als Nächstes: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup);
       else if (pod) { cancelSpeech(); gong(); }
       else say("Seite wechseln. " + SIDE_SPOKEN[s.side] + ".");
     } else {
@@ -789,6 +807,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.cue.textContent = s.ex.cue;
       el.next.textContent = nextLabel(i);
       if (mood === "lofi") say("Und halten. " + s.ex.cue);
+      else if (!podHeld) gong(); // Pausenende: los geht's (nicht, wenn gerade noch eine Ansage läuft)
     }
   }
   function elapsed() {
@@ -810,7 +829,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       setSun(Math.min(1, e / s.dur));
       if (s.dur >= 45 && rem <= 10 && !spokeTen) {
         spokeTen = true;
-        if (mood === "lofi") say("Noch zehn Sekunden."); else gong();
+        if (mood === "lofi") say("Noch zehn Sekunden.");
       }
     } else {
       setSun(0.08 * Math.min(1, e / s.dur));
@@ -825,6 +844,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     running = false;
     cancelAnimationFrame(rafId);
     recordToday(holdSec / 60);
+    if (mood !== "lofi") gong();
     podStop();
     say(holdSec >= 60 ? "Geschafft. Das war deine Runde für heute." : "Geschafft. Auch die kurze Runde zählt.");
     el.doneText.textContent = holdSec >= 60 ? "Das war deine Runde für heute." : "Auch die kurze Runde zählt.";
