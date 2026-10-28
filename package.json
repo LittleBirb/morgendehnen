@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "fetch": "node scripts/fetch.mjs"
+    "fetch": "node scripts/fetch.mjs",
+    "serve": "node scripts/serve.mjs"
   },
   "engines": { "node": ">=18" }
 }

@@ -9,17 +9,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #EDF6FC;
+  --bg: #FFF0F5;
   --surface: #FFFFFF;
-  --ink: #22324A;
-  --muted: #5A6A80;
-  --line: #D2E2EE;
-  --sun: #FFBE3B;
-  --sun-soft: #FFE5A8;
-  --sage: #3FAE8C;
-  --ground: #CBE8D6;
-  --on-sun: #2B2410;
-  --coral: #D2603F;
+  --ink: #4A1F45;
+  --muted: #8A5E80;
+  --line: #F8D3E4;
+  --sun: #FFB02E;
+  --sun-soft: #FFD9A0;
+  --sage: #2FB59A;
+  --ground: #CFEFD9;
+  --on-sun: #4A1F45;
+  --coral: #E4457A;
+  --pink: #FF7EB6;
+  --peach: #FFA98A;
+  --lilac: #B79CFF;
+  --mint: #6FD6B8;
+  --sky-top: #FFD3E6;
+  --sky-bot: #FFEBD6;
+  --shadow: 0 6px 18px rgba(228, 69, 122, 0.16);
   color-scheme: light;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
@@ -27,32 +34,46 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #162236;
-    --surface: #1F2F48;
-    --ink: #F1F5FA;
-    --muted: #A5B3C7;
-    --line: #2E405E;
-    --sun: #FFC64F;
-    --sun-soft: #6A5422;
-    --sage: #6ACDAE;
-    --ground: #1C3A35;
-    --on-sun: #2B2410;
-    --coral: #FF9F80;
+    --bg: #2B1530;
+    --surface: #3B2043;
+    --ink: #FFEAF3;
+    --muted: #D2A9C8;
+    --line: #5A3563;
+    --sun: #FFC04F;
+    --sun-soft: #7A5A3A;
+    --sage: #6FD6B8;
+    --ground: #2A4A45;
+    --on-sun: #3A1B38;
+    --coral: #FF8FB5;
+    --pink: #FF8FC0;
+    --peach: #FFB59C;
+    --lilac: #C3AEFF;
+    --mint: #7FE0C4;
+    --sky-top: #4A2A5C;
+    --sky-bot: #6B3A5A;
+    --shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #162236;
-  --surface: #1F2F48;
-  --ink: #F1F5FA;
-  --muted: #A5B3C7;
-  --line: #2E405E;
-  --sun: #FFC64F;
-  --sun-soft: #6A5422;
-  --sage: #6ACDAE;
-  --ground: #1C3A35;
-  --on-sun: #2B2410;
-  --coral: #FF9F80;
+  --bg: #2B1530;
+  --surface: #3B2043;
+  --ink: #FFEAF3;
+  --muted: #D2A9C8;
+  --line: #5A3563;
+  --sun: #FFC04F;
+  --sun-soft: #7A5A3A;
+  --sage: #6FD6B8;
+  --ground: #2A4A45;
+  --on-sun: #3A1B38;
+  --coral: #FF8FB5;
+  --pink: #FF8FC0;
+  --peach: #FFB59C;
+  --lilac: #C3AEFF;
+  --mint: #7FE0C4;
+  --sky-top: #4A2A5C;
+  --sky-bot: #6B3A5A;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   color-scheme: dark;
 }
 *, *::before, *::after { box-sizing: inherit; }
@@ -60,7 +81,12 @@ html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
 body {
   margin: 0;
   min-height: 100%;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 126, 182, 0.28), transparent 45%),
+    radial-gradient(circle at 100% 18%, rgba(183, 156, 255, 0.26), transparent 42%),
+    radial-gradient(circle at 0% 100%, rgba(255, 176, 46, 0.2), transparent 45%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 1.0625rem;
@@ -79,17 +105,25 @@ h1 {
   line-height: 0.95;
   letter-spacing: -0.03em;
   margin: 1.25rem 0 0.75rem;
+  background: linear-gradient(100deg, var(--coral), var(--pink) 40%, var(--lilac));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
 }
+h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--sun); font-size: 0.6em; }
 .lede { color: var(--muted); margin: 0 0 1.75rem; max-width: 26rem; }
 
-.week { background: var(--surface); border-radius: 1.25rem; padding: 1.1rem 1.1rem 1rem; margin-bottom: 1.5rem; }
+.week { background: var(--surface); border-radius: 1.6rem; padding: 1.1rem 1.1rem 1rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
 .week-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.7rem; }
 .week-head strong { font-size: 1.05rem; font-weight: 600; }
 .week-head span { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 .bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35rem; }
 .seg { height: 0.85rem; border-radius: 0.5rem; background: var(--line); transition: background 0.4s ease; }
-.seg.on { background: var(--sun); }
-.bar.full .seg.on { background: var(--sage); }
+.seg.on { background: var(--pink); }
+.seg.on:nth-child(2) { background: var(--peach); }
+.seg.on:nth-child(3) { background: var(--sun); }
+.seg.on:nth-child(4) { background: var(--mint); }
+.seg.on:nth-child(5) { background: var(--lilac); }
+.bar.full .seg.on { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--sun-soft); }
 .week-note { margin: 0.7rem 0 0; font-size: 0.9rem; color: var(--muted); }
 
 .go {
@@ -98,16 +132,40 @@ h1 {
   font-size: 1.15rem; font-weight: 600; text-align: left;
 }
 .go small { font-weight: 400; font-size: 0.95rem; opacity: 0.8; }
-.go.primary { background: var(--sun); color: var(--on-sun); }
-.go.secondary { background: transparent; border: 2px solid var(--line); }
+.go.primary { background: linear-gradient(100deg, var(--sun), var(--peach) 55%, var(--pink)); color: var(--on-sun); box-shadow: var(--shadow); }
+.go.secondary { background: var(--surface); border: 2px solid var(--pink); box-shadow: var(--shadow); }
+.go:active { transform: scale(0.98); }
 
+.pick { font-weight: 600; margin: 0 0 0.7rem; }
+.moods { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.mood {
+  position: relative; display: flex; flex-direction: column; gap: 0.1rem; min-height: 7.2rem;
+  border: 0; border-radius: 1.5rem; padding: 0.9rem 0.95rem; text-align: left;
+  color: var(--on-sun); box-shadow: var(--shadow); transition: transform 0.15s ease;
+}
+.mood:active { transform: scale(0.97); }
+.mood .em { font-size: 1.9rem; line-height: 1.1; margin-bottom: auto; }
+.mood b { font-weight: 800; font-size: 1.15rem; line-height: 1.15; margin-top: 0.5rem; }
+.mood small { font-size: 0.82rem; line-height: 1.25; opacity: 0.85; }
+.mood[data-mood="news"] { background: linear-gradient(140deg, var(--pink), var(--peach)); }
+.mood[data-mood="welt"] { background: linear-gradient(140deg, var(--lilac), var(--pink)); }
+.mood[data-mood="radio"] { background: linear-gradient(140deg, var(--sun), var(--peach)); }
+.mood[data-mood="lofi"] { background: linear-gradient(140deg, var(--mint), var(--lilac)); }
+.mood.last { outline: 3px solid var(--ink); outline-offset: 2px; }
+.mood.last::after {
+  content: "zuletzt"; position: absolute; top: 0.65rem; right: 0.7rem;
+  font-size: 0.7rem; font-weight: 600; background: rgba(255, 255, 255, 0.75);
+  border-radius: 999px; padding: 0.05rem 0.55rem;
+}
+.now { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.4rem; }
+.notice { color: var(--coral); font-size: 0.9rem; font-weight: 600; margin: 0 0 0.8rem; }
 .toggles { display: flex; gap: 0.5rem; margin: 1.1rem 0 1.75rem; flex-wrap: wrap; }
 .pill {
   border: 2px solid var(--line); background: transparent; border-radius: 999px;
   padding: 0.45rem 0.95rem; font-size: 0.95rem; color: var(--muted);
 }
-.pill[aria-pressed="true"] { border-color: var(--sage); color: var(--ink); }
-.pill[aria-pressed="true"]::before { content: "✓ "; color: var(--sage); }
+.pill[aria-pressed="true"] { border-color: var(--lilac); background: var(--surface); color: var(--ink); }
+.pill[aria-pressed="true"]::before { content: "♡ "; color: var(--coral); }
 
 details { border-top: 1px solid var(--line); padding-top: 1rem; }
 summary { font-weight: 600; cursor: pointer; list-style-position: outside; }
@@ -122,7 +180,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
 .top span { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
 .ghost { background: transparent; border: 0; color: var(--muted); padding: 0.5rem 0; font-size: 0.95rem; text-decoration: underline; text-underline-offset: 3px; }
 
-.sky { display: block; width: 100%; height: auto; margin: 0.5rem 0 0; }
+.sky { display: block; width: 100%; height: auto; margin: 0.5rem 0 0; border-radius: 1.6rem; overflow: hidden; background: linear-gradient(180deg, var(--sky-top), var(--sky-bot)); box-shadow: var(--shadow); }
 .sky .ground { fill: var(--ground); }
 .sky .horizon { stroke: var(--line); stroke-width: 2; }
 .sky .sunbody { fill: var(--sun); }
@@ -142,9 +200,10 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   flex: 1; border: 2px solid var(--line); background: var(--surface); border-radius: 999px;
   padding: 0.85rem 0.5rem; font-size: 1rem; font-weight: 600;
 }
-.ctrl.main { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.ctrl.main { background: linear-gradient(100deg, var(--coral), var(--pink)); color: #fff; border-color: transparent; box-shadow: var(--shadow); }
 
 /* Done */
+.done-title::after { content: " 🎉"; }
 .done-title { font-size: clamp(2.8rem, 12vw, 3.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin: 1rem 0 0.6rem; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -165,11 +224,16 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     <p class="week-note js-weeknote"></p>
   </section>
 
-  <button class="go primary" id="startFull">Ganze Runde starten <small>11 Min.</small></button>
-  <button class="go secondary" id="startShort">Kurze Runde <small>6 Min. für müde Tage</small></button>
+  <p class="pick">Wonach ist dir heute? Ein Tipp startet die Runde.</p>
+  <div class="moods" role="group" aria-label="Stimmung wählen">
+    <button class="mood" data-mood="news"><span class="em" aria-hidden="true">📰</span><b>Nachrichten</b><small class="js-sub-news">Was jetzt? / 15 Minuten</small></button>
+    <button class="mood" data-mood="welt"><span class="em" aria-hidden="true">🌏</span><b>Welt</b><small class="js-sub-welt">ABC News Daily · englisch</small></button>
+    <button class="mood" data-mood="radio"><span class="em" aria-hidden="true">📻</span><b>Radio</b><small class="js-sub-radio">egoFM</small></button>
+    <button class="mood" data-mood="lofi"><span class="em" aria-hidden="true">🎧</span><b>Nur Lo-Fi</b><small>ohne Stimmen</small></button>
+  </div>
 
   <div class="toggles">
-    <button class="pill" id="tMusic" aria-pressed="true">Lo-Fi-Musik</button>
+    <button class="pill" id="tShort" aria-pressed="false">Kurze Runde · 6 Min.</button>
     <button class="pill" id="tVoice" aria-pressed="true">Sprachansage</button>
   </div>
 
@@ -204,11 +268,13 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   <p class="count js-count" aria-live="off">10</p>
   <p class="cue js-cue"></p>
   <p class="next js-next"></p>
+  <p class="now js-now"></p>
+  <p class="notice js-notice" role="status" hidden></p>
 
   <div class="controls">
     <button class="ctrl main" id="pause">Pause</button>
     <button class="ctrl" id="skip">Überspringen</button>
-    <button class="ctrl" id="mute" aria-pressed="false">Musik aus</button>
+    <button class="ctrl" id="mute" aria-pressed="false">Ton aus</button>
   </div>
 </main>
 
@@ -310,21 +376,18 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   loadLocal(); renderWeek();
 
   /* ---------- Einstellungen ---------- */
-  var musicOn = true, voiceOn = true;
+  var voiceOn = true, shortRound = false, lastMood = null;
   try {
-    if (localStorage.getItem("morgendehnen-music") === "0") musicOn = false;
     if (localStorage.getItem("morgendehnen-voice") === "0") voiceOn = false;
+    lastMood = localStorage.getItem("morgendehnen-mood");
   } catch (e) {}
-  var tMusic = document.getElementById("tMusic"), tVoice = document.getElementById("tVoice");
+  var tShort = document.getElementById("tShort"), tVoice = document.getElementById("tVoice");
   function syncToggles() {
-    tMusic.setAttribute("aria-pressed", String(musicOn));
+    tShort.setAttribute("aria-pressed", String(shortRound));
     tVoice.setAttribute("aria-pressed", String(voiceOn));
   }
   syncToggles();
-  tMusic.addEventListener("click", function () {
-    musicOn = !musicOn; syncToggles();
-    try { localStorage.setItem("morgendehnen-music", musicOn ? "1" : "0"); } catch (e) {}
-  });
+  tShort.addEventListener("click", function () { shortRound = !shortRound; syncToggles(); });
   tVoice.addEventListener("click", function () {
     voiceOn = !voiceOn; syncToggles();
     try { localStorage.setItem("morgendehnen-voice", voiceOn ? "1" : "0"); } catch (e) {}
@@ -342,17 +405,132 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     pickVoice();
     speechSynthesis.onvoiceschanged = pickVoice;
   }
-  function say(text) {
-    if (!voiceOn || !("speechSynthesis" in window)) return;
-    speechSynthesis.cancel();
+  var hasSpeech = "speechSynthesis" in window, sayToken = 0, podHeld = false;
+  // Bricht laufende Ansage ab; setzt den Podcast fort, falls er für die Ansage pausiert war.
+  function cancelSpeech(keepHeld) {
+    sayToken++;
+    if (hasSpeech) speechSynthesis.cancel();
+    duck(false);
+    if (podHeld && !keepHeld) { podHeld = false; podResume(); }
+  }
+  // pauseAudio: Podcast/Radio während der Ansage anhalten (iOS kann nicht ducken).
+  function say(text, pauseAudio) {
+    cancelSpeech(pauseAudio);
+    if (!voiceOn || !hasSpeech) { if (podHeld) { podHeld = false; podResume(); } return; }
+    var my = sayToken, finished = false;
+    function done() {
+      if (finished || my !== sayToken) return;
+      finished = true; duck(false);
+      if (podHeld) { podHeld = false; podResume(); }
+    }
     var u = new SpeechSynthesisUtterance(text);
     u.lang = "de-DE";
     if (deVoice) u.voice = deVoice;
     u.rate = 0.95;
-    u.onstart = function () { duck(true); };
-    u.onend = function () { duck(false); };
-    u.onerror = function () { duck(false); };
+    u.onstart = function () { if (my === sayToken) duck(true); };
+    u.onend = done;
+    u.onerror = done;
+    if (pauseAudio) { podHeld = true; podPause(); setTimeout(done, 30000); }
     speechSynthesis.speak(u);
+  }
+
+  /* ---------- Podcast / Radio ---------- */
+  var podEl = new Audio();
+  podEl.preload = "auto";
+  podEl.setAttribute("playsinline", "");
+  var podActive = false, podReady = false, podUrl = "", podIsLive = false, podHealth = null;
+  ["loadedmetadata", "loadeddata", "canplay", "playing"].forEach(function (ev) {
+    podEl.addEventListener(ev, function () { podReady = true; });
+  });
+  podEl.addEventListener("error", function () {
+    if (podActive && running) fallbackToLofi("Der Ton lädt nicht – es läuft Lo-Fi.");
+  });
+  podEl.addEventListener("ended", function () {
+    if (podActive && running && !podIsLive) fallbackToLofi("Die Folge ist zu Ende – es läuft Lo-Fi.");
+  });
+  function podPlay() {
+    var p = podEl.play();
+    if (p && p.catch) p.catch(function (e) {
+      if (e && e.name === "AbortError") return; // wir haben selbst pausiert
+      if (podActive && running) fallbackToLofi("Der Ton startet nicht – es läuft Lo-Fi.");
+    });
+  }
+  function podPause() { if (podActive) podEl.pause(); }
+  function podResume() {
+    if (!podActive || !running || pausedAt !== null) return;
+    if (podIsLive) podEl.src = podUrl; // Livestream nach Pause neu verbinden
+    podPlay();
+  }
+  function podStop() {
+    podActive = false; podHeld = false;
+    clearTimeout(podHealth);
+    podEl.pause(); podEl.removeAttribute("src"); podEl.load();
+  }
+  function startPod(ep, live) {
+    podActive = true; podReady = false; podUrl = ep.audio; podIsLive = !!live;
+    podEl.muted = false;
+    podEl.src = podUrl;
+    podPlay();
+    clearTimeout(podHealth);
+    podHealth = setTimeout(function () {
+      if (podActive && running && !podReady) fallbackToLofi("Der Ton lädt nicht – es läuft Lo-Fi.");
+    }, 8000);
+    try {
+      if ("mediaSession" in navigator && window.MediaMetadata) {
+        navigator.mediaSession.metadata = new MediaMetadata({ title: ep.title, artist: ep.show || "", album: "Morgendehnen" });
+        navigator.mediaSession.setActionHandler("play", togglePause);
+        navigator.mediaSession.setActionHandler("pause", togglePause);
+      }
+    } catch (e) {}
+  }
+  function fallbackToLofi(msg) {
+    podStop(); mood = "lofi";
+    setNotice(msg);
+    el.now.textContent = "♪ Lo-Fi";
+    if (actx) { musicMuted = soundMuted; startMusic(); }
+  }
+  function setNotice(text) { el.notice.textContent = text || ""; el.notice.hidden = !text; }
+
+  /* ---------- Heutige Folgen ---------- */
+  var TODAY_KEY = "morgendehnen-today", todayData = null;
+  try { var rawToday = localStorage.getItem(TODAY_KEY); if (rawToday) todayData = JSON.parse(rawToday); } catch (e) { todayData = null; }
+  function renderMoods() {
+    var ch = (todayData && todayData.channels) || {};
+    ["news", "welt", "radio"].forEach(function (k) {
+      var sub = document.querySelector(".js-sub-" + k);
+      if (sub && ch[k] && ch[k].show) sub.textContent = ch[k].show + (k === "welt" ? " · englisch" : "");
+    });
+    document.querySelectorAll(".mood").forEach(function (b) { b.classList.toggle("last", b.dataset.mood === lastMood); });
+  }
+  function loadToday() {
+    fetch("data/today.json", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        todayData = d;
+        try { localStorage.setItem(TODAY_KEY, JSON.stringify(d)); } catch (e) {}
+        renderMoods();
+      })
+      .catch(function () { renderMoods(); });
+  }
+  function isOld(ep) {
+    var H = 3600 * 1000;
+    return (todayData && todayData.updated && Date.now() - Date.parse(todayData.updated) > 36 * H) ||
+           (ep.published && Date.now() - Date.parse(ep.published) > 30 * H);
+  }
+
+  /* ---------- Gong (statt Sprache, wenn Podcast läuft) ---------- */
+  function gong() {
+    if (!actx) return;
+    var t = actx.currentTime, g = actx.createGain();
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.14, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 1.8);
+    g.connect(actx.destination);
+    [523.25, 784.0].forEach(function (f, i) {
+      var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = f;
+      var og = actx.createGain(); og.gain.value = i ? 0.35 : 1;
+      o.connect(og); og.connect(g); o.start(t); o.stop(t + 1.9);
+    });
   }
 
   /* ---------- Lo-Fi-Musik (Web Audio) ---------- */
@@ -519,10 +697,12 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     name: document.querySelector(".js-name"), side: document.querySelector(".js-side"),
     count: document.querySelector(".js-count"), cue: document.querySelector(".js-cue"),
     next: document.querySelector(".js-next"), sun: document.querySelector(".js-sun"),
-    halo: document.querySelector(".js-halo"), doneText: document.querySelector(".js-donetext")
+    halo: document.querySelector(".js-halo"), doneText: document.querySelector(".js-donetext"),
+    now: document.querySelector(".js-now"), notice: document.querySelector(".js-notice")
   };
   var pauseBtn = document.getElementById("pause"), muteBtn = document.getElementById("mute");
 
+  var mood = "lofi", soundMuted = false;
   var steps = [], idx = 0, stepStart = 0, pausedAt = null, pausedTotal = 0;
   var running = false, spokeTen = false, holdSec = 60, holdCount = 0, rafId = null;
 
@@ -545,20 +725,35 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     if (!n) return "Danach: geschafft";
     return n.ex === steps[i].ex ? "Danach: " + n.side : "Danach: " + n.ex.name;
   }
-  function start(hold) {
-    holdSec = hold;
+  function setMuteLabel() {
+    muteBtn.textContent = soundMuted ? "Ton an" : "Ton aus";
+    muteBtn.setAttribute("aria-pressed", String(soundMuted));
+  }
+  function start(hold, chosen) {
+    holdSec = hold; mood = chosen;
+    lastMood = chosen; renderMoods();
+    try { localStorage.setItem("morgendehnen-mood", chosen); } catch (e) {}
     steps = buildSteps(hold);
     holdCount = steps.filter(function (s) { return s.type === "hold"; }).length;
+    // Alles Audio muss innerhalb dieser Tipp-Geste starten (iOS).
     unlockIOSAudio();
     initAudio();
-    if (actx) {
-      if (actx.state === "suspended") actx.resume();
-      musicMuted = !musicOn;
-      muteBtn.textContent = musicMuted ? "Musik an" : "Musik aus";
-      muteBtn.setAttribute("aria-pressed", String(musicMuted));
-      startMusic();
+    if (actx && actx.state === "suspended") actx.resume();
+    soundMuted = false; musicMuted = false; setMuteLabel();
+    running = true; pausedAt = null; podHeld = false;
+    setNotice(""); el.now.textContent = "";
+    var ch = (todayData && todayData.channels) || {}, ep = ch[chosen];
+    if (chosen !== "lofi") {
+      if (ep && ep.audio) {
+        startPod(ep, chosen === "radio");
+        el.now.textContent = chosen === "radio" ? "📻 " + (ep.title || "Radio") : "▶ " + (ep.show || "") + " · " + ep.title;
+        if (chosen !== "radio" && isOld(ep)) setNotice("Folge von gestern");
+      } else {
+        mood = "lofi";
+        setNotice("Keine Folge gefunden – es läuft Lo-Fi.");
+      }
     }
-    running = true; pausedAt = null;
+    if (mood === "lofi") { el.now.textContent = "♪ Lo-Fi"; if (actx) startMusic(); }
     pauseBtn.textContent = "Pause";
     show(session);
     lockScreen();
@@ -576,14 +771,16 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.phase.textContent = s.first ? "Als Nächstes" : "Seite wechseln";
       el.cue.textContent = s.first ? s.ex.setup : "Gleiche Übung, andere Seite.";
       el.next.textContent = "";
-      if (s.isStart) say("Guten Morgen. Los geht's mit: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup);
-      else if (s.first) say("Als Nächstes: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup);
+      var pod = mood !== "lofi"; // Podcast/Radio: Ansage nur bei neuer Übung, sonst Gong
+      if (s.isStart) say("Guten Morgen. Los geht's mit: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup, pod);
+      else if (s.first) say("Als Nächstes: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup, pod);
+      else if (pod) { cancelSpeech(); gong(); }
       else say("Seite wechseln. " + SIDE_SPOKEN[s.side] + ".");
     } else {
       el.phase.textContent = "Halten";
       el.cue.textContent = s.ex.cue;
       el.next.textContent = nextLabel(i);
-      say("Und halten. " + s.ex.cue);
+      if (mood === "lofi") say("Und halten. " + s.ex.cue);
     }
   }
   function elapsed() {
@@ -603,7 +800,10 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     el.count.textContent = Math.ceil(rem);
     if (s.type === "hold") {
       setSun(Math.min(1, e / s.dur));
-      if (s.dur >= 45 && rem <= 10 && !spokeTen) { spokeTen = true; say("Noch zehn Sekunden."); }
+      if (s.dur >= 45 && rem <= 10 && !spokeTen) {
+        spokeTen = true;
+        if (mood === "lofi") say("Noch zehn Sekunden."); else gong();
+      }
     } else {
       setSun(0.08 * Math.min(1, e / s.dur));
     }
@@ -617,6 +817,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     running = false;
     cancelAnimationFrame(rafId);
     recordToday(holdSec / 60);
+    podStop();
     say(holdSec >= 60 ? "Geschafft. Das war deine Runde für heute." : "Geschafft. Auch die kurze Runde zählt.");
     el.doneText.textContent = holdSec >= 60 ? "Das war deine Runde für heute." : "Auch die kurze Runde zählt.";
     stopMusic(); unlockScreen(); setTimeout(releaseIOSAudio, 2600);
@@ -625,26 +826,28 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   function stop() {
     running = false;
     cancelAnimationFrame(rafId);
-    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    podStop(); cancelSpeech();
     stopMusic(); unlockScreen(); setTimeout(releaseIOSAudio, 2600);
     show(home);
   }
 
-  document.getElementById("startFull").addEventListener("click", function () { start(60); });
-  document.getElementById("startShort").addEventListener("click", function () { start(30); });
+  document.querySelectorAll(".mood").forEach(function (b) {
+    b.addEventListener("click", function () { start(shortRound ? 30 : 60, b.dataset.mood); });
+  });
   document.getElementById("stop").addEventListener("click", stop);
   document.getElementById("back").addEventListener("click", function () { show(home); });
   document.getElementById("skip").addEventListener("click", function () {
     if (!running) return;
-    if (pausedAt !== null) { pausedTotal += performance.now() - pausedAt; pausedAt = null; pauseBtn.textContent = "Pause"; if (actx) actx.resume(); }
+    if (pausedAt !== null) { pausedTotal += performance.now() - pausedAt; pausedAt = null; pauseBtn.textContent = "Pause"; if (actx) actx.resume(); podResume(); }
     if (idx + 1 < steps.length) startStep(idx + 1); else finish();
   });
-  pauseBtn.addEventListener("click", function () {
+  function togglePause() {
     if (!running) return;
     if (pausedAt === null) {
       pausedAt = performance.now();
       pauseBtn.textContent = "Weiter";
-      if ("speechSynthesis" in window) speechSynthesis.cancel();
+      cancelSpeech(true); podHeld = false;
+      podPause();
       if (actx) actx.suspend();
       unlockScreen();
     } else {
@@ -652,17 +855,22 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       pausedAt = null;
       pauseBtn.textContent = "Pause";
       if (actx) actx.resume();
+      podResume();
       lockScreen();
     }
-  });
+  }
+  pauseBtn.addEventListener("click", togglePause);
   muteBtn.addEventListener("click", function () {
+    soundMuted = !soundMuted; setMuteLabel();
+    musicMuted = soundMuted;
+    podEl.muted = soundMuted;
     if (!actx) return;
-    musicMuted = !musicMuted;
-    muteBtn.textContent = musicMuted ? "Musik an" : "Musik aus";
-    muteBtn.setAttribute("aria-pressed", String(musicMuted));
-    if (!schedTimer && !musicMuted) startMusic();
+    if (mood === "lofi" && !schedTimer && !musicMuted) startMusic();
     musicBus.gain.setTargetAtTime(musicTarget(), actx.currentTime, 0.3);
   });
+
+  renderMoods();
+  loadToday();
 })();
 </script>
 </body>
