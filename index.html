@@ -136,6 +136,8 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 .go.secondary { background: var(--surface); border: 2px solid var(--pink); box-shadow: var(--shadow); }
 .go:active { transform: scale(0.98); }
 
+.prog { color: var(--muted); font-size: 0.92rem; margin: -0.8rem 0 1.3rem; }
+.prog .ghost { padding: 0; }
 .pick { font-weight: 600; margin: 0 0 0.7rem; }
 .moods { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
 .mood {
@@ -178,7 +180,9 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 
 details { border-top: 1px solid var(--line); padding-top: 1rem; }
 summary { font-weight: 600; cursor: pointer; list-style-position: outside; }
-ol.list { padding-left: 1.3rem; margin: 0.9rem 0 0; }
+ol.list { list-style: none; padding-left: 0; margin: 0.9rem 0 0; }
+ol.list li.prog-head { font-weight: 800; color: var(--coral); margin: 1.1rem 0 0.6rem; }
+ol.list li.prog-head:first-child { margin-top: 0; }
 ol.list li { margin-bottom: 0.8rem; }
 ol.list li b { font-weight: 600; display: block; }
 ol.list li span { color: var(--muted); font-size: 0.95rem; }
@@ -225,13 +229,15 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
 <!-- Startansicht -->
 <main class="wrap" id="home">
   <h1>Morgen&shy;dehnen</h1>
-  <p class="lede">Fünf Dehnungen, je eine Minute pro Seite. Du musst nur zuhören und mitmachen.</p>
+  <p class="lede">Dehnen und Kräftigen in ca. 12 Minuten, im Wechsel zwei Programme. Du musst nur zuhören und mitmachen.</p>
 
   <section class="week" aria-label="Wochenziel">
     <div class="week-head"><strong>Diese Woche</strong><span class="js-weekcount">0 von 5 Runden</span></div>
     <div class="bar js-bar"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
     <p class="week-note js-weeknote"></p>
   </section>
+
+  <p class="prog"><span class="js-program"></span> <button class="ghost" id="swapProg">wechseln</button></p>
 
   <p class="pick">Wonach ist dir heute? Ein Tipp startet die Runde.</p>
   <div class="moods" role="group" aria-label="Stimmung wählen">
@@ -243,14 +249,14 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   </div>
 
   <div class="toggles">
-    <button class="pill" id="tShort" aria-pressed="false">Kurze Runde · 6 Min.</button>
+    <button class="pill" id="tShort" aria-pressed="false">Kurze Runde · ca. 5 Min.</button>
     <button class="pill" id="tVoice" aria-pressed="true">Sprachansage</button>
   </div>
 
   <details>
-    <summary>Die fünf Dehnungen</summary>
+    <summary>Die Übungen (Programm A und B)</summary>
     <ol class="list" id="exList"></ol>
-    <p class="fine">„Rechts“ und „links“ meinen immer die Seite, die gedehnt wird. Dehn sanft bis zu einem deutlichen Ziehen, nie bis es wehtut, und nicht wippen. Wie stark du dehnst, macht laut Studien kaum einen Unterschied; die Zeit pro Muskel zählt.</p>
+    <p class="fine">„Rechts“ und „links“ meinen immer die Seite, die du gerade dehnst oder trainierst. Dehn sanft bis zu einem deutlichen Ziehen, nie bis es wehtut, und nicht wippen. Wie stark du dehnst, macht laut Studien kaum einen Unterschied; die Zeit pro Muskel zählt.</p>
     <p class="fine">Kein Ton? Prüf den Stummschalter am iPhone.</p>
   </details>
 </main>
@@ -308,37 +314,68 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   "use strict";
 
   /* ---------- Übungen ---------- */
-  var EX = [
-    { name: "Oberschenkel-Rückseite",
-      setup: "Auf den Rücken legen, Handtuch um die Fußsohle.",
-      cue: "Bein gestreckt nach oben ziehen, bis es deutlich zieht. Schultern bleiben locker." },
-    { name: "Gesäß",
-      setup: "In Rückenlage den Knöchel aufs andere Knie legen.",
-      cue: "Das untere Bein mit beiden Händen zur Brust ziehen. Kopf bleibt am Boden." },
-    { name: "Brustwirbelsäule",
+  // hold = Sekunden pro Seite; short = Sekunden in der kurzen Runde (null = dort nicht dabei);
+  // once = nur eine Runde ohne Seitenwechsel.
+  var EXERCISES = {
+    bws: { name: "Brustwirbelsäule", hold: 40, short: null,
       setup: "Auf die Seite legen, Knie angewinkelt, Arme nach vorn.",
       cue: "Den oberen Arm wie ein Buch nach hinten aufklappen. Die Knie bleiben liegen." },
-    { name: "Hüftbeuger",
+    quad: { name: "Oberschenkel-Vorderseite", hold: 40, short: null,
+      setup: "Auf die Seite legen, das untere Bein angewinkelt.",
+      cue: "Den oberen Fuß zum Po ziehen, das Knie zeigt nach unten. Becken leicht nach vorn kippen." },
+    hams: { name: "Oberschenkel-Rückseite", hold: 60, short: 30,
+      setup: "Auf den Rücken legen, Handtuch um die Fußsohle.",
+      cue: "Bein gestreckt nach oben ziehen, bis es deutlich zieht. Schultern bleiben locker." },
+    hip: { name: "Hüftbeuger", hold: 60, short: 30,
       setup: "Kniender Ausfallschritt, das hintere Knie gern auf ein Kissen.",
       cue: "Po anspannen und das Becken leicht nach vorne schieben. Oberkörper aufrecht." },
-    { name: "Wade",
+    chest: { name: "Brustmuskel", hold: 40, short: null,
+      setup: "In einen Türrahmen stellen, den Unterarm auf Schulterhöhe an den Rahmen legen.",
+      cue: "Einen kleinen Schritt nach vorn, bis es in der Brust zieht. Schultern bleiben unten." },
+    calf: { name: "Wade gestreckt", hold: 45, short: 30,
       setup: "Hände an die Wand, ein Bein weit nach hinten stellen.",
-      cue: "Hintere Ferse bleibt am Boden, das Bein gestreckt. Hüfte Richtung Wand." }
-  ];
+      cue: "Hintere Ferse bleibt am Boden, das Bein gestreckt. Hüfte Richtung Wand." },
+    soleus: { name: "Wade gebeugt", hold: 40, short: null,
+      setup: "Hände an die Wand, ein Bein nach hinten stellen, wie eben.",
+      cue: "Das hintere Knie beugen, die Ferse bleibt am Boden. Es zieht tief in der unteren Wade." },
+    foot: { name: "Kurzer Fuß", hold: 30, short: 30,
+      setup: "Aufrecht sitzen, ein Fuß steht flach auf dem Boden.",
+      cue: "Ballen und Ferse zueinander ziehen, das Fußgewölbe hebt sich, die Zehen bleiben lang. Fünf Sekunden halten, kurz lösen, wieder." },
+    abd: { name: "Seitlage-Beinheben", hold: 30, short: null,
+      setup: "Auf die Seite legen, das untere Knie angewinkelt, das obere Bein gestreckt.",
+      cue: "Das obere Bein langsam heben und senken, die Zehen zeigen nach vorn. Das Becken bleibt ruhig." },
+    bridge: { name: "Einbeinige Brücke", hold: 30, short: null,
+      setup: "Auf den Rücken legen, die Füße aufgestellt, ein Bein gestreckt in der Luft.",
+      cue: "Mit dem Standbein das Becken heben und langsam senken. Die Rippen bleiben unten." },
+    rest: { name: "Zur Ruhe kommen", hold: 30, short: 30, once: true,
+      setup: "Auf den Rücken legen, die Knie sanft zur Brust ziehen, oder in die Kindshaltung gehen.",
+      cue: "Atme lang aus. Schultern, Kiefer und Bauch werden weich." }
+  };
+  // Leicht und liegend starten, Kern, Kräftigen, ruhig enden.
+  var PROGRAM = {
+    A: ["bws", "hams", "hip", "chest", "calf", "foot", "abd", "rest"],
+    B: ["quad", "hams", "hip", "calf", "soleus", "foot", "bridge", "rest"]
+  };
+  var SHORT_PROGRAM = ["hams", "hip", "calf", "foot", "rest"];
   var SIDES = ["rechts", "links"];
   var SIDE_SPOKEN = { rechts: "rechte Seite", links: "linke Seite" };
 
   var list = document.getElementById("exList");
-  EX.forEach(function (e) {
-    var li = document.createElement("li");
-    var b = document.createElement("b"); b.textContent = e.name;
-    var s = document.createElement("span"); s.textContent = e.setup + " " + e.cue;
-    li.appendChild(b); li.appendChild(s); list.appendChild(li);
+  ["A", "B"].forEach(function (p) {
+    var h = document.createElement("li"); h.className = "prog-head"; h.textContent = "Programm " + p;
+    list.appendChild(h);
+    PROGRAM[p].forEach(function (id) {
+      var e = EXERCISES[id];
+      var li = document.createElement("li");
+      var b = document.createElement("b"); b.textContent = e.name;
+      var s = document.createElement("span"); s.textContent = e.setup + " " + e.cue;
+      li.appendChild(b); li.appendChild(s); list.appendChild(li);
+    });
   });
 
   /* ---------- Fortschritt ---------- */
   var KEY = "morgendehnen-days";
-  var days = {}; // "YYYY-MM-DD" -> Minuten pro Muskel
+  var days = {}; // "YYYY-MM-DD" -> Minuten pro Hauptzone
 
   function loadLocal() {
     try { var raw = localStorage.getItem(KEY); if (raw) days = JSON.parse(raw) || {}; } catch (e) { days = {}; }
@@ -375,9 +412,9 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.textContent = count > 5 ? "5 von 5 Runden, +" + (count - 5) : count + " von 5 Runden";
     });
     var note;
-    if (count === 0) note = "Pro Muskel ab etwa 5 Minuten in der Woche wird’s wirksam. Die erste Runde zählt am meisten.";
-    else if (count >= 5) note = "Wochenziel erreicht: " + minsTxt + " Min. pro Muskel. Alles darüber ist Bonus.";
-    else note = "Pro Muskel diese Woche: " + minsTxt + " Min. Ab etwa 5 Min. wird’s wirksam.";
+    if (count === 0) note = "Pro Hauptzone ab etwa 5 Minuten in der Woche wird’s wirksam. Die erste Runde zählt am meisten.";
+    else if (count >= 5) note = "Wochenziel erreicht: " + minsTxt + " Min. pro Hauptzone. Alles darüber ist Bonus.";
+    else note = "Pro Hauptzone diese Woche: " + minsTxt + " Min. Ab etwa 5 Min. wird’s wirksam.";
     document.querySelectorAll(".js-weeknote").forEach(function (el) { el.textContent = note; });
   }
   function recordToday(minPerMuscle) {
@@ -749,24 +786,41 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     "Dein Körper sagt Danke. Und er vergisst sowas nicht."
   ];
   var steps = [], idx = 0, stepStart = 0, pausedAt = null, pausedTotal = 0;
-  var running = false, spokeTen = false, holdSec = 60, holdCount = 0, rafId = null;
+  var running = false, spokeTen = false, shortMode = false, holdCount = 0, rafId = null;
 
-  function buildSteps(hold) {
-    var out = [];
-    EX.forEach(function (ex, ei) {
-      SIDES.forEach(function (side, si) {
-        out.push({ type: "prep", dur: si === 0 ? 10 : 6, ex: ex, side: side, first: si === 0, isStart: ei === 0 && si === 0 });
-        out.push({ type: "hold", dur: hold, ex: ex, side: side });
+  // Programm A/B wechseln sich nach jeder vollständigen Runde ab.
+  var program = "A";
+  try { if (localStorage.getItem("morgendehnen-next") === "B") program = "B"; } catch (e) {}
+  function renderProgram() {
+    var extra = program === "A" ? "mit Brustwirbelsäule, Brust und Beinheben" : "mit Oberschenkel-Vorderseite, tiefer Wade und Brücke";
+    document.querySelector(".js-program").textContent = "Heute: Programm " + program + ", " + extra + ".";
+  }
+  function setProgram(p) {
+    program = p;
+    try { localStorage.setItem("morgendehnen-next", p); } catch (e) {}
+    renderProgram();
+  }
+
+  function buildSteps(short) {
+    var out = [], n = 0;
+    (short ? SHORT_PROGRAM : PROGRAM[program]).forEach(function (id, ei) {
+      var ex = EXERCISES[id], hold = short ? ex.short : ex.hold;
+      (ex.once ? [""] : SIDES).forEach(function (side, si) {
+        n++;
+        out.push({ type: "prep", dur: ei === 0 && si === 0 ? 10 : si === 0 ? 8 : 4, ex: ex, side: side, n: n, first: si === 0, isStart: ei === 0 && si === 0 });
+        out.push({ type: "hold", dur: hold, ex: ex, side: side, n: n });
       });
     });
     return out;
   }
+  function sideSpoken(s) { return s.side ? ", " + SIDE_SPOKEN[s.side] : ""; }
   function show(view) {
     home.hidden = view !== home; session.hidden = view !== session; done.hidden = view !== done;
     window.scrollTo(0, 0);
   }
   function nextLabel(i) {
-    var n = steps[i + 2]; // nächste Halte-Phase
+    var n = null;
+    for (var j = i + 1; j < steps.length; j++) { if (steps[j].type === "hold") { n = steps[j]; break; } }
     if (!n) return "Danach: geschafft";
     return n.ex === steps[i].ex ? "Danach: " + n.side : "Danach: " + n.ex.name;
   }
@@ -774,11 +828,11 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     muteBtn.textContent = soundMuted ? "Ton an" : "Ton aus";
     muteBtn.setAttribute("aria-pressed", String(soundMuted));
   }
-  function start(hold, chosen) {
-    holdSec = hold; mood = chosen;
+  function start(short, chosen) {
+    shortMode = short; mood = chosen;
     lastMood = chosen; renderMoods();
     try { localStorage.setItem("morgendehnen-mood", chosen); } catch (e) {}
-    steps = buildSteps(hold);
+    steps = buildSteps(short);
     holdCount = steps.filter(function (s) { return s.type === "hold"; }).length;
     // Alles Audio muss innerhalb dieser Tipp-Geste starten (iOS).
     unlockIOSAudio();
@@ -810,8 +864,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   function startStep(i) {
     idx = i; stepStart = performance.now(); pausedTotal = 0; spokeTen = false;
     var s = steps[i];
-    var holdNo = Math.floor(i / 2) + 1;
-    el.step.textContent = "Schritt " + holdNo + " von " + holdCount;
+    el.step.textContent = "Schritt " + s.n + " von " + holdCount;
     el.name.textContent = s.ex.name;
     el.side.textContent = s.side;
     if (s.type === "prep") {
@@ -819,15 +872,15 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.cue.textContent = s.first ? s.ex.setup : "Gleiche Übung, andere Seite.";
       el.next.textContent = "";
       var pod = mood !== "lofi"; // Podcast/Radio: Ansage nur bei neuer Übung, sonst Gong
-      if (s.isStart) say("Guten Morgen. Los geht's mit: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup, pod);
+      if (s.isStart) say("Guten Morgen. Los geht's mit: " + s.ex.name + sideSpoken(s) + ". " + s.ex.setup, pod);
       else if (s.first && pod) {
         // Gong zum Pausenbeginn, danach (nach dem Ausklang) die Ansage
         cancelSpeech(); gong();
         setTimeout(function () {
-          if (running && idx === i) say("Als Nächstes: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup, true);
+          if (running && idx === i) say("Als Nächstes: " + s.ex.name + sideSpoken(s) + ". " + s.ex.setup, true);
         }, 2000);
       }
-      else if (s.first) say("Als Nächstes: " + s.ex.name + ", " + SIDE_SPOKEN[s.side] + ". " + s.ex.setup);
+      else if (s.first) say("Als Nächstes: " + s.ex.name + sideSpoken(s) + ". " + s.ex.setup);
       else if (pod) { cancelSpeech(); gong(); }
       else say("Seite wechseln. " + SIDE_SPOKEN[s.side] + ".");
     } else {
@@ -855,7 +908,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     el.count.textContent = Math.ceil(rem);
     if (s.type === "hold") {
       setSun(Math.min(1, e / s.dur));
-      if (s.dur >= 45 && rem <= 10 && !spokeTen) {
+      if (s.dur >= 40 && rem <= 10 && !spokeTen) {
         spokeTen = true;
         if (mood === "lofi") say("Noch zehn Sekunden.");
       }
@@ -871,13 +924,14 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   function finish() {
     running = false;
     cancelAnimationFrame(rafId);
-    recordToday(holdSec / 60);
+    recordToday(shortMode ? 0.5 : 1);
+    if (!shortMode) setProgram(program === "A" ? "B" : "A"); // nächstes Mal das andere Programm
     // Podcast/Radio laufen nach der Runde weiter; Lo-Fi-Musik klingt aus.
     afterglow = mood !== "lofi" && podActive;
     if (mood !== "lofi") gong();
     var msg = AFFIRMATIONS[Math.floor(Math.random() * AFFIRMATIONS.length)];
     el.affirm.textContent = msg;
-    el.doneText.textContent = holdSec >= 60 ? "Das war deine Runde für heute." : "Auch die kurze Runde zählt.";
+    el.doneText.textContent = shortMode ? "Auch die kurze Runde zählt." : "Das war deine Runde für heute.";
     el.doneNow.hidden = el.stopAudio.hidden = !afterglow;
     if (afterglow) el.doneNow.textContent = "Weiter läuft: " + el.now.textContent.replace(/^[^\wÄÖÜäöü]+/, "");
     // Nach dem Gong die Nachricht sprechen; der Podcast pausiert dafür kurz.
@@ -900,8 +954,10 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   }
 
   document.querySelectorAll(".mood").forEach(function (b) {
-    b.addEventListener("click", function () { start(shortRound ? 30 : 60, b.dataset.mood); });
+    b.addEventListener("click", function () { start(shortRound, b.dataset.mood); });
   });
+  document.getElementById("swapProg").addEventListener("click", function () { setProgram(program === "A" ? "B" : "A"); });
+  renderProgram();
   document.getElementById("stop").addEventListener("click", stop);
   document.getElementById("back").addEventListener("click", function () { endAfterglow(); show(home); });
   el.stopAudio.addEventListener("click", endAfterglow);
