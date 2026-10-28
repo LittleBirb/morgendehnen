@@ -150,7 +150,10 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 .mood[data-mood="news"] { background: linear-gradient(140deg, var(--pink), var(--peach)); }
 .mood[data-mood="welt"] { background: linear-gradient(140deg, var(--lilac), var(--pink)); }
 .mood[data-mood="radio"] { background: linear-gradient(140deg, var(--sun), var(--peach)); }
-.mood[data-mood="lofi"] { background: linear-gradient(140deg, var(--mint), var(--lilac)); }
+.mood[data-mood="meditation"] { background: linear-gradient(140deg, var(--mint), var(--lilac)); }
+.mood.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.9rem; min-height: 0; background: var(--surface); border: 2px dashed var(--lilac); color: var(--ink); }
+.mood.wide .em { margin: 0; font-size: 1.7rem; }
+.mood.wide b { display: block; margin: 0; }
 .mood.last { outline: 3px solid var(--ink); outline-offset: 2px; }
 .mood.last::after {
   content: "zuletzt"; position: absolute; top: 0.65rem; right: 0.7rem;
@@ -226,10 +229,11 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
 
   <p class="pick">Wonach ist dir heute? Ein Tipp startet die Runde.</p>
   <div class="moods" role="group" aria-label="Stimmung wählen">
-    <button class="mood" data-mood="news"><span class="em" aria-hidden="true">📰</span><b>Nachrichten</b><small class="js-sub-news">Was jetzt? / 15 Minuten</small></button>
-    <button class="mood" data-mood="welt"><span class="em" aria-hidden="true">🌏</span><b>Welt</b><small class="js-sub-welt">ABC News Daily · englisch</small></button>
-    <button class="mood" data-mood="radio"><span class="em" aria-hidden="true">📻</span><b>Radio</b><small class="js-sub-radio">egoFM</small></button>
-    <button class="mood" data-mood="lofi"><span class="em" aria-hidden="true">🎧</span><b>Nur Lo-Fi</b><small>ohne Stimmen</small></button>
+    <button class="mood" data-mood="news"><span class="em" aria-hidden="true">📰</span><b>Nachrichten</b><small>tagesschau oder Was jetzt?</small></button>
+    <button class="mood" data-mood="meditation"><span class="em" aria-hidden="true">🧘</span><b>Meditation</b><small>geführt · englisch</small></button>
+    <button class="mood" data-mood="welt"><span class="em" aria-hidden="true">🌏</span><b>Welt</b><small>Quarks Daily oder The Moth</small></button>
+    <button class="mood" data-mood="radio"><span class="em" aria-hidden="true">📻</span><b>Radio</b><small>egoFM</small></button>
+    <button class="mood wide" data-mood="lofi"><span class="em" aria-hidden="true">🎧</span><span><b>Nichts gewählt? Einfach Lo-Fi</b><small>Entspannte Musik ohne Stimmen. Das läuft auch, wenn ein Podcast mal nicht lädt.</small></span></button>
   </div>
 
   <div class="toggles">
@@ -494,12 +498,13 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   /* ---------- Heutige Folgen ---------- */
   var TODAY_KEY = "morgendehnen-today", todayData = null;
   try { var rawToday = localStorage.getItem(TODAY_KEY); if (rawToday) todayData = JSON.parse(rawToday); } catch (e) { todayData = null; }
-  function renderMoods() {
+  // Kanal -> Liste möglicher Folgen (ältere Daten hatten nur ein Objekt). Bei kurzer Runde ohne lange Folgen.
+  function episodesFor(key) {
     var ch = (todayData && todayData.channels) || {};
-    ["news", "welt", "radio"].forEach(function (k) {
-      var sub = document.querySelector(".js-sub-" + k);
-      if (sub && ch[k] && ch[k].show) sub.textContent = ch[k].show + (k === "welt" ? " · englisch" : "");
-    });
+    var list = [].concat(ch[key] || []).filter(function (e) { return e && e.audio; });
+    return shortRound ? list.filter(function (e) { return !e.skipShort; }) : list;
+  }
+  function renderMoods() {
     document.querySelectorAll(".mood").forEach(function (b) { b.classList.toggle("last", b.dataset.mood === lastMood); });
   }
   var PAGES_URL = "https://littlebirb.github.io/morgendehnen/data/today.json";
@@ -516,10 +521,8 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       })
       .catch(function () { renderMoods(); });
   }
-  function isOld(ep) {
-    var H = 3600 * 1000;
-    return (todayData && todayData.updated && Date.now() - Date.parse(todayData.updated) > 36 * H) ||
-           (ep.published && Date.now() - Date.parse(ep.published) > 30 * H);
+  function isOld() {
+    return !!(todayData && todayData.updated && Date.now() - Date.parse(todayData.updated) > 36 * 3600 * 1000);
   }
 
   /* ---------- Gong (statt Sprache, wenn Podcast läuft) ---------- */
@@ -746,12 +749,13 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     soundMuted = false; musicMuted = false; setMuteLabel();
     running = true; pausedAt = null; podHeld = false;
     setNotice(""); el.now.textContent = "";
-    var ch = (todayData && todayData.channels) || {}, ep = ch[chosen];
+    var eps = chosen === "lofi" ? [] : episodesFor(chosen);
+    var ep = eps.length ? eps[Math.floor(Math.random() * eps.length)] : null; // zufällige Quelle
     if (chosen !== "lofi") {
-      if (ep && ep.audio) {
+      if (ep) {
         startPod(ep, chosen === "radio");
         el.now.textContent = chosen === "radio" ? "📻 " + (ep.title || "Radio") : "▶ " + (ep.show || "") + " · " + ep.title;
-        if (chosen !== "radio" && isOld(ep)) setNotice("Folge von gestern");
+        if (chosen !== "radio" && isOld()) setNotice("Folge von gestern");
       } else {
         mood = "lofi";
         setNotice("Keine Folge gefunden – es läuft Lo-Fi.");

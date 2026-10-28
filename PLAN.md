@@ -35,15 +35,16 @@ Genutzt wird die Seite auf dem iPhone in Safari. Eine iOS-Kurzbefehl-Automation 
 ## Kanäle
 | Kanal | Quelle (Vorschlag) | Hinweise |
 |---|---|---|
-| Nachrichten | „Was jetzt?“ (ZEIT, ~12 Min., 6 Uhr) und „15 Minuten“ (tagesschau, ~15 Min.) | Jüngste Folge aus beiden; Feeds verifiziert am 28.10.2026 |
-| Welt (`welt`) | „ABC News Daily“ (Australien, englisch, ~14,5 Min., ein Weltthema im Gespräch) | Neueste Folge; Quarks Daily entfiel (24 Min. zu lang) |
+| Nachrichten | „Was jetzt?“ (ZEIT) oder „15 Minuten“ (tagesschau), zufällig beim Start | App wählt zufällig unter den Quellen des Kanals |
+| Welt (`welt`) | „Quarks Daily“ (WDR) oder „The Moth“ (Geschichten, englisch), zufällig | The Moth hat `skipShort` und läuft nicht bei der kurzen Runde; Folge = eine der letzten 10, tagesabhängig |
+| Meditation (`meditation`) | „Daily Meditation Podcast“ (englisch, ~11 Min., täglich) | Feed ist riesig, Skript liest nur den Anfang |
 | Radio | egoFM, `https://streams.egofm.de/egoFM-hq` | Stream-URL direkt im `<audio>`, CORS offen, verifiziert |
 | Lo-Fi | bestehende Web-Audio-Synthese | Standard-Fallback |
 
 **Wichtig:** Feed- und Stream-URLs recherchieren und verifizieren, nicht raten. Feeds in einer Konfigurationsdatei (`feeds.json`) ablegen, damit sie leicht austauschbar sind.
 
 ## Verhalten im Player
-- **Startseite:** vier große Stimmungs-Knöpfe (Nachrichten, Welt, Radio, Nur Lo-Fi) statt „Ganze Runde starten“. Zuletzt gewählte Stimmung hervorheben. Kurze Runde bleibt als zweite Option erhalten.
+- **Startseite:** vier große Stimmungs-Knöpfe (Nachrichten, Meditation, Welt, Radio; „Einfach Lo-Fi“ als breiter Standard-Knopf) statt „Ganze Runde starten“. Zuletzt gewählte Stimmung hervorheben. Kurze Runde bleibt als zweite Option erhalten.
 - **iOS-Einschränkung:** `HTMLMediaElement.volume` ist auf iOS schreibgeschützt; Podcast/Radio lässt sich nicht unter die Ansage ducken. Daher:
   - Bei **neuer Übung**: Podcast pausieren, Ansage sprechen, nach `onend` fortsetzen.
   - Bei **Seitenwechsel** und **10 s vor Ende**: nur ein dezenter Gong über Web Audio, keine Sprache.

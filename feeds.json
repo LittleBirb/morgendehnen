@@ -3,8 +3,12 @@
     { "show": "Was jetzt?", "url": "https://feeds.simplecast.com/Xtqjn37O" },
     { "show": "15 Minuten", "url": "https://www.tagesschau.de/multimedia/podcast/15-minuten/index~podcast.xml" }
   ],
+  "meditation": [
+    { "show": "Daily Meditation Podcast", "url": "https://rss.pdrl.fm/41699a/feeds.libsyn.com/74117/rss/?redirect=false" }
+  ],
   "welt": [
-    { "show": "ABC News Daily", "url": "https://www.abc.net.au/feeds/9443166/podcast.xml" }
+    { "show": "Quarks Daily", "url": "https://www1.wdr.de/mediathek/audio/daily-quarks/daily-quarks-podcast-104.podcast" },
+    { "show": "The Moth", "url": "https://rss.amperwave.net/v2/feed/audacynetwork/the-moth", "random": 10, "skipShort": true }
   ],
   "radio": { "title": "egoFM", "stream": "https://streams.egofm.de/egoFM-hq" }
 }

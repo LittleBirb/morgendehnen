@@ -1,25 +1,55 @@
 {
-  "updated": "2026-10-28T19:02:58.808Z",
+  "updated": "2026-10-28T19:33:45.605Z",
   "channels": {
-    "news": {
-      "title": "Israel: Gelingt Gadi Eisenkot der Machtwechsel? (Update)",
-      "show": "Was jetzt?",
-      "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/a97f54ce-e54f-4b93-9d43-889cb02c589c/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=a97f54ce-e54f-4b93-9d43-889cb02c589c&feed=Xtqjn37O",
-      "duration": 716,
-      "published": "2026-10-28T16:23:57.000Z"
-    },
-    "welt": {
-      "title": "Will Netanyahu cling to power?",
-      "show": "ABC News Daily",
-      "audio": "https://mediacore-live-production.akamaized.net/audio/02/ps/Z/gt.mp3",
-      "duration": 875,
-      "published": "2026-10-28T05:00:00.000Z"
-    },
-    "radio": {
-      "title": "egoFM",
-      "show": "egoFM",
-      "audio": "https://streams.egofm.de/egoFM-hq",
-      "live": true
-    }
+    "news": [
+      {
+        "title": "Israel: Gelingt Gadi Eisenkot der Machtwechsel? (Update)",
+        "show": "Was jetzt?",
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/a97f54ce-e54f-4b93-9d43-889cb02c589c/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=a97f54ce-e54f-4b93-9d43-889cb02c589c&feed=Xtqjn37O",
+        "duration": 716,
+        "published": "2026-10-28T16:23:57.000Z"
+      },
+      {
+        "title": "Wohin mit dem Atommüll? / Debatte um Hitlers Teehaus / Rehe als Hundefutter",
+        "show": "15 Minuten",
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/10/28/67862c57-40c7-4292-845e-29718a0d9aca/67862c57-40c7-4292-845e-29718a0d9aca_MP3-128.mp3",
+        "duration": 922,
+        "published": "2026-10-28T04:00:11.000Z"
+      }
+    ],
+    "meditation": [
+      {
+        "title": "Day 4: Protect Your Peace: Gyan Mudra Meditation to Reclaim Your Focus #3602",
+        "show": "Daily Meditation Podcast",
+        "audio": "https://dts.podtrac.com/redirect.mp3/pscrb.fm/rss/p/traffic.libsyn.com/secure/thedailymeditationpodcast/3602_Noise_Day_4_-_102726_9.29PM.mp3?dest-id=324069",
+        "duration": 662,
+        "published": "2026-10-28T04:00:00.000Z"
+      }
+    ],
+    "welt": [
+      {
+        "title": "Gefühle im Job - Zeigen oder lieber nicht?!",
+        "show": "Quarks Daily",
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/10/27/4626d8c1-0d70-4ff1-abee-2d16a3a0ee16/4626d8c1-0d70-4ff1-abee-2d16a3a0ee16_MP3-128.mp3",
+        "duration": 1471,
+        "published": "2026-10-28T14:00:09.000Z"
+      },
+      {
+        "title": "Girls!: The Moth Radio Hour",
+        "show": "The Moth",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208754/8208754_2026-04-13-033054.192.mp3?rssID=6066",
+        "duration": 3063,
+        "published": "2026-10-13T07:25:00.000Z",
+        "skipShort": true
+      }
+    ],
+    "radio": [
+      {
+        "title": "egoFM",
+        "show": "egoFM",
+        "audio": "https://streams.egofm.de/egoFM-hq",
+        "live": true
+      }
+    ]
   }
 }
