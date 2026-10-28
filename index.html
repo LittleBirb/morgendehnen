@@ -138,6 +138,35 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 
 .prog { color: var(--muted); font-size: 0.92rem; margin: -0.8rem 0 1.3rem; }
 .prog .ghost { padding: 0; }
+.namerow { display: flex; align-items: center; gap: 0.7rem; }
+.namerow .exname { margin: 0.15rem 0 0; }
+.info-btn {
+  flex: none; width: 2rem; height: 2rem; border-radius: 50%; margin-top: 0.2rem;
+  border: 2px solid var(--pink); background: var(--surface); color: var(--coral);
+  font-weight: 800; font-family: Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1; padding: 0;
+}
+.sheet {
+  position: fixed; inset: 0; z-index: 10; display: flex; align-items: flex-end; justify-content: center;
+  background: rgba(40, 14, 40, 0.55); padding: 0 0.75rem env(safe-area-inset-bottom, 0px);
+}
+.sheet-card {
+  position: relative; width: 100%; max-width: 30rem; max-height: 90vh; overflow: auto;
+  background: var(--surface); border-radius: 1.6rem 1.6rem 0 0; padding: 1.2rem 1.25rem 1.6rem; box-shadow: var(--shadow);
+}
+.sheet-close {
+  position: absolute; top: 0.7rem; right: 0.8rem; width: 2.2rem; height: 2.2rem; border-radius: 50%;
+  border: 0; background: var(--line); color: var(--ink); font-size: 1rem; padding: 0;
+}
+.info-fig { background: linear-gradient(180deg, var(--sky-top), var(--sky-bot)); border-radius: 1.2rem; padding: 0.4rem; margin: 1.6rem 0 0.9rem; }
+.info-fig svg { display: block; width: 100%; height: auto; }
+.info-title { font-size: 1.4rem; font-weight: 800; margin: 0 0 0.4rem; letter-spacing: -0.01em; }
+.info-setup, .info-cue { margin: 0 0 0.5rem; }
+.info-setup { color: var(--muted); }
+.fig .b { stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.fig .h { fill: var(--sun); stroke: var(--ink); stroke-width: 3; }
+.fig .hl { stroke: var(--coral); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.fig .fl { stroke: var(--muted); stroke-width: 3; stroke-linecap: round; opacity: 0.5; }
+.fig .wall { stroke: var(--muted); stroke-width: 5; stroke-linecap: round; fill: none; }
 .pick { font-weight: 600; margin: 0 0 0.7rem; }
 .moods { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
 .mood {
@@ -156,13 +185,6 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 .mood.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.7rem; min-height: 0; padding: 0.6rem 1rem; border-radius: 999px; background: var(--surface); border: 2px dashed var(--lilac); color: var(--ink); box-shadow: none; }
 .mood.wide .em { margin: 0; font-size: 1.3rem; }
 .mood.wide b { margin: 0; font-size: 1rem; }
-.mood.wide.last::after { position: static; margin-left: auto; }
-.mood.last { outline: 3px solid var(--ink); outline-offset: 2px; }
-.mood.last::after {
-  content: "zuletzt"; position: absolute; top: 0.65rem; right: 0.7rem;
-  font-size: 0.7rem; font-weight: 600; background: rgba(255, 255, 255, 0.75);
-  border-radius: 999px; padding: 0.05rem 0.55rem;
-}
 .affirm {
   font-size: 1.25rem; font-weight: 600; line-height: 1.35; margin: 0 0 1.4rem; padding: 1.1rem 1.2rem;
   border-radius: 1.5rem; color: var(--on-sun); box-shadow: var(--shadow);
@@ -229,7 +251,6 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
 <!-- Startansicht -->
 <main class="wrap" id="home">
   <h1>Morgen&shy;dehnen</h1>
-  <p class="lede">Dehnen und Kräftigen in ca. 12 Minuten, im Wechsel zwei Programme. Du musst nur zuhören und mitmachen.</p>
 
   <section class="week" aria-label="Wochenziel">
     <div class="week-head"><strong>Diese Woche</strong><span class="js-weekcount">0 von 5 Runden</span></div>
@@ -279,7 +300,10 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   </svg>
 
   <p class="phase js-phase">Als Nächstes</p>
-  <p class="exname js-name">Oberschenkel-Rückseite</p>
+  <div class="namerow">
+    <p class="exname js-name">Oberschenkel-Rückseite</p>
+    <button class="info-btn" id="infoBtn" aria-label="Übung erklären">i</button>
+  </div>
   <p class="side js-side">rechts</p>
   <p class="count js-count" aria-live="off">10</p>
   <p class="cue js-cue"></p>
@@ -293,6 +317,17 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     <button class="ctrl" id="mute" aria-pressed="false">Ton aus</button>
   </div>
 </main>
+
+<!-- Übungserklärung -->
+<div class="sheet" id="info" hidden role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+  <div class="sheet-card">
+    <button class="sheet-close" id="infoClose" aria-label="Schließen">✕</button>
+    <div class="info-fig js-infofig"></div>
+    <h2 id="infoTitle" class="info-title"></h2>
+    <p class="info-setup"></p>
+    <p class="info-cue"></p>
+  </div>
+</div>
 
 <!-- Fertig -->
 <main class="wrap" id="done" hidden>
@@ -357,6 +392,28 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     B: ["quad", "hams", "hip", "calf", "soleus", "foot", "bridge", "rest"]
   };
   var SHORT_PROGRAM = ["hams", "hip", "calf", "foot", "rest"];
+  Object.keys(EXERCISES).forEach(function (k) { EXERCISES[k].id = k; });
+
+  // Einfache Skizzen (Strichfiguren) für das „i“-Fenster; Rot = die Zone, die gedehnt/trainiert wird.
+  function pl(c, pts) { return '<polyline class="' + c + '" points="' + pts + '"/>'; }
+  function hd(x, y) { return '<circle class="h" cx="' + x + '" cy="' + y + '" r="9"/>'; }
+  function fig(inner, label) {
+    return '<svg class="fig" viewBox="0 0 200 110" role="img" aria-label="Skizze: ' + label + '"><line class="fl" x1="6" y1="102" x2="194" y2="102"/>' + inner + "</svg>";
+  }
+  var CALF_BODY = hd(138, 18) + pl("b", "108,62 142,32") + pl("b", "142,32 166,38") + pl("wall", "168,8 168,100") + pl("b", "108,62 126,82 126,99");
+  var FIGS = {
+    bws: fig(pl("b", "50,94 112,94") + hd(125, 90) + pl("b", "50,94 88,76 54,76") + pl("b", "112,94 152,94") + pl("hl", "112,94 100,56 78,36"), "Seitlage, oberer Arm klappt wie ein Buch auf"),
+    quad: fig(pl("b", "60,94 118,94") + hd(131, 90) + pl("b", "60,94 88,97 64,99") + pl("hl", "60,94 34,94") + pl("b", "34,94 54,74") + pl("b", "118,94 92,72 58,74"), "Seitlage, oberer Fuß zum Po"),
+    hams: fig(pl("b", "75,95 135,95") + hd(150, 91) + pl("b", "75,95 24,95") + pl("b", "75,95 66,36") + pl("hl", "72,78 68,52") + pl("b", "135,95 104,62 68,38"), "Rückenlage, Bein mit Handtuch nach oben"),
+    hip: fig(hd(85, 13) + pl("b", "85,60 85,26") + pl("b", "85,60 58,98 28,98") + pl("b", "85,60 125,72 125,99") + pl("b", "125,99 142,99") + pl("b", "85,30 108,50 125,72") + pl("hl", "95,60 108,58"), "Kniender Ausfallschritt"),
+    chest: fig(pl("wall", "40,8 40,100") + hd(92, 17) + pl("b", "104,62 96,30") + pl("b", "104,62 86,99") + pl("b", "104,62 128,99") + pl("b", "96,30 62,30 62,8") + pl("hl", "98,36 100,48"), "Unterarm am Türrahmen"),
+    calf: fig(CALF_BODY + pl("b", "108,62 52,99") + pl("b", "52,99 68,99") + pl("hl", "78,83 56,97"), "Wade gestreckt an der Wand"),
+    soleus: fig(CALF_BODY + pl("b", "108,62 90,88 64,99") + pl("b", "64,99 78,99") + pl("hl", "88,92 68,99"), "Wade mit gebeugtem Knie an der Wand"),
+    foot: fig(pl("wall", "52,70 108,70") + pl("wall", "56,70 56,100") + pl("wall", "104,70 104,100") + hd(80, 17) + pl("b", "80,66 80,28") + pl("b", "80,66 126,66") + pl("b", "126,66 126,99") + pl("b", "126,99 152,99") + pl("b", "80,32 100,52 112,64") + '<path class="hl" d="M130,98 Q141,82 152,98"/>', "Sitzend, Fußgewölbe heben"),
+    abd: fig(pl("b", "60,94 118,94") + hd(131, 90) + pl("b", "60,94 36,98 58,99") + pl("hl", "60,94 12,64") + pl("b", "118,94 140,98"), "Seitlage, oberes Bein heben"),
+    bridge: fig(hd(166, 91) + pl("b", "150,96 98,60") + pl("b", "98,60 66,66 62,99") + pl("b", "62,99 78,99") + pl("hl", "98,60 30,44") + pl("b", "150,96 122,98"), "Rückenlage, Becken heben, ein Bein in der Luft"),
+    rest: fig(pl("b", "55,99 102,99") + pl("b", "102,88 55,99") + pl("b", "102,88 60,84") + hd(47, 92) + pl("b", "60,84 16,99"), "Kindshaltung")
+  };
   var SIDES = ["rechts", "links"];
   var SIDE_SPOKEN = { rechts: "rechte Seite", links: "linke Seite" };
 
@@ -412,9 +469,9 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.textContent = count > 5 ? "5 von 5 Runden, +" + (count - 5) : count + " von 5 Runden";
     });
     var note;
-    if (count === 0) note = "Pro Hauptzone ab etwa 5 Minuten in der Woche wird’s wirksam. Die erste Runde zählt am meisten.";
-    else if (count >= 5) note = "Wochenziel erreicht: " + minsTxt + " Min. pro Hauptzone. Alles darüber ist Bonus.";
-    else note = "Pro Hauptzone diese Woche: " + minsTxt + " Min. Ab etwa 5 Min. wird’s wirksam.";
+    if (count === 0) note = "Pro Muskel ab etwa 5 Minuten in der Woche wird’s wirksam.";
+    else if (count >= 5) note = "Wochenziel erreicht. Alles darüber ist Bonus.";
+    else note = "Pro Muskel diese Woche: " + minsTxt + " Min. Ab etwa 5 Min. wird’s wirksam.";
     document.querySelectorAll(".js-weeknote").forEach(function (el) { el.textContent = note; });
   }
   function recordToday(minPerMuscle) {
@@ -792,8 +849,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   var program = "A";
   try { if (localStorage.getItem("morgendehnen-next") === "B") program = "B"; } catch (e) {}
   function renderProgram() {
-    var extra = program === "A" ? "mit Brustwirbelsäule, Brust und Beinheben" : "mit Oberschenkel-Vorderseite, tiefer Wade und Brücke";
-    document.querySelector(".js-program").textContent = "Heute: Programm " + program + ", " + extra + ".";
+    document.querySelector(".js-program").textContent = "Heute: Programm " + program;
   }
   function setProgram(p) {
     program = p;
@@ -872,12 +928,14 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.cue.textContent = s.first ? s.ex.setup : "Gleiche Übung, andere Seite.";
       el.next.textContent = "";
       var pod = mood !== "lofi"; // Podcast/Radio: Ansage nur bei neuer Übung, sonst Gong
-      if (s.isStart) say("Guten Morgen. Los geht's mit: " + s.ex.name + sideSpoken(s) + ". " + s.ex.setup, pod);
+      // Mit Podcast/Radio nur der Name der Übung (Erklärung steht hinter dem „i“), bei Lo-Fi die ganze Erklärung.
+      if (s.isStart && pod) say(s.ex.name + sideSpoken(s), true);
+      else if (s.isStart) say("Guten Morgen. Los geht's mit: " + s.ex.name + sideSpoken(s) + ". " + s.ex.setup);
       else if (s.first && pod) {
-        // Gong zum Pausenbeginn, danach (nach dem Ausklang) die Ansage
+        // Gong zum Pausenbeginn, danach (nach dem Ausklang) der Name der Übung
         cancelSpeech(); gong();
         setTimeout(function () {
-          if (running && idx === i) say("Als Nächstes: " + s.ex.name + sideSpoken(s) + ". " + s.ex.setup, true);
+          if (running && idx === i) say(s.ex.name + sideSpoken(s), true);
         }, 2000);
       }
       else if (s.first) say("Als Nächstes: " + s.ex.name + sideSpoken(s) + ". " + s.ex.setup);
@@ -956,6 +1014,23 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   document.querySelectorAll(".mood").forEach(function (b) {
     b.addEventListener("click", function () { start(shortRound, b.dataset.mood); });
   });
+  // „i“-Fenster: Beschreibung und Skizze der aktuellen Übung (Timer und Ton laufen weiter)
+  var infoEl = document.getElementById("info");
+  function openInfo() {
+    var s = steps[idx]; if (!s) return;
+    infoEl.querySelector(".js-infofig").innerHTML = FIGS[s.ex.id] || "";
+    infoEl.querySelector(".info-title").textContent = s.ex.name;
+    infoEl.querySelector(".info-setup").textContent = s.ex.setup;
+    infoEl.querySelector(".info-cue").textContent = s.ex.cue;
+    infoEl.hidden = false;
+    document.getElementById("infoClose").focus();
+  }
+  function closeInfo() { infoEl.hidden = true; }
+  document.getElementById("infoBtn").addEventListener("click", openInfo);
+  document.getElementById("infoClose").addEventListener("click", closeInfo);
+  infoEl.addEventListener("click", function (e) { if (e.target === infoEl) closeInfo(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeInfo(); });
+
   document.getElementById("swapProg").addEventListener("click", function () { setProgram(program === "A" ? "B" : "A"); });
   renderProgram();
   document.getElementById("stop").addEventListener("click", stop);
