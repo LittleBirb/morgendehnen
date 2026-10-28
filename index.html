@@ -358,26 +358,20 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   // hold = Sekunden pro Seite; short = Sekunden in der kurzen Runde (null = dort nicht dabei);
   // once = nur eine Runde ohne Seitenwechsel.
   var EXERCISES = {
-    bws: { name: "Brustwirbelsäule", hold: 40, short: null,
+    bws: { name: "Brustwirbelsäule", hold: 60, short: null,
       setup: "Auf die Seite legen, Knie angewinkelt, Arme nach vorn.",
       cue: "Den oberen Arm wie ein Buch nach hinten aufklappen. Die Knie bleiben liegen." },
-    quad: { name: "Oberschenkel-Vorderseite", hold: 40, short: null,
-      setup: "Auf die Seite legen, das untere Bein angewinkelt.",
-      cue: "Den oberen Fuß zum Po ziehen, das Knie zeigt nach unten. Becken leicht nach vorn kippen." },
     hams: { name: "Oberschenkel-Rückseite", hold: 60, short: 30,
       setup: "Auf den Rücken legen, Handtuch um die Fußsohle.",
-      cue: "Bein gestreckt nach oben ziehen, bis es deutlich zieht. Schultern bleiben locker." },
+      cue: "Bein gestreckt nach oben ziehen, bis es deutlich zieht. Zieh die Fußspitze zu dir, dann dehnst du die Wade gleich mit. Schultern bleiben locker." },
     hip: { name: "Hüftbeuger", hold: 60, short: 30,
       setup: "Kniender Ausfallschritt, das hintere Knie gern auf ein Kissen.",
-      cue: "Po anspannen und das Becken leicht nach vorne schieben. Oberkörper aufrecht." },
-    chest: { name: "Brustmuskel", hold: 40, short: null,
+      cue: "Po anspannen und das Becken leicht nach vorne schieben. Oberkörper aufrecht. Wer mag, zieht den hinteren Fuß zum Po und dehnt so die Oberschenkel-Vorderseite mit." },
+    chest: { name: "Brustmuskel", hold: 60, short: null,
       setup: "In einen Türrahmen stellen, den Unterarm auf Schulterhöhe an den Rahmen legen.",
       cue: "Einen kleinen Schritt nach vorn, bis es in der Brust zieht. Schultern bleiben unten." },
-    calf: { name: "Wade gestreckt", hold: 45, short: 30,
-      setup: "Hände an die Wand, ein Bein weit nach hinten stellen.",
-      cue: "Hintere Ferse bleibt am Boden, das Bein gestreckt. Hüfte Richtung Wand." },
-    soleus: { name: "Wade gebeugt", hold: 40, short: null,
-      setup: "Hände an die Wand, ein Bein nach hinten stellen, wie eben.",
+    soleus: { name: "Wade gebeugt", hold: 45, short: 30,
+      setup: "Hände an die Wand, ein Bein nach hinten stellen, Fuß flach.",
       cue: "Das hintere Knie beugen, die Ferse bleibt am Boden. Es zieht tief in der unteren Wade." },
     foot: { name: "Kurzer Fuß", hold: 30, short: 30,
       setup: "Aufrecht sitzen, ein Fuß steht flach auf dem Boden.",
@@ -388,16 +382,19 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     bridge: { name: "Einbeinige Brücke", hold: 30, short: null,
       setup: "Auf den Rücken legen, die Füße aufgestellt, ein Bein gestreckt in der Luft.",
       cue: "Mit dem Standbein das Becken heben und langsam senken. Die Rippen bleiben unten." },
+    back: { name: "Schulterblatt-Zug", hold: 45, short: null, once: true,
+      setup: "Auf den Bauch legen, die Stirn auf dem Boden, die Arme seitlich als T ausstrecken, Daumen nach oben.",
+      cue: "Schulterblätter zusammenziehen und die Arme leicht anheben, kurz halten, wieder senken. Der Nacken bleibt lang." },
     rest: { name: "Zur Ruhe kommen", hold: 30, short: 30, once: true,
       setup: "Auf den Rücken legen, die Knie sanft zur Brust ziehen, oder in die Kindshaltung gehen.",
       cue: "Atme lang aus. Schultern, Kiefer und Bauch werden weich." }
   };
   // Leicht und liegend starten, Kern, Kräftigen, ruhig enden.
   var PROGRAM = {
-    A: ["bws", "hams", "hip", "chest", "calf", "foot", "abd", "rest"],
-    B: ["quad", "hams", "hip", "calf", "soleus", "foot", "bridge", "rest"]
+    A: ["bws", "hams", "hip", "soleus", "foot", "abd", "back", "rest"],
+    B: ["chest", "hams", "hip", "soleus", "foot", "bridge", "back", "rest"]
   };
-  var SHORT_PROGRAM = ["hams", "hip", "calf", "foot", "rest"];
+  var SHORT_PROGRAM = ["hams", "hip", "soleus", "foot", "rest"];
   Object.keys(EXERCISES).forEach(function (k) { EXERCISES[k].id = k; });
 
   // Skizzen für das „i“-Fenster. Dunkel = Körper, grau = abgewandte Seite, Rot = Zone, die gedehnt/trainiert wird.
@@ -416,10 +413,12 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       pl("hl", "122,62 124,22") + '<path class="arrow" d="M150,98 Q172,62 150,26"/><path class="arrow" d="M143,32 L150,26 L158,33"/>',
       "Seitlage von oben, oberer Arm klappt nach hinten auf", true),
     // Seitlage, oberer Fuß zum Po, Hand hält den Fuß
-    quad: fig(
-      pl("far", "78,108 112,114 86,117") + pl("tr", "78,110 136,110") + hd(152,108) +
-      pl("lm", "78,110 56,114 80,98") + pl("hl", "76,110 58,114") + pl("lm", "136,110 116,92 84,98"),
-      "Seitlage, oberer Fuß wird zum Po gezogen"),
+    // Draufsicht: Bauchlage, Arme als T, Schulterblätter zusammen
+    back: fig(
+      pl("lm", "56,64 14,64") + pl("tr", "56,64 122,64") + hd(140,64) +
+      pl("lm", "120,62 120,18") + pl("lm", "120,66 120,110") + pl("hl", "104,64 124,64") +
+      '<path class="arrow" d="M150,28 L150,18 M145,23 L150,18 L155,23"/><path class="arrow" d="M150,100 L150,110 M145,105 L150,110 L155,105"/>',
+      "Bauchlage von oben, Arme als T, Schulterblätter zusammenziehen", true),
     // Rückenlage, ein Bein mit Handtuch nach oben, anderes Bein flach
     hams: fig(
       pl("far", "88,110 30,111") + pl("tr", "88,110 150,110") + hd(168,108) +
@@ -438,11 +437,6 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       pl("far", "106,84 116,102 124,118 114,118") + pl("tr", "106,84 98,46") + hd(94,29) +
       pl("lm", "106,84 98,102 86,118 76,118") + pl("lm", "98,48 60,48 60,16") + pl("hl", "96,48 100,66"),
       "Unterarm am Türrahmen, Brust öffnet sich"),
-    // Wade gestreckt: hinteres Bein gestreckt, Ferse am Boden
-    calf: fig(
-      WALL + pl("far", "144,74 170,92 172,118 184,118") + pl("tr", "144,74 174,44") + hd(186,30) +
-      pl("lm", "176,46 208,52") + pl("lm", "144,74 82,116 96,116") + pl("hl", "112,95 90,111"),
-      "Wade gestreckt an der Wand"),
     // Wade gebeugt: hinteres Knie gebeugt
     soleus: fig(
       WALL + pl("far", "146,86 172,98 172,118 184,118") + pl("tr", "146,86 176,54") + hd(188,40) +
