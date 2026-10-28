@@ -1,0 +1,25 @@
+{
+  "updated": "2026-10-28T19:02:01.507Z",
+  "channels": {
+    "news": {
+      "title": "Israel: Gelingt Gadi Eisenkot der Machtwechsel? (Update)",
+      "show": "Was jetzt?",
+      "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/a97f54ce-e54f-4b93-9d43-889cb02c589c/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=a97f54ce-e54f-4b93-9d43-889cb02c589c&feed=Xtqjn37O",
+      "duration": 716,
+      "published": "2026-10-28T16:23:57.000Z"
+    },
+    "welt": {
+      "title": "Will Netanyahu cling to power?",
+      "show": "ABC News Daily",
+      "audio": "https://mediacore-live-production.akamaized.net/audio/02/ps/Z/gt.mp3",
+      "duration": 875,
+      "published": "2026-10-28T05:00:00.000Z"
+    },
+    "radio": {
+      "title": "egoFM",
+      "show": "egoFM",
+      "audio": "https://streams.egofm.de/egoFM-hq",
+      "live": true
+    }
+  }
+}
