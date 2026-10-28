@@ -56,7 +56,7 @@ Gestrichen wegen Überlappung: Gesäß-Dehnung (Sitzen verlängert das Gesäß e
 | Nachrichten | „Was jetzt?“ (ZEIT) oder „15 Minuten“ (tagesschau), zufällig beim Start | App wählt zufällig unter den Quellen des Kanals |
 | Welt (`welt`) | „Quarks Daily“ (WDR) oder „The Moth“ (Geschichten, englisch), zufällig | The Moth hat `skipShort` und läuft nicht bei der kurzen Runde; Folge = eine der letzten 10, tagesabhängig |
 | Meditation (`meditation`) | „Mindful Minutes“ (englisch, ~8 Min., täglich) | Ersetzt „Daily Meditation Podcast“ (zu leise, Feed riesig) |
-| Radio | egoFM, `https://streams.egofm.de/egoFM-hq` | Stream-URL direkt im `<audio>`, CORS offen, verifiziert |
+| Radio | egoFM (`https://streams.egofm.de/egoFM-hq`) oder FluxLounge (`https://streams.fluxfm.de/lounge/mp3-128/audio/`), zufällig | Stream-URL direkt im `<audio>`, CORS offen, verifiziert. egoFM hat Werbung; FluxLounge laut ifun.de (2020) werbefrei, nicht bestätigt. Probelauf, danach entscheiden, ob egoFM bleibt. |
 | Lo-Fi | bestehende Web-Audio-Synthese | Standard-Fallback |
 
 **Wichtig:** Feed- und Stream-URLs recherchieren und verifizieren, nicht raten. Feeds in einer Konfigurationsdatei (`feeds.json`) ablegen, damit sie leicht austauschbar sind.

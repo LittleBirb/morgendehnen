@@ -102,7 +102,7 @@ for (const key of Object.keys(config)) {
   }
 }
 if (config.radio) {
-  channels.radio = [{ title: config.radio.title, show: config.radio.title, audio: config.radio.stream, live: true }];
+  channels.radio = [].concat(config.radio).map((r) => ({ title: r.title, show: r.title, audio: r.stream, live: true }));
 }
 
 const data = { updated: new Date().toISOString(), channels };

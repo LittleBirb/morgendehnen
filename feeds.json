@@ -10,5 +10,8 @@
     { "show": "Quarks Daily", "url": "https://www1.wdr.de/mediathek/audio/daily-quarks/daily-quarks-podcast-104.podcast" },
     { "show": "The Moth", "url": "https://rss.amperwave.net/v2/feed/audacynetwork/the-moth", "random": 10, "skipShort": true }
   ],
-  "radio": { "title": "egoFM", "stream": "https://streams.egofm.de/egoFM-hq" }
+  "radio": [
+    { "title": "egoFM", "stream": "https://streams.egofm.de/egoFM-hq" },
+    { "title": "FluxLounge", "stream": "https://streams.fluxfm.de/lounge/mp3-128/audio/" }
+  ]
 }

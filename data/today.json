@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28T19:42:31.116Z",
+  "updated": "2026-10-28T21:06:47.417Z",
   "channels": {
     "news": [
       {
@@ -35,11 +35,11 @@
         "published": "2026-10-28T14:00:09.000Z"
       },
       {
-        "title": "Girls!: The Moth Radio Hour",
+        "title": "Squaring Up: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208754/8208754_2026-04-13-033054.192.mp3?rssID=6066",
-        "duration": 3063,
-        "published": "2026-10-13T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208745/8208745_2026-04-13-032145.192.mp3?rssID=6066",
+        "duration": 944,
+        "published": "2026-10-09T07:25:00.000Z",
         "skipShort": true
       }
     ],
@@ -48,6 +48,12 @@
         "title": "egoFM",
         "show": "egoFM",
         "audio": "https://streams.egofm.de/egoFM-hq",
+        "live": true
+      },
+      {
+        "title": "FluxLounge",
+        "show": "FluxLounge",
+        "audio": "https://streams.fluxfm.de/lounge/mp3-128/audio/",
         "live": true
       }
     ]
