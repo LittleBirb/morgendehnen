@@ -1,29 +1,29 @@
 {
-  "updated": "2026-10-28T21:06:47.417Z",
+  "updated": "2026-10-29T11:03:21.794Z",
   "channels": {
     "news": [
       {
-        "title": "Israel: Gelingt Gadi Eisenkot der Machtwechsel? (Update)",
+        "title": "Geleakte Mails: Der Meinungsforscher und die AfD",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/a97f54ce-e54f-4b93-9d43-889cb02c589c/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=a97f54ce-e54f-4b93-9d43-889cb02c589c&feed=Xtqjn37O",
-        "duration": 716,
-        "published": "2026-10-28T16:23:57.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/88ba061e-0a5f-4c60-8562-869c1b28b800/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=88ba061e-0a5f-4c60-8562-869c1b28b800&feed=Xtqjn37O",
+        "duration": 802,
+        "published": "2026-10-29T04:55:00.000Z"
       },
       {
-        "title": "Wohin mit dem Atommüll? / Debatte um Hitlers Teehaus / Rehe als Hundefutter",
+        "title": "Zugunglück Spanien/ EU-Gebühr für Temu, Shein &amp; Co./ VW zerlegt Autos/ Streit um Weinautomat",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/10/28/67862c57-40c7-4292-845e-29718a0d9aca/67862c57-40c7-4292-845e-29718a0d9aca_MP3-128.mp3",
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/10/29/087ce01c-ac1b-4ebd-b380-0f160a4fd17e/087ce01c-ac1b-4ebd-b380-0f160a4fd17e_MP3-128.mp3",
         "duration": 922,
-        "published": "2026-10-28T04:00:11.000Z"
+        "published": "2026-10-29T04:00:58.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Meditation for Focus",
+        "title": "Lovingkindness Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20030658-meditation-for-focus.mp3",
-        "duration": 530,
-        "published": "2026-10-28T09:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20030661-lovingkindness-meditation.mp3",
+        "duration": 554,
+        "published": "2026-10-29T09:00:00.000Z"
       }
     ],
     "welt": [
@@ -35,11 +35,11 @@
         "published": "2026-10-28T14:00:09.000Z"
       },
       {
-        "title": "Squaring Up: The Moth Podcast",
+        "title": "A Love Note to NJ: The Moth Radio Hour",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208745/8208745_2026-04-13-032145.192.mp3?rssID=6066",
-        "duration": 944,
-        "published": "2026-10-09T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208755/8208755_2026-04-13-033155.192.mp3?rssID=6066",
+        "duration": 3015,
+        "published": "2026-10-06T07:25:00.000Z",
         "skipShort": true
       }
     ],
