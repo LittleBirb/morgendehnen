@@ -7,7 +7,7 @@ Genutzt wird die Seite auf dem iPhone in Safari. Eine iOS-Kurzbefehl-Automation 
 
 ## Ausgangslage
 `index.html` ist eine fertige, in sich geschlossene Seite (Vanilla JS/CSS, kein Build):
-- Programm A/B im Wechsel (ca. 12 Min., 8 Stationen: Dehnen, Kräftigen für Fuß, Hüfte und oberen Rücken, ruhiger Abschluss); kurze Runde ca. 5 Min. Haltezeiten je Übung in `EXERCISES`, Reihenfolge in `PROGRAM`/`SHORT_PROGRAM` (index.html)
+- Programm A/B im Wechsel (ca. 11–12 Min., 8 Stationen: Dehnen, Kräftigen für Fuß, Hüfte und oberen Rücken, ruhiger Abschluss); kurze Runde ca. 5 Min. Haltezeiten je Übung in `EXERCISES`, Reihenfolge in `PROGRAM`/`SHORT_PROGRAM` (index.html)
 - Deutsche Sprachansage über `speechSynthesis`
 - Lo-Fi-Musik live per Web Audio API synthetisiert, inkl. Ducking bei Sprache
 - Stilles `<audio>`-Element als iOS-Workaround gegen den Stummschalter (muss erhalten bleiben)
@@ -21,11 +21,11 @@ Persönlicher Hintergrund: Plattfüße, Knieschmerzen beim Joggen, Rundrücken, 
 | Prog. | Übung | Zeit/Seite | Zielmuskel | Warum für dich |
 |---|---|---|---|---|
 | A | Brustwirbelsäule („Buch aufklappen“) | 60 s | Brustwirbelsäule, Rumpfdrehung, Zwischenrippenmuskeln | Rundrücken und Sitzalltag: ein beweglicher oberer Rücken richtet auf. Leichter, angenehmer Einstieg. |
-| B | Brustmuskel (Türrahmen) | 60 s | Großer Brustmuskel | Rundrücken: Schultern rutschen nach vorn, die Brust ist vorn verkürzt. |
+| B | Brustmuskel (Türrahmen, beide Arme zugleich) | 60 s (einmal) | Großer Brustmuskel | Rundrücken: Schultern rutschen nach vorn, die Brust ist vorn verkürzt. |
 | A, B | Oberschenkel-Rückseite (Fußspitze zu dir) | 60 s | Hamstrings, dabei auch der große Wadenmuskel (Gastrocnemius) | Dein Wunsch. Wird beim Sitzen kurz, spielt beim Laufen und für ein stabiles Becken mit. Die gezogene Fußspitze deckt die gestreckte Wade mit ab, deshalb gibt es keine eigene Übung dafür. |
 | A, B | Hüftbeuger (hinterer Fuß zum Po, optional) | 60 s | Hüftbeuger (Iliopsoas), dabei der gerade Oberschenkelmuskel (Quadrizeps) | Durch langes Sitzen verkürzt, kippt das Becken und verstärkt den Rundrücken-/Hohlkreuz-Zug; beim Laufen fehlt Hüftstreckung. Der Quadrizeps wird mitgedehnt und entlastet die Kniescheibe beim Joggen. |
 | A, B | Wade gebeugt | 45 s | Schollenmuskel (Soleus) | Plattfüße: Der Fuß kippt nach innen und das Knie dreht mit; kurze Waden verstärken das vermutlich. Der Soleus trägt beim Laufen viel Last und wird nur mit gebeugtem Knie erreicht. |
-| A, B | Kurzer Fuß | 30 s | Kleine Fußmuskeln, Fußgewölbe (Tibialis posterior) | Plattfüße: stärkt das Gewölbe aktiv. Kleine Studien zeigen einen Effekt auf das Absinken. |
+| A, B | Kurzer Fuß (beide Füße zugleich) | 30 s (einmal) | Kleine Fußmuskeln, Fußgewölbe (Tibialis posterior) | Plattfüße: stärkt das Gewölbe aktiv. Kleine Studien zeigen einen Effekt auf das Absinken. |
 | A | Seitlage-Beinheben | 30 s | Mittlerer Gesäßmuskel (Gluteus medius) | Hält das Knie beim Laufen in Linie. Kräftigung der Hüfte hat bei Knieschmerz die beste Evidenz. |
 | B | Einbeinige Brücke | 30 s | Großer und mittlerer Gesäßmuskel, hintere Oberschenkel | Sitzen „schaltet“ das Gesäß aus; einbeinig trainiert es zugleich die Stabilität wie beim Laufen. |
 | A, B | Schulterblatt-Zug (Bauchlage, Arme als T) | 45 s (einmal) | Mittlerer und unterer Trapezmuskel, Rautenmuskeln, Rückenstrecker | Rundrücken: Dehnen allein richtet nicht auf, die Muskeln zwischen den Schulterblättern müssen kräftiger werden. Übliche Empfehlung, hier nicht per Studie geprüft. |
