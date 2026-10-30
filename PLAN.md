@@ -7,7 +7,7 @@ Genutzt wird die Seite auf dem iPhone in Safari. Eine iOS-Kurzbefehl-Automation 
 
 ## Ausgangslage
 `index.html` ist eine fertige, in sich geschlossene Seite (Vanilla JS/CSS, kein Build):
-- Programm A/B im Wechsel (ca. 11–12 Min., 8 Stationen: Dehnen, Kräftigen für Fuß, Hüfte und oberen Rücken, ruhiger Abschluss); kurze Runde ca. 5 Min. Haltezeiten je Übung in `EXERCISES`, Reihenfolge in `PROGRAM`/`SHORT_PROGRAM` (index.html)
+- Programm A/B im Wechsel (ca. 12 Min., 9 Stationen: Dehnen, Kräftigen für Fuß, Hüfte und oberen Rücken, ruhiger Abschluss); kurze Runde ca. 5 Min. Haltezeiten je Übung in `EXERCISES`, Reihenfolge in `PROGRAM`/`SHORT_PROGRAM` (index.html)
 - Deutsche Sprachansage über `speechSynthesis`
 - Lo-Fi-Musik live per Web Audio API synthetisiert, inkl. Ducking bei Sprache
 - Stilles `<audio>`-Element als iOS-Workaround gegen den Stummschalter (muss erhalten bleiben)
@@ -20,8 +20,8 @@ Persönlicher Hintergrund: Plattfüße, Knieschmerzen beim Joggen, Rundrücken, 
 
 | Prog. | Übung | Zeit/Seite | Zielmuskel | Warum für dich |
 |---|---|---|---|---|
-| A | Brustwirbelsäule („Buch aufklappen“) | 60 s | Brustwirbelsäule, Rumpfdrehung, Zwischenrippenmuskeln | Rundrücken und Sitzalltag: ein beweglicher oberer Rücken richtet auf. Leichter, angenehmer Einstieg. |
-| B | Brustmuskel (Türrahmen, beide Arme zugleich) | 60 s (einmal) | Großer Brustmuskel | Rundrücken: Schultern rutschen nach vorn, die Brust ist vorn verkürzt. |
+| A, B | Brustwirbelsäule („Buch aufklappen“) | 45 s | Brustwirbelsäule, Rumpfdrehung, Zwischenrippenmuskeln | Rundrücken und Sitzalltag: ein beweglicher oberer Rücken richtet auf. Leichter, angenehmer Einstieg. |
+| A, B | Brustmuskel (Türrahmen, beide Arme zugleich) | 60 s (einmal) | Großer Brustmuskel | Rundrücken: Schultern rutschen nach vorn, die Brust ist vorn verkürzt. |
 | A, B | Oberschenkel-Rückseite (Fußspitze zu dir) | 60 s | Hamstrings, dabei auch der große Wadenmuskel (Gastrocnemius) | Dein Wunsch. Wird beim Sitzen kurz, spielt beim Laufen und für ein stabiles Becken mit. Die gezogene Fußspitze deckt die gestreckte Wade mit ab, deshalb gibt es keine eigene Übung dafür. |
 | A, B | Hüftbeuger (hinterer Fuß zum Po, optional) | 60 s | Hüftbeuger (Iliopsoas), dabei der gerade Oberschenkelmuskel (Quadrizeps) | Durch langes Sitzen verkürzt, kippt das Becken und verstärkt den Rundrücken-/Hohlkreuz-Zug; beim Laufen fehlt Hüftstreckung. Der Quadrizeps wird mitgedehnt und entlastet die Kniescheibe beim Joggen. |
 | A, B | Wade gebeugt | 45 s | Schollenmuskel (Soleus) | Plattfüße: Der Fuß kippt nach innen und das Knie dreht mit; kurze Waden verstärken das vermutlich. Der Soleus trägt beim Laufen viel Last und wird nur mit gebeugtem Knie erreicht. |
@@ -32,6 +32,17 @@ Persönlicher Hintergrund: Plattfüße, Knieschmerzen beim Joggen, Rundrücken, 
 | A, B | Zur Ruhe kommen (Kindshaltung) | 30 s (einmal) | Unterer Rücken, Atmung | Ruhiger Abschluss; senkt die Anspannung zum Start in den Tag. |
 
 Gestrichen wegen Überlappung: Gesäß-Dehnung (Sitzen verlängert das Gesäß eher), Wade gestreckt (von der Hamstring-Dehnung mit gezogener Fußspitze abgedeckt), Oberschenkel-Vorderseite als eigene Übung (vom Hüftbeuger-Stretch mit abgedeckt), Fußball (Wunsch der Nutzerin).
+
+### Wochen-Dosis (5 Runden pro Woche, alle fünf Dehnungen täglich)
+Faustregel (Thomas et al. 2018): ab ca. 5 Min. pro Woche und Muskel wird Dehnen wirksam; keine feste Schwelle. Die Startseite zeigt pro Dehnung, wie weit du in der Woche bist (Haltezeit pro Seite, nur natürlich abgelaufene Haltephasen zählen).
+
+| Dehnung | Zeit/Seite | Min./Woche bei 5 Runden | bei 7 Runden |
+|---|---|---|---|
+| Oberschenkel-Rückseite | 60 s | 5,0 ✔ | 7,0 |
+| Hüftbeuger | 60 s | 5,0 ✔ | 7,0 |
+| Brustmuskel | 60 s | 5,0 ✔ | 7,0 |
+| Brustwirbelsäule | 45 s | 3,75 | 5,25 ✔ |
+| Wade gebeugt | 45 s | 3,75 | 5,25 ✔ |
 
 ## Architektur
 - **Hosting:** GitHub Pages (statisch). Hinweis: Pages für private Repos braucht einen bezahlten GitHub-Plan; sonst ist das Repo öffentlich.

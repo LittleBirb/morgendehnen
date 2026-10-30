@@ -124,6 +124,14 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 .seg.on:nth-child(4) { background: var(--mint); }
 .seg.on:nth-child(5) { background: var(--lilac); }
 .bar.full .seg.on { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--sun-soft); }
+.muscles { display: grid; gap: 0.45rem; margin-top: 0.9rem; }
+.mrow { display: grid; grid-template-columns: 8rem 1fr 3.2rem; align-items: center; gap: 0.6rem; font-size: 0.85rem; }
+.mname { color: var(--ink); }
+.mbar { height: 0.55rem; border-radius: 0.4rem; background: var(--line); overflow: hidden; }
+.mbar i { display: block; height: 100%; border-radius: 0.4rem; background: var(--pink); transition: width 0.4s ease; }
+.mrow.ok .mbar i { background: var(--sage); }
+.mval { color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.mrow.ok .mval { color: var(--sage); font-weight: 600; }
 .week-note { margin: 0.7rem 0 0; font-size: 0.9rem; color: var(--muted); }
 
 .go {
@@ -261,6 +269,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   <section class="week" aria-label="Wochenziel">
     <div class="week-head"><strong>Diese Woche</strong><span class="js-weekcount">0 von 5 Runden</span></div>
     <div class="bar js-bar"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+    <div class="muscles js-muscles"></div>
     <p class="week-note js-weeknote"></p>
   </section>
 
@@ -345,6 +354,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   <section class="week" aria-label="Wochenziel">
     <div class="week-head"><strong>Diese Woche</strong><span class="js-weekcount">0 von 5 Runden</span></div>
     <div class="bar js-bar"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+    <div class="muscles js-muscles"></div>
     <p class="week-note js-weeknote"></p>
   </section>
   <button class="go primary" id="back">Zurück zum Start</button>
@@ -358,7 +368,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   // hold = Sekunden pro Seite; short = Sekunden in der kurzen Runde (null = dort nicht dabei);
   // once = nur eine Runde ohne Seitenwechsel.
   var EXERCISES = {
-    bws: { name: "Brustwirbelsäule", hold: 60, short: null,
+    bws: { name: "Brustwirbelsäule", hold: 45, short: null,
       setup: "Auf die Seite legen, Knie angewinkelt, Arme nach vorn.",
       cue: "Den oberen Arm wie ein Buch nach hinten aufklappen. Die Knie bleiben liegen." },
     hams: { name: "Oberschenkel-Rückseite", hold: 60, short: 30,
@@ -391,8 +401,8 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   };
   // Leicht und liegend starten, Kern, Kräftigen, ruhig enden.
   var PROGRAM = {
-    A: ["bws", "hams", "hip", "soleus", "foot", "abd", "back", "rest"],
-    B: ["chest", "hams", "hip", "soleus", "foot", "bridge", "back", "rest"]
+    A: ["bws", "hams", "hip", "chest", "soleus", "foot", "abd", "back", "rest"],
+    B: ["bws", "hams", "hip", "chest", "soleus", "foot", "bridge", "back", "rest"]
   };
   var SHORT_PROGRAM = ["hams", "hip", "soleus", "foot", "rest"];
   Object.keys(EXERCISES).forEach(function (k) { EXERCISES[k].id = k; });
@@ -505,12 +515,44 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     for (var i = 0; i < 7; i++) { out.push(dateKey(d)); d.setDate(d.getDate() + 1); }
     return out;
   }
+  // Haltezeit pro Dehnung (Sekunden pro Seite) und Tag, für die Mini-Balken
+  var MKEY = "morgendehnen-muscles";
+  var muscles = {}; // "YYYY-MM-DD" -> { id: Sekunden }
+  var MUSCLE_LABEL = { bws: "Brustwirbelsäule", hams: "Rückseite", hip: "Hüftbeuger", chest: "Brust", soleus: "Wade" };
+  try { var rawM = localStorage.getItem(MKEY); if (rawM) muscles = JSON.parse(rawM) || {}; } catch (e) { muscles = {}; }
+  function recordHold(id, sec) {
+    if (!MUSCLE_LABEL[id]) return; // nur Dehnungen zählen
+    var k = dateKey(new Date());
+    muscles[k] = muscles[k] || {};
+    muscles[k][id] = (muscles[k][id] || 0) + sec;
+    var ks = Object.keys(muscles).sort();
+    while (ks.length > 120) { delete muscles[ks.shift()]; }
+    try { localStorage.setItem(MKEY, JSON.stringify(muscles)); } catch (e) {}
+    renderWeek();
+  }
+  function renderMuscles(keys) {
+    document.querySelectorAll(".js-muscles").forEach(function (box) {
+      box.textContent = "";
+      Object.keys(MUSCLE_LABEL).forEach(function (id) {
+        var sec = 0;
+        keys.forEach(function (k) { sec += (muscles[k] && muscles[k][id]) || 0; });
+        var min = sec / 60, ok = min >= 5;
+        var row = document.createElement("div"); row.className = "mrow" + (ok ? " ok" : "");
+        var name = document.createElement("span"); name.className = "mname"; name.textContent = MUSCLE_LABEL[id];
+        var bar = document.createElement("div"); bar.className = "mbar";
+        var fill = document.createElement("i"); fill.style.width = Math.min(100, min / 5 * 100).toFixed(0) + "%";
+        bar.appendChild(fill);
+        var val = document.createElement("span"); val.className = "mval";
+        val.textContent = (ok ? "5+ ✓" : (Math.round(min * 10) / 10).toString().replace(".", ",") + " / 5");
+        row.appendChild(name); row.appendChild(bar); row.appendChild(val); box.appendChild(row);
+      });
+    });
+  }
   function renderWeek() {
     var keys = weekKeys();
-    var count = 0, minutes = 0;
-    keys.forEach(function (k) { if (days[k]) { count++; minutes += days[k]; } });
-    var mins = Math.round(minutes * 10) / 10;
-    var minsTxt = String(mins).replace(".", ",");
+    var count = 0;
+    keys.forEach(function (k) { if (days[k]) { count++; } });
+    renderMuscles(keys);
     document.querySelectorAll(".js-bar").forEach(function (bar) {
       bar.classList.toggle("full", count >= 5);
       bar.querySelectorAll(".seg").forEach(function (seg, i) { seg.classList.toggle("on", i < count); });
@@ -518,11 +560,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     document.querySelectorAll(".js-weekcount").forEach(function (el) {
       el.textContent = count > 5 ? "5 von 5 Runden, +" + (count - 5) : count + " von 5 Runden";
     });
-    var note;
-    var who = " (gilt für Oberschenkel-Rückseite und Hüftbeuger)";
-    if (count === 0) note = "Pro Muskel ab etwa 5 Minuten in der Woche wird’s wirksam" + who + ".";
-    else if (count >= 5) note = "Wochenziel erreicht. Alles darüber ist Bonus.";
-    else note = "Pro Muskel diese Woche: " + minsTxt + " Min. Ab etwa 5 Min. wird’s wirksam" + who + ".";
+    var note = count >= 5 ? "Wochenziel erreicht. Alles darüber ist Bonus." : "Pro Muskel ab etwa 5 Minuten in der Woche wird’s wirksam.";
     document.querySelectorAll(".js-weeknote").forEach(function (el) { el.textContent = note; });
   }
   function recordToday(minPerMuscle) {
@@ -912,10 +950,11 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     var out = [], n = 0;
     (short ? SHORT_PROGRAM : PROGRAM[program]).forEach(function (id, ei) {
       var ex = EXERCISES[id], hold = short ? ex.short : ex.hold;
-      (ex.once ? [""] : SIDES).forEach(function (side, si) {
+      var sides = ex.once ? [""] : SIDES;
+      sides.forEach(function (side, si) {
         n++;
         out.push({ type: "prep", dur: ei === 0 && si === 0 ? 10 : si === 0 ? 8 : 4, ex: ex, side: side, n: n, first: si === 0, isStart: ei === 0 && si === 0 });
-        out.push({ type: "hold", dur: hold, ex: ex, side: side, n: n });
+        out.push({ type: "hold", dur: hold, ex: ex, side: side, n: n, last: si === sides.length - 1 });
       });
     });
     return out;
@@ -1025,6 +1064,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       setSun(0.08 * Math.min(1, e / s.dur));
     }
     if (rem <= 0 && pausedAt === null) {
+      if (s.type === "hold" && s.last) recordHold(s.ex.id, s.dur); // zählt nur, wenn die Zeit wirklich abgelaufen ist
       if (idx + 1 < steps.length) startStep(idx + 1);
       else { finish(); return; }
     }
