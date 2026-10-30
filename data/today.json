@@ -1,38 +1,38 @@
 {
-  "updated": "2026-10-29T11:40:51.035Z",
+  "updated": "2026-10-30T10:59:15.385Z",
   "channels": {
     "news": [
       {
-        "title": "Geleakte Mails: Der Meinungsforscher und die AfD",
+        "title": "Bundespräsidentenamt: Wie kann die Kandidatensuche mehr Spaß machen?",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/88ba061e-0a5f-4c60-8562-869c1b28b800/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=88ba061e-0a5f-4c60-8562-869c1b28b800&feed=Xtqjn37O",
-        "duration": 802,
-        "published": "2026-10-29T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/73e03b59-415b-41d2-ba1e-7460677b028c/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=73e03b59-415b-41d2-ba1e-7460677b028c&feed=Xtqjn37O",
+        "duration": 783,
+        "published": "2026-10-30T04:55:00.000Z"
       },
       {
-        "title": "Zugunglück Spanien/ EU-Gebühr für Temu, Shein &amp; Co./ VW zerlegt Autos/ Streit um Weinautomat",
+        "title": "Gen Z-Proteste am Wochenende / Haft für Telefonbetrüger / Neues Zentrum für Zivilschutz",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/10/29/087ce01c-ac1b-4ebd-b380-0f160a4fd17e/087ce01c-ac1b-4ebd-b380-0f160a4fd17e_MP3-128.mp3",
-        "duration": 922,
-        "published": "2026-10-29T04:00:58.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/10/30/8d9c708a-f379-473d-9575-3f97db83bf9d/8d9c708a-f379-473d-9575-3f97db83bf9d_MP3-128.mp3",
+        "duration": 911,
+        "published": "2026-10-30T04:00:19.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Lovingkindness Meditation",
+        "title": "Meditation for Deep Sleep",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20030661-lovingkindness-meditation.mp3",
-        "duration": 554,
-        "published": "2026-10-29T09:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20043509-meditation-for-deep-sleep.mp3",
+        "duration": 651,
+        "published": "2026-10-30T09:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Gefühle im Job - Zeigen oder lieber nicht?!",
+        "title": "Inflation - Haben wir wirklich immer weniger in der Tasche?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/10/27/4626d8c1-0d70-4ff1-abee-2d16a3a0ee16/4626d8c1-0d70-4ff1-abee-2d16a3a0ee16_MP3-128.mp3",
-        "duration": 1471,
-        "published": "2026-10-28T14:00:09.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/10/28/07bc7024-d4a7-4e25-9ed6-0e9d1f7468ca/07bc7024-d4a7-4e25-9ed6-0e9d1f7468ca_MP3-128.mp3",
+        "duration": 1391,
+        "published": "2026-10-29T14:00:50.000Z"
       },
       {
         "title": "A Love Note to NJ: The Moth Radio Hour",
