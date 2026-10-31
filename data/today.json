@@ -1,13 +1,13 @@
 {
-  "updated": "2026-10-30T11:32:27.916Z",
+  "updated": "2026-10-31T10:33:06.952Z",
   "channels": {
     "news": [
       {
-        "title": "Bundespräsidentenamt: Wie kann die Kandidatensuche mehr Spaß machen?",
+        "title": "Was Gen Z an diesem Wochenende in Deutschland regeln will",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/73e03b59-415b-41d2-ba1e-7460677b028c/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=73e03b59-415b-41d2-ba1e-7460677b028c&feed=Xtqjn37O",
-        "duration": 783,
-        "published": "2026-10-30T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/50f6c4b5-550a-41af-8349-42ecddc57a18/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=50f6c4b5-550a-41af-8349-42ecddc57a18&feed=Xtqjn37O",
+        "duration": 737,
+        "published": "2026-10-31T04:55:00.000Z"
       },
       {
         "title": "Gen Z-Proteste am Wochenende / Haft für Telefonbetrüger / Neues Zentrum für Zivilschutz",
@@ -19,27 +19,27 @@
     ],
     "meditation": [
       {
-        "title": "Meditation for Deep Sleep",
+        "title": "Walking Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20043509-meditation-for-deep-sleep.mp3",
-        "duration": 651,
-        "published": "2026-10-30T09:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20049614-walking-meditation.mp3",
+        "duration": 693,
+        "published": "2026-10-31T09:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Inflation - Haben wir wirklich immer weniger in der Tasche?",
+        "title": "Suizidgedanken - Wir müssen mehr drüber reden!",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/10/28/07bc7024-d4a7-4e25-9ed6-0e9d1f7468ca/07bc7024-d4a7-4e25-9ed6-0e9d1f7468ca_MP3-128.mp3",
-        "duration": 1391,
-        "published": "2026-10-29T14:00:50.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/10/28/d628a5ab-a4d0-4b0f-86f3-e2854dae9c89/d628a5ab-a4d0-4b0f-86f3-e2854dae9c89_MP3-128.mp3",
+        "duration": 1646,
+        "published": "2026-10-30T14:00:31.000Z"
       },
       {
-        "title": "A Love Note to NJ: The Moth Radio Hour",
+        "title": "Secondhand Embarrassment: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208755/8208755_2026-04-13-033155.192.mp3?rssID=6066",
-        "duration": 3015,
-        "published": "2026-10-06T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208746/8208746_2026-04-13-032346.192.mp3?rssID=6066",
+        "duration": 1069,
+        "published": "2026-10-02T07:25:00.000Z",
         "skipShort": true
       }
     ],
