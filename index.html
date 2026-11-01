@@ -516,7 +516,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     document.querySelectorAll(".js-weekcount").forEach(function (el) {
       el.textContent = count > 5 ? "5 von 5 Runden, +" + (count - 5) : count + " von 5 Runden";
     });
-    var note = count >= 5 ? "Wochenziel erreicht. Alles darüber ist Bonus." : "Pro Muskel ab etwa 5 Minuten in der Woche wird’s wirksam (Oberschenkel-Rückseite, Hüftbeuger, Brust).";
+    var note = count >= 5 ? "Wochenziel erreicht. Alles darüber ist Bonus." : "Ab 5 Minuten in der Woche wird’s wirksam (pro Muskel: Oberschenkel-Rückseite, Hüftbeuger, Brust).";
     document.querySelectorAll(".js-weeknote").forEach(function (el) { el.textContent = note; });
   }
   function recordToday(minPerMuscle) {
