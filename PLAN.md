@@ -34,7 +34,7 @@ Persönlicher Hintergrund: Plattfüße, Knieschmerzen beim Joggen, Rundrücken, 
 Gestrichen wegen Überlappung: Gesäß-Dehnung (Sitzen verlängert das Gesäß eher), Wade gestreckt (von der Hamstring-Dehnung mit gezogener Fußspitze abgedeckt), Oberschenkel-Vorderseite als eigene Übung (vom Hüftbeuger-Stretch mit abgedeckt), Fußball (Wunsch der Nutzerin).
 
 ### Wochen-Dosis (5 Runden pro Woche, alle fünf Dehnungen täglich)
-Faustregel (Thomas et al. 2018): ab ca. 5 Min. pro Woche und Muskel wird Dehnen wirksam; keine feste Schwelle. Die Startseite zeigt pro Dehnung, wie weit du in der Woche bist (Haltezeit pro Seite, nur natürlich abgelaufene Haltephasen zählen).
+Faustregel (Thomas et al. 2018): ab ca. 5 Min. pro Woche und Muskel wird Dehnen wirksam; keine feste Schwelle. Die App zeigt das nicht pro Muskel an (Mini-Balken wurden wieder entfernt, zu viel Anzeige); es bleibt beim Runden-Balken und dem Hinweis zur 5-Min.-Regel.
 
 | Dehnung | Zeit/Seite | Min./Woche bei 5 Runden | bei 7 Runden |
 |---|---|---|---|
