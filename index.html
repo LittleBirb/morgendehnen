@@ -115,6 +115,18 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 .week { background: var(--surface); border-radius: 1.6rem; padding: 1.1rem 1.1rem 1rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
 .week-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.7rem; }
 .week-head strong { font-size: 1.05rem; font-weight: 600; }
+.wk-title { display: flex; align-items: center; gap: 0.5rem; }
+.info-btn.small { width: 1.55rem; height: 1.55rem; font-size: 0.85rem; margin: 0; border-width: 1.5px; }
+.wd-head { font-weight: 800; margin: 1.1rem 0 0.2rem; }
+.wd-goal { color: var(--muted); font-size: 0.88rem; margin: 0 0 0.6rem; }
+.wd-rows { display: grid; gap: 0.5rem; }
+.mrow { display: grid; grid-template-columns: 9.5rem 1fr 4.2rem; align-items: center; gap: 0.6rem; font-size: 0.9rem; }
+.mbar { height: 0.6rem; border-radius: 0.4rem; background: var(--line); overflow: hidden; }
+.mbar i { display: block; height: 100%; border-radius: 0.4rem; background: var(--pink); }
+.mrow.ok .mbar i { background: var(--sage); }
+.mval { color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.mrow.ok .mval { color: var(--sage); font-weight: 600; }
+.wd-foot { color: var(--muted); font-size: 0.8rem; margin: 1rem 0 0; }
 .week-head span { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 .bar { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35rem; padding: 0.4rem; margin: -0.4rem; border-radius: 1.1rem; }
 .seg { height: 0.85rem; border-radius: 0.5rem; background: var(--line); transition: background 0.4s ease; }
@@ -290,7 +302,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   <h1>Morgen&shy;dehnen</h1>
 
   <section class="week" aria-label="Wochenziel">
-    <div class="week-head"><strong>Diese Woche</strong><span class="js-weekcount">0 von 5 Runden</span></div>
+    <div class="week-head"><div class="wk-title"><strong>Diese Woche</strong><button class="info-btn small js-weekinfo" aria-label="Details zur Woche">i</button></div><span class="js-weekcount">0 von 5 Runden</span></div>
     <div class="bar js-bar"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
     <p class="week-note js-weeknote"></p>
   </section>
@@ -355,6 +367,15 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   </div>
 </main>
 
+<!-- Wochen-Details -->
+<div class="sheet" id="weekInfo" hidden role="dialog" aria-modal="true" aria-labelledby="weekInfoTitle">
+  <div class="sheet-card">
+    <button class="sheet-close" id="weekInfoClose" aria-label="Schließen">✕</button>
+    <h2 id="weekInfoTitle" class="info-title">Diese Woche im Detail</h2>
+    <div class="js-weekdetail"></div>
+  </div>
+</div>
+
 <!-- Übungserklärung -->
 <div class="sheet" id="info" hidden role="dialog" aria-modal="true" aria-labelledby="infoTitle">
   <div class="sheet-card">
@@ -374,7 +395,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   <p class="now js-donenow" hidden></p>
   <button class="go secondary" id="stopAudio" hidden>Ton beenden</button>
   <section class="week" aria-label="Wochenziel">
-    <div class="week-head"><strong>Diese Woche</strong><span class="js-weekcount">0 von 5 Runden</span></div>
+    <div class="week-head"><div class="wk-title"><strong>Diese Woche</strong><button class="info-btn small js-weekinfo" aria-label="Details zur Woche">i</button></div><span class="js-weekcount">0 von 5 Runden</span></div>
     <div class="bar js-bar"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
     <p class="week-note js-weeknote"></p>
   </section>
@@ -554,6 +575,68 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     var k = dateKey(new Date());
     days[k] = Math.max(days[k] || 0, minPerMuscle);
     trim(); saveLocal(); renderWeek();
+  }
+
+  /* ---------- Wochen-Details (Info-Fenster) ---------- */
+  // Pro Tag und Übung die gehaltenen Sekunden pro Seite. Gezählt wird nur, wenn die Zeit wirklich abgelaufen ist.
+  var MKEY = "morgendehnen-muscles", muscles = {};
+  try { var rawM = localStorage.getItem(MKEY); if (rawM) muscles = JSON.parse(rawM) || {}; } catch (e) { muscles = {}; }
+  var STRETCH = [["bws", "Brustwirbelsäule"], ["hams", "Oberschenkel-Rückseite"], ["hip", "Hüftbeuger"], ["chest", "Brustmuskel"], ["soleus", "Wade"]];
+  var STRENGTH = [[["foot"], "Kurzer Fuß"], [["abd", "bridge"], "Hüfte (Beinheben, Brücke)"], [["back"], "Schulterblatt-Zug"]];
+  var TRACKED = ["bws", "hams", "hip", "chest", "soleus", "foot", "abd", "bridge", "back"];
+  var weekInfoEl = document.getElementById("weekInfo");
+  function recordHold(id, sec) {
+    if (TRACKED.indexOf(id) < 0) return;
+    var k = dateKey(new Date());
+    muscles[k] = muscles[k] || {};
+    muscles[k][id] = (muscles[k][id] || 0) + sec;
+    var ks = Object.keys(muscles).sort();
+    while (ks.length > 120) { delete muscles[ks.shift()]; }
+    try { localStorage.setItem(MKEY, JSON.stringify(muscles)); } catch (e) {}
+  }
+  function weekSeconds(id, keys) {
+    var s = 0; keys.forEach(function (k) { s += (muscles[k] && muscles[k][id]) || 0; }); return s;
+  }
+  function weekDays(ids, keys) {
+    var n = 0;
+    keys.forEach(function (k) { if (ids.some(function (id) { return muscles[k] && muscles[k][id] > 0; })) n++; });
+    return n;
+  }
+  function detailRow(name, value, goal, text) {
+    var ok = value >= goal;
+    var row = document.createElement("div"); row.className = "mrow" + (ok ? " ok" : "");
+    var n = document.createElement("span"); n.textContent = name;
+    var bar = document.createElement("div"); bar.className = "mbar";
+    var fill = document.createElement("i"); fill.style.width = Math.min(100, value / goal * 100).toFixed(0) + "%";
+    bar.appendChild(fill);
+    var v = document.createElement("span"); v.className = "mval"; v.textContent = text;
+    row.appendChild(n); row.appendChild(bar); row.appendChild(v);
+    return row;
+  }
+  function detailSection(box, title, goalText) {
+    var h = document.createElement("p"); h.className = "wd-head"; h.textContent = title; box.appendChild(h);
+    var g = document.createElement("p"); g.className = "wd-goal"; g.textContent = goalText; box.appendChild(g);
+    var rows = document.createElement("div"); rows.className = "wd-rows"; box.appendChild(rows);
+    return rows;
+  }
+  function openWeekInfo() {
+    var keys = weekKeys(), box = weekInfoEl.querySelector(".js-weekdetail");
+    box.textContent = "";
+    var r1 = detailSection(box, "Dehnen", "Ziel: 5 Minuten pro Woche und Muskel (Zeit pro Seite)");
+    STRETCH.forEach(function (m) {
+      var min = weekSeconds(m[0], keys) / 60;
+      r1.appendChild(detailRow(m[1], min, 5, min >= 5 ? "5+ ✓" : (Math.round(min * 10) / 10).toString().replace(".", ",") + " / 5"));
+    });
+    var r2 = detailSection(box, "Kräftigen", "Ziel: 3 Einheiten pro Woche");
+    STRENGTH.forEach(function (m) {
+      var n = weekDays(m[0], keys);
+      r2.appendChild(detailRow(m[1], n, 3, n >= 3 ? "3+ ✓" : n + " / 3"));
+    });
+    var f = document.createElement("p"); f.className = "wd-foot";
+    f.textContent = "Richtwerte: Dehnen ab 5 Min. pro Woche (Thomas et al. 2018). Kräftigen 2–3 Einheiten pro Woche (ACSM). Für Fuß- und Hüftübungen gibt es keinen festen Standard, Studien nutzen oft 3-mal pro Woche. Eine Einheit hier dauert 30 s pro Seite, Studien arbeiten oft mit 2–3 Sätzen.";
+    box.appendChild(f);
+    weekInfoEl.hidden = false;
+    document.getElementById("weekInfoClose").focus();
   }
 
   loadLocal(); renderWeek();
@@ -937,10 +1020,11 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     var out = [], n = 0;
     (short ? SHORT_PROGRAM : PROGRAM[program]).forEach(function (id, ei) {
       var ex = EXERCISES[id], hold = short ? ex.short : ex.hold;
-      (ex.once ? [""] : SIDES).forEach(function (side, si) {
+      var sides = ex.once ? [""] : SIDES;
+      sides.forEach(function (side, si) {
         n++;
         out.push({ type: "prep", dur: ei === 0 && si === 0 ? 10 : si === 0 ? 8 : 4, ex: ex, side: side, n: n, first: si === 0, isStart: ei === 0 && si === 0 });
-        out.push({ type: "hold", dur: hold, ex: ex, side: side, n: n });
+        out.push({ type: "hold", dur: hold, ex: ex, side: side, n: n, last: si === sides.length - 1 });
       });
     });
     return out;
@@ -1050,6 +1134,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       setSun(0.08 * Math.min(1, e / s.dur));
     }
     if (rem <= 0 && pausedAt === null) {
+      if (s.type === "hold" && s.last) recordHold(s.ex.id, s.dur); // zählt nur, wenn die Zeit wirklich abgelaufen ist
       if (idx + 1 < steps.length) startStep(idx + 1);
       else { finish(); return; }
     }
@@ -1101,7 +1186,10 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     infoEl.hidden = false;
     document.getElementById("infoClose").focus();
   }
-  function closeInfo() { infoEl.hidden = true; }
+  function closeInfo() { infoEl.hidden = true; weekInfoEl.hidden = true; }
+  document.querySelectorAll(".js-weekinfo").forEach(function (b) { b.addEventListener("click", openWeekInfo); });
+  document.getElementById("weekInfoClose").addEventListener("click", closeInfo);
+  weekInfoEl.addEventListener("click", function (e) { if (e.target === weekInfoEl) closeInfo(); });
   document.getElementById("infoBtn").addEventListener("click", openInfo);
   document.getElementById("infoClose").addEventListener("click", closeInfo);
   infoEl.addEventListener("click", function (e) { if (e.target === infoEl) closeInfo(); });

@@ -44,6 +44,14 @@ Faustregel (Thomas et al. 2018): ab ca. 5 Min. pro Woche und Muskel wird Dehnen 
 | Brustwirbelsäule | 45 s | 3,75 | 5,25 ✔ |
 | Wade gebeugt | 45 s | 3,75 | 5,25 ✔ |
 
+### Kräftigung: wie viel? (Recherche, Info-Fenster neben „Diese Woche“)
+Das „i“ neben „Diese Woche“ zeigt pro Dehnung die Minuten (Ziel 5 pro Woche) und pro Kräftigungsübung die Einheiten (Ziel 3 pro Woche). Gezählt wird nur, wenn die Haltezeit wirklich abgelaufen ist.
+- **Allgemein (ACSM):** 2–3 Tage pro Woche je Muskelgruppe, 2–4 Sätze à 8–12 Wiederholungen (neuere Fassung 2–3 Sätze); Krafttraining senkt Sportverletzungen deutlich (Lauersen 2018).
+- **Hüfte bei Knieschmerz:** kein Konsens über Sätze/Wiederholungen; Studien nutzen oft 3 Einheiten pro Woche über ca. 6 Wochen; die Dosis scheint für die Schmerzlinderung weniger wichtig als das Dranbleiben.
+- **Kurzer Fuß:** kein Konsens; Protokolle meist täglich oder 3-mal pro Woche, 1–3 Sätze à 10–25 Wiederholungen mit ca. 5 s Halten, über 4–12 Wochen; Studien klein.
+- **Schulterblatt-Zug (Bauchlage, T/Y):** Praxisempfehlung 2–3-mal pro Woche, 3 × 10–12; Studienlage dünn.
+- **Folge:** 3 Einheiten pro Woche als Ziel; mit 5 Runden erreichen Kurzer Fuß, Schulterblatt-Zug und Hüfte (Beinheben + Brücke zusammen) das. Eine Einheit in der App ist ca. 1 Satz (30 s pro Seite), weniger als die Studien (2–3 Sätze). Programm bewusst nicht geändert.
+
 ## Architektur
 - **Hosting:** GitHub Pages (statisch). Hinweis: Pages für private Repos braucht einen bezahlten GitHub-Plan; sonst ist das Repo öffentlich.
 - **Datenbeschaffung:** GitHub Action per Cron holt jeden Morgen die Podcast-Feeds (der Browser kann die RSS-Feeds wegen CORS meist nicht direkt lesen) und schreibt `data/today.json` ins Repo. Die MP3s selbst spielt der Browser direkt von den Original-URLs ab.
