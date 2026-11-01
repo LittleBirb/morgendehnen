@@ -116,14 +116,43 @@ h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--s
 .week-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.7rem; }
 .week-head strong { font-size: 1.05rem; font-weight: 600; }
 .week-head span { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
-.bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35rem; }
+.bar { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35rem; padding: 0.4rem; margin: -0.4rem; border-radius: 1.1rem; }
 .seg { height: 0.85rem; border-radius: 0.5rem; background: var(--line); transition: background 0.4s ease; }
 .seg.on { background: var(--pink); }
 .seg.on:nth-child(2) { background: var(--peach); }
 .seg.on:nth-child(3) { background: var(--sun); }
 .seg.on:nth-child(4) { background: var(--mint); }
 .seg.on:nth-child(5) { background: var(--lilac); }
-.bar.full .seg.on { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--sun-soft); }
+/* Wochenziel erreicht: leuchtender Regenbogen-Rand, pulsierender Schein und ein Glanz, der über die Balken wandert */
+.bar.full { animation: pop 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) both; }
+.bar.full::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2.5px; pointer-events: none;
+  background: linear-gradient(110deg, var(--pink), var(--peach), var(--sun), var(--mint), var(--lilac), var(--pink));
+  background-size: 300% 100%; animation: ring 5s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.bar.full::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  animation: glow 2.6s ease-in-out infinite;
+}
+.bar.full .seg.on { position: relative; overflow: hidden; }
+.bar.full .seg.on::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.75) 50%, transparent 70%);
+  transform: translateX(-130%); animation: shine 3.4s ease-in-out infinite;
+}
+.bar.full .seg.on:nth-child(2)::after { animation-delay: 0.18s; }
+.bar.full .seg.on:nth-child(3)::after { animation-delay: 0.36s; }
+.bar.full .seg.on:nth-child(4)::after { animation-delay: 0.54s; }
+.bar.full .seg.on:nth-child(5)::after { animation-delay: 0.72s; }
+@keyframes ring { to { background-position: 300% 0; } }
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 8px 1px rgba(255, 126, 182, 0.45), 0 0 16px 3px rgba(183, 156, 255, 0.28); }
+  50% { box-shadow: 0 0 20px 5px rgba(255, 176, 46, 0.6), 0 0 34px 9px rgba(255, 126, 182, 0.38); }
+}
+@keyframes shine { 0%, 55% { transform: translateX(-130%); } 100% { transform: translateX(130%); } }
+@keyframes pop { 0% { transform: scale(0.94); } 100% { transform: scale(1); } }
 .week-note { margin: 0.7rem 0 0; font-size: 0.9rem; color: var(--muted); }
 
 .go {
@@ -249,6 +278,8 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
 
 @media (prefers-reduced-motion: reduce) {
   .seg { transition: none; }
+  .bar.full, .bar.full::before, .bar.full::after, .bar.full .seg.on::after { animation: none; }
+  .bar.full::after { box-shadow: 0 0 12px 2px rgba(255, 126, 182, 0.4); }
 }
 </style>
 </head>
