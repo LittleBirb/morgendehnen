@@ -1,29 +1,29 @@
 {
-  "updated": "2026-11-01T11:58:08.418Z",
+  "updated": "2026-11-02T12:47:57.875Z",
   "channels": {
     "news": [
       {
-        "title": "Hat Gen Z geregelt?",
+        "title": "Kalifornien: Kommt die weltweit erste Milliardärssteuer?",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/902a4eb6-6703-4230-b0a5-d2427eddcdef/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=902a4eb6-6703-4230-b0a5-d2427eddcdef&feed=Xtqjn37O",
-        "duration": 790,
-        "published": "2026-11-01T05:00:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/98681dba-7ba3-41e3-89fa-dbf79ca8d9b8/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=98681dba-7ba3-41e3-89fa-dbf79ca8d9b8&feed=Xtqjn37O",
+        "duration": 687,
+        "published": "2026-11-02T05:00:00.000Z"
       },
       {
-        "title": "Gen Z-Proteste am Wochenende / Haft für Telefonbetrüger / Neues Zentrum für Zivilschutz",
+        "title": "Was bleibt nach den Gen Z-Protesten? / Staumonat November / Geldanlage mit KI",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/10/30/8d9c708a-f379-473d-9575-3f97db83bf9d/8d9c708a-f379-473d-9575-3f97db83bf9d_MP3-128.mp3",
-        "duration": 911,
-        "published": "2026-10-30T04:00:19.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/02/bfa71779-3d54-4fb5-a2da-722b81fe814e/bfa71779-3d54-4fb5-a2da-722b81fe814e_MP3-128.mp3",
+        "duration": 923,
+        "published": "2026-11-02T03:42:34.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Yoga Nidra",
+        "title": "Awareness of Thoughts",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20049615-yoga-nidra.mp3",
-        "duration": 739,
-        "published": "2026-11-01T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20049618-awareness-of-thoughts.mp3",
+        "duration": 529,
+        "published": "2026-11-02T10:00:00.000Z"
       }
     ],
     "welt": [
@@ -35,11 +35,11 @@
         "published": "2026-10-30T14:00:31.000Z"
       },
       {
-        "title": "Matters of the Heart: The Moth Radio Hour",
+        "title": "Looking in the Mirror: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208763/8208763_2026-04-13-033503.192.mp3?rssID=6066",
-        "duration": 3001,
-        "published": "2026-09-29T04:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208761/8208761_2026-04-13-033401.192.mp3?rssID=6066",
+        "duration": 1112,
+        "published": "2026-09-25T04:25:00.000Z",
         "skipShort": true
       }
     ],
