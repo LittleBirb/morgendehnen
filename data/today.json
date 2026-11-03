@@ -1,45 +1,45 @@
 {
-  "updated": "2026-11-02T13:45:45.471Z",
+  "updated": "2026-11-03T12:14:58.133Z",
   "channels": {
     "news": [
       {
-        "title": "Kalifornien: Kommt die weltweit erste Milliardärssteuer?",
+        "title": "Warum dieses Mal alle auf die Midterms schauen",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/98681dba-7ba3-41e3-89fa-dbf79ca8d9b8/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=98681dba-7ba3-41e3-89fa-dbf79ca8d9b8&feed=Xtqjn37O",
-        "duration": 687,
-        "published": "2026-11-02T05:00:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/0d688fb0-2a86-41d8-9466-2bb25396ade8/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=0d688fb0-2a86-41d8-9466-2bb25396ade8&feed=Xtqjn37O",
+        "duration": 834,
+        "published": "2026-11-03T04:55:00.000Z"
       },
       {
-        "title": "Was bleibt nach den Gen Z-Protesten? / Staumonat November / Geldanlage mit KI",
+        "title": "Nadeln in Halloween-Süßigkeiten / Anschlag in Niedersachsen verhindert / Männergesundheit stärken",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/02/bfa71779-3d54-4fb5-a2da-722b81fe814e/bfa71779-3d54-4fb5-a2da-722b81fe814e_MP3-128.mp3",
-        "duration": 923,
-        "published": "2026-11-02T03:42:34.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/03/ba6a053c-b67c-43ea-a851-3dc9bd8461ac/ba6a053c-b67c-43ea-a851-3dc9bd8461ac_MP3-128.mp3",
+        "duration": 900,
+        "published": "2026-11-03T04:00:49.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Awareness of Thoughts",
+        "title": "Metta Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20049618-awareness-of-thoughts.mp3",
-        "duration": 529,
-        "published": "2026-11-02T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20062851-metta-meditation.mp3",
+        "duration": 514,
+        "published": "2026-11-03T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Suizidgedanken - Wir müssen mehr drüber reden!",
+        "title": "Nur mal kurz am Handy - Schlecht für mein Baby?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/10/28/d628a5ab-a4d0-4b0f-86f3-e2854dae9c89/d628a5ab-a4d0-4b0f-86f3-e2854dae9c89_MP3-128.mp3",
-        "duration": 1646,
-        "published": "2026-10-30T14:00:31.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/02/d1e22e53-fd4a-4175-a098-0e467cc7aaae/d1e22e53-fd4a-4175-a098-0e467cc7aaae_MP3-128.mp3",
+        "duration": 1183,
+        "published": "2026-11-02T14:00:51.000Z"
       },
       {
-        "title": "Looking in the Mirror: The Moth Podcast",
+        "title": "On The Job: The Moth Radio Hour",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208761/8208761_2026-04-13-033401.192.mp3?rssID=6066",
-        "duration": 1112,
-        "published": "2026-09-25T04:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8898047/8898047_2026-10-28-200147.192.mp3?rssID=6066",
+        "duration": 3007,
+        "published": "2026-11-03T08:24:00.000Z",
         "skipShort": true
       }
     ],
