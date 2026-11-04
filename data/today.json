@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04T21:36:59.053Z",
+  "updated": "2026-11-04T21:41:06.734Z",
   "channels": {
     "news": [
       {
@@ -41,26 +41,6 @@
         "duration": 1923,
         "published": "2026-10-30T07:25:00.000Z",
         "skipShort": true
-      }
-    ],
-    "wellness": [
-      {
-        "title": "Mellow Mix (Radio Paradise)",
-        "show": "Mellow Mix (Radio Paradise)",
-        "audio": "https://stream.radioparadise.com/mellow-128",
-        "live": true
-      },
-      {
-        "title": "Radio Swiss Classic",
-        "show": "Radio Swiss Classic",
-        "audio": "https://stream.srg-ssr.ch/m/rsc_de/mp3_128",
-        "live": true
-      },
-      {
-        "title": "FluxLounge",
-        "show": "FluxLounge",
-        "audio": "https://streams.fluxfm.de/lounge/mp3-128/audio/",
-        "live": true
       }
     ],
     "radio": [

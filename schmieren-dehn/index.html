@@ -957,12 +957,76 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       if (step16 === 0) chordIdx = (chordIdx + 1) % CHORDS.length;
     }
   }
+  /* ---------- Wellness-Musik (Web Audio): weiche Flächen, sanfte Glöckchen, leises Meeresrauschen ---------- */
+  var WELL_CHORDS = [
+    [48, 55, 59, 62, 64], // Cmaj9
+    [45, 52, 55, 59, 64], // Am9
+    [41, 48, 52, 57, 60], // Fmaj7
+    [43, 50, 55, 59, 64]  // G6
+  ];
+  var CHIME_NOTES = [72, 74, 76, 79, 81, 84]; // Pentatonik, klingt immer harmonisch
+  var wellNextChord = 0, wellNextChime = 0, wellChord = 0, waveNodes = null;
+  function wellPad(t, notes) {
+    var dur = 10;
+    notes.forEach(function (m, i) {
+      var f = mtof(m), g = actx.createGain();
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.linearRampToValueAtTime(0.05, t + 3);
+      g.gain.setValueAtTime(0.05, t + dur - 3.5);
+      g.gain.linearRampToValueAtTime(0.0001, t + dur);
+      var o1 = actx.createOscillator(); o1.type = "sine"; o1.frequency.value = f;
+      var o2 = actx.createOscillator(); o2.type = "triangle"; o2.frequency.value = f * 1.004;
+      var g2 = actx.createGain(); g2.gain.value = 0.35;
+      o1.connect(g); o2.connect(g2); g2.connect(g); g.connect(musicBus);
+      o1.start(t); o2.start(t); o1.stop(t + dur + 0.1); o2.stop(t + dur + 0.1);
+    });
+  }
+  function wellChime(t) {
+    var m = CHIME_NOTES[Math.floor(Math.random() * CHIME_NOTES.length)], f = mtof(m);
+    [[0, 0.07], [0.45, 0.028], [0.9, 0.012]].forEach(function (e) { // Chime mit leisem Echo
+      var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = f;
+      var g = actx.createGain();
+      g.gain.setValueAtTime(0.0001, t + e[0]);
+      g.gain.linearRampToValueAtTime(e[1], t + e[0] + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + e[0] + 3.6);
+      o.connect(g); g.connect(musicBus); o.start(t + e[0]); o.stop(t + e[0] + 3.7);
+    });
+  }
+  function startWaves() {
+    var src = actx.createBufferSource(); src.buffer = noiseBuf; src.loop = true;
+    var bp = actx.createBiquadFilter(); bp.type = "bandpass"; bp.frequency.value = 520; bp.Q.value = 0.35;
+    var wg = actx.createGain(); wg.gain.value = 0.02;
+    var lfo = actx.createOscillator(); lfo.frequency.value = 0.1;
+    var lg = actx.createGain(); lg.gain.value = 0.017;
+    lfo.connect(lg); lg.connect(wg.gain);
+    src.connect(bp); bp.connect(wg); wg.connect(musicBus);
+    src.start(); lfo.start();
+    waveNodes = [src, lfo];
+  }
+  function wellScheduler() {
+    var now = actx.currentTime;
+    while (wellNextChord < now + 1) {
+      wellPad(wellNextChord, WELL_CHORDS[wellChord]);
+      wellChord = (wellChord + 1) % WELL_CHORDS.length;
+      wellNextChord += 8; // 2 s Überblendung
+    }
+    while (wellNextChime < now + 1) {
+      wellChime(wellNextChime);
+      wellNextChime += 3 + Math.random() * 4;
+    }
+  }
   function musicTarget() { return musicMuted ? 0 : MUSIC_VOL; }
-  function startMusic() {
+  function startMusic(style) {
     if (!actx || schedTimer) return;
-    if (!crackleSrc) startCrackle();
-    nextTime = actx.currentTime + 0.1; step16 = 0; chordIdx = 0;
-    schedTimer = setInterval(scheduler, 30);
+    if (style === "wellness") {
+      startWaves();
+      wellNextChord = actx.currentTime + 0.1; wellNextChime = actx.currentTime + 4; wellChord = 0;
+      schedTimer = setInterval(wellScheduler, 200);
+    } else {
+      if (!crackleSrc) startCrackle();
+      nextTime = actx.currentTime + 0.1; step16 = 0; chordIdx = 0;
+      schedTimer = setInterval(scheduler, 30);
+    }
     musicBus.gain.cancelScheduledValues(actx.currentTime);
     musicBus.gain.setTargetAtTime(musicTarget(), actx.currentTime, 0.8);
   }
@@ -971,8 +1035,14 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     musicBus.gain.cancelScheduledValues(actx.currentTime);
     musicBus.gain.setTargetAtTime(0, actx.currentTime, 0.6);
     var timer = schedTimer; schedTimer = null;
-    setTimeout(function () { if (timer) clearInterval(timer); if (!schedTimer && crackleSrc) { try { crackleSrc.stop(); } catch (e) {} crackleSrc = null; } }, 2500);
+    var waves = waveNodes; waveNodes = null;
+    setTimeout(function () {
+      if (timer) clearInterval(timer);
+      if (waves) waves.forEach(function (n) { try { n.stop(); } catch (e) {} });
+      if (!schedTimer && crackleSrc) { try { crackleSrc.stop(); } catch (e) {} crackleSrc = null; }
+    }, 2500);
   }
+  function isSynth() { return mood === "lofi" || mood === "wellness"; } // Musik kommt aus der App selbst
   function duck(on) {
     if (!actx || !schedTimer) return;
     musicBus.gain.setTargetAtTime(on ? musicTarget() * 0.35 : musicTarget(), actx.currentTime, 0.15);
@@ -1081,11 +1151,12 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     running = true; pausedAt = null; podHeld = false; afterglow = false;
     el.doneNow.hidden = el.stopAudio.hidden = true;
     setNotice(""); el.now.textContent = "";
-    var eps = (chosen === "lofi" || own) ? [] : episodesFor(chosen);
+    var synth = chosen === "lofi" || chosen === "wellness"; // Musik wird in der App erzeugt, kein Stream, keine Werbung
+    var eps = (synth || own) ? [] : episodesFor(chosen);
     var ep = eps.length ? eps[Math.floor(Math.random() * eps.length)] : null; // zufällige Quelle
     if (own) {
       el.now.textContent = "🎧 Deine eigene Musik läuft weiter";
-    } else if (chosen !== "lofi") {
+    } else if (!synth) {
       if (ep) {
         startPod(ep, !!ep.live);
         el.now.textContent = ep.live ? "🧘 " + (ep.title || "Wellness") : "▶ " + (ep.show || "") + " · " + ep.title;
@@ -1095,7 +1166,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
         setNotice("Keine Folge gefunden – es läuft Lo-Fi.");
       }
     }
-    if (mood === "lofi") { el.now.textContent = "♪ Lo-Fi"; if (actx) startMusic(); }
+    if (isSynth()) { el.now.textContent = mood === "wellness" ? "🧘 Wellness-Musik" : "♪ Lo-Fi"; if (actx) startMusic(mood); }
     pauseBtn.textContent = "Pause";
     show(session);
     lockScreen();
@@ -1112,7 +1183,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.phase.textContent = s.first ? "Als Nächstes" : "Seite wechseln";
       el.cue.textContent = s.first ? s.ex.setup : "Gleiche Übung, andere Seite.";
       el.next.textContent = "";
-      var pod = mood !== "lofi"; // Podcast/Radio: Ansage nur bei neuer Übung, sonst Gong
+      var pod = !isSynth(); // Podcast/Nachrichten/eigene Musik: Ansage nur bei neuer Übung, sonst Gong
       // Mit Podcast/Radio nur der Name der Übung (Erklärung steht hinter dem „i“), bei Lo-Fi die ganze Erklärung.
       if (s.isStart && pod) say(s.ex.name + sideSpoken(s), true);
       else if (s.isStart) say("Los geht's mit: " + s.ex.name + sideSpoken(s) + ". " + s.ex.setup);
@@ -1130,7 +1201,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       el.phase.textContent = "Halten";
       el.cue.textContent = s.ex.cue;
       el.next.textContent = nextLabel(i);
-      if (mood === "lofi") say("Und halten. " + s.ex.cue);
+      if (isSynth()) say("Und halten. " + s.ex.cue);
       else if (!podHeld) gong(); // Pausenende: los geht's (nicht, wenn gerade noch eine Ansage läuft)
     }
   }
@@ -1153,7 +1224,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       setSun(Math.min(1, e / s.dur));
       if (s.dur >= 40 && rem <= 10 && !spokeTen) {
         spokeTen = true;
-        if (mood === "lofi") say("Noch zehn Sekunden.");
+        if (isSynth()) say("Noch zehn Sekunden.");
       }
     } else {
       setSun(0.08 * Math.min(1, e / s.dur));
@@ -1171,15 +1242,15 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     recordToday(shortMode ? 0.5 : 1);
     if (!shortMode) setProgram(program === "A" ? "B" : "A"); // nächstes Mal das andere Programm
     // Podcast/Radio laufen nach der Runde weiter; Lo-Fi-Musik klingt aus.
-    afterglow = mood !== "lofi" && podActive;
-    if (mood !== "lofi") gong();
+    afterglow = !isSynth() && podActive;
+    if (!isSynth()) gong();
     var msg = AFFIRMATIONS[Math.floor(Math.random() * AFFIRMATIONS.length)];
     el.affirm.textContent = msg;
     el.doneText.textContent = shortMode ? "Auch die kurze Runde zählt." : "Das war deine Runde für heute.";
     el.doneNow.hidden = el.stopAudio.hidden = !afterglow;
     if (afterglow) el.doneNow.textContent = "Weiter läuft: " + el.now.textContent.replace(/^[^\wÄÖÜäöü]+/, "");
     // Nach dem Gong die Nachricht sprechen; der Podcast pausiert dafür kurz.
-    setTimeout(function () { if (!done.hidden) say("Geschafft. " + msg, afterglow); }, mood !== "lofi" ? 2000 : 0);
+    setTimeout(function () { if (!done.hidden) say("Geschafft. " + msg, afterglow); }, !isSynth() ? 2000 : 0);
     stopMusic(); unlockScreen();
     if (!afterglow) setTimeout(releaseIOSAudio, 2600);
     show(done);
@@ -1260,7 +1331,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     musicMuted = soundMuted;
     podEl.muted = soundMuted;
     if (!actx) return;
-    if (mood === "lofi" && !schedTimer && !musicMuted) startMusic();
+    if (isSynth() && !schedTimer && !musicMuted) startMusic(mood);
     musicBus.gain.setTargetAtTime(musicTarget(), actx.currentTime, 0.3);
   });
 
