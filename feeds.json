@@ -11,9 +11,9 @@
     { "show": "The Moth", "url": "https://rss.amperwave.net/v2/feed/audacynetwork/the-moth", "random": 10, "skipShort": true }
   ],
   "wellness": [
-    { "title": "Drone Zone (SomaFM)", "stream": "https://ice1.somafm.com/dronezone-128-mp3" },
-    { "title": "Deep Space One (SomaFM)", "stream": "https://ice1.somafm.com/deepspaceone-128-mp3" },
-    { "title": "Groove Salad (SomaFM)", "stream": "https://ice1.somafm.com/groovesalad-128-mp3" }
+    { "title": "Mellow Mix (Radio Paradise)", "stream": "https://stream.radioparadise.com/mellow-128" },
+    { "title": "Radio Swiss Classic", "stream": "https://stream.srg-ssr.ch/m/rsc_de/mp3_128" },
+    { "title": "FluxLounge", "stream": "https://streams.fluxfm.de/lounge/mp3-128/audio/" }
   ],
   "radio": [
     { "title": "egoFM", "stream": "https://streams.egofm.de/egoFM-hq" },

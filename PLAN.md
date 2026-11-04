@@ -114,7 +114,7 @@ Podcast und Radio laufen weiter (Lo-Fi klingt aus). Eine zufällige Nachricht au
 Für die Schwester (gleiche Probleme, macht es nicht morgens). Liegt als Unterordner im selben Repo und nutzt dieselben Daten (`../data/today.json`, gleiche GitHub Action). Adresse: `https://littlebirb.github.io/morgendehnen/schmieren-dehn/`. Eigene `localStorage`-Schlüssel (`kraftdehnen-…`), eigener Fortschritt.
 Unterschiede zur Hauptversion:
 - Überschrift „Kraft & Dehnen“, kein „Guten Morgen“ und keine Morgen-Bezüge in den Texten.
-- Nur drei Stimmungen: **Nachrichten** (tagesschau/Was jetzt?), **Wellness** (Entspannungsmusik: SomaFM Drone Zone, Deep Space One, Groove Salad, laut SomaFM werbefrei, zufällig) und **Nichts** (eigene Musik, z. B. Spotify).
+- Nur drei Stimmungen: **Nachrichten** (tagesschau/Was jetzt?), **Wellness** (Entspannungsmusik, zufällig: Radio Paradise Mellow Mix, Radio Swiss Classic, FluxLounge; SomaFM schied aus, die Streams liefern beim Abspielen „403 Forbidden“, obwohl eine Kopfzeilen-Abfrage „200“ meldete) und **Nichts** (eigene Musik, z. B. Spotify).
 - **Nichts:** Die Audio-Sitzung wird auf `ambient` gestellt und das stille Hintergrund-Audio nicht gestartet, damit Musik aus anderen Apps weiterläuft. Nicht auf dem iPhone getestet; `ambient` folgt dem Stummschalter, und ob die Sprachansage Spotify kurz unterbricht, hängt von iOS ab. Mit Nachrichten/Wellness übernimmt die App wie bisher den Ton.
-- Im „i“-Fenster und in der Übungsliste steht zu jeder Übung, was sie trainiert und „Warum für dich“.
-- Programm, Haltezeiten, Wochenziel, Gong und Nachrichten-Pool sind gleich.
+- Im „i“-Fenster und in der Übungsliste steht zu jeder Übung, was sie trainiert und der „Nutzen“. Eigener Nachrichten-Pool: allgemein lebensfroh und gegen Gedankenkreisen.
+- Programm, Haltezeiten, Wochenziel, Gong sind gleich.

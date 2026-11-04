@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04T21:27:31.561Z",
+  "updated": "2026-11-04T21:36:59.053Z",
   "channels": {
     "news": [
       {
@@ -45,21 +45,21 @@
     ],
     "wellness": [
       {
-        "title": "Drone Zone (SomaFM)",
-        "show": "Drone Zone (SomaFM)",
-        "audio": "https://ice1.somafm.com/dronezone-128-mp3",
+        "title": "Mellow Mix (Radio Paradise)",
+        "show": "Mellow Mix (Radio Paradise)",
+        "audio": "https://stream.radioparadise.com/mellow-128",
         "live": true
       },
       {
-        "title": "Deep Space One (SomaFM)",
-        "show": "Deep Space One (SomaFM)",
-        "audio": "https://ice1.somafm.com/deepspaceone-128-mp3",
+        "title": "Radio Swiss Classic",
+        "show": "Radio Swiss Classic",
+        "audio": "https://stream.srg-ssr.ch/m/rsc_de/mp3_128",
         "live": true
       },
       {
-        "title": "Groove Salad (SomaFM)",
-        "show": "Groove Salad (SomaFM)",
-        "audio": "https://ice1.somafm.com/groovesalad-128-mp3",
+        "title": "FluxLounge",
+        "show": "FluxLounge",
+        "audio": "https://streams.fluxfm.de/lounge/mp3-128/audio/",
         "live": true
       }
     ],
