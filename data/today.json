@@ -1,45 +1,45 @@
 {
-  "updated": "2026-11-03T12:57:02.072Z",
+  "updated": "2026-11-04T12:27:10.866Z",
   "channels": {
     "news": [
       {
-        "title": "Warum dieses Mal alle auf die Midterms schauen",
+        "title": "Kommentar zu den Midterms: Das Ende des Trumpismus? (Wahlkreis-Spezial)",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/0d688fb0-2a86-41d8-9466-2bb25396ade8/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=0d688fb0-2a86-41d8-9466-2bb25396ade8&feed=Xtqjn37O",
-        "duration": 834,
-        "published": "2026-11-03T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/7c52822f-d6e3-4c31-9845-cdad5fa4c72b/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=7c52822f-d6e3-4c31-9845-cdad5fa4c72b&feed=Xtqjn37O",
+        "duration": 660,
+        "published": "2026-11-04T10:25:24.000Z"
       },
       {
-        "title": "Nadeln in Halloween-Süßigkeiten / Anschlag in Niedersachsen verhindert / Männergesundheit stärken",
+        "title": "Midterms: Schlappe für Trump / Cyberangriffe auf Supermärkte / Blitzer gegen Handy am Steuer",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/03/ba6a053c-b67c-43ea-a851-3dc9bd8461ac/ba6a053c-b67c-43ea-a851-3dc9bd8461ac_MP3-128.mp3",
-        "duration": 900,
-        "published": "2026-11-03T04:00:49.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/04/9d21e601-fde1-48e8-b365-7cec83c36db6/9d21e601-fde1-48e8-b365-7cec83c36db6_MP3-128.mp3",
+        "duration": 922,
+        "published": "2026-11-04T04:00:29.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Metta Meditation",
+        "title": "Mindful Labeling Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20062851-metta-meditation.mp3",
-        "duration": 514,
-        "published": "2026-11-03T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20068541-mindful-labeling-meditation.mp3",
+        "duration": 527,
+        "published": "2026-11-04T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Nur mal kurz am Handy - Schlecht für mein Baby?",
+        "title": "Rente sichern - Darum beschäftigst du dich so ungern damit!",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/02/d1e22e53-fd4a-4175-a098-0e467cc7aaae/d1e22e53-fd4a-4175-a098-0e467cc7aaae_MP3-128.mp3",
-        "duration": 1183,
-        "published": "2026-11-02T14:00:51.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/02/7417d157-b1de-45f1-90ad-eecd27b7078e/7417d157-b1de-45f1-90ad-eecd27b7078e_MP3-128.mp3",
+        "duration": 1530,
+        "published": "2026-11-03T14:00:36.000Z"
       },
       {
-        "title": "On The Job: The Moth Radio Hour",
+        "title": "That's A Funny Story: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8898047/8898047_2026-10-28-200147.192.mp3?rssID=6066",
-        "duration": 3007,
-        "published": "2026-11-03T08:24:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208751/8208751_2026-04-13-032651.192.mp3?rssID=6066",
+        "duration": 1923,
+        "published": "2026-10-30T07:25:00.000Z",
         "skipShort": true
       }
     ],
