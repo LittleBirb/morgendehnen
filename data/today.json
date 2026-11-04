@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-04T13:12:48.492Z",
+  "updated": "2026-11-04T21:27:31.561Z",
   "channels": {
     "news": [
       {
-        "title": "Kommentar zu den Midterms: Das Ende des Trumpismus? (Wahlkreis-Spezial)",
+        "title": "Die US-Demokraten jubeln. Der Rest der Welt auch? (Update)",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/7c52822f-d6e3-4c31-9845-cdad5fa4c72b/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=7c52822f-d6e3-4c31-9845-cdad5fa4c72b&feed=Xtqjn37O",
-        "duration": 660,
-        "published": "2026-11-04T10:25:24.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/95347e71-56a3-4963-8184-a508de6a99b3/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=95347e71-56a3-4963-8184-a508de6a99b3&feed=Xtqjn37O",
+        "duration": 679,
+        "published": "2026-11-04T16:02:50.000Z"
       },
       {
         "title": "Midterms: Schlappe für Trump / Cyberangriffe auf Supermärkte / Blitzer gegen Handy am Steuer",
@@ -28,11 +28,11 @@
     ],
     "welt": [
       {
-        "title": "Rente sichern - Darum beschäftigst du dich so ungern damit!",
+        "title": "Freundschaften pflegen - Aber wie?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/02/7417d157-b1de-45f1-90ad-eecd27b7078e/7417d157-b1de-45f1-90ad-eecd27b7078e_MP3-128.mp3",
-        "duration": 1530,
-        "published": "2026-11-03T14:00:36.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/04/c4acc836-59fb-478d-8f06-b080a4cbf81c/c4acc836-59fb-478d-8f06-b080a4cbf81c_MP3-128.mp3",
+        "duration": 1231,
+        "published": "2026-11-04T14:00:01.000Z"
       },
       {
         "title": "That's A Funny Story: The Moth Podcast",
@@ -41,6 +41,26 @@
         "duration": 1923,
         "published": "2026-10-30T07:25:00.000Z",
         "skipShort": true
+      }
+    ],
+    "wellness": [
+      {
+        "title": "Drone Zone (SomaFM)",
+        "show": "Drone Zone (SomaFM)",
+        "audio": "https://ice1.somafm.com/dronezone-128-mp3",
+        "live": true
+      },
+      {
+        "title": "Deep Space One (SomaFM)",
+        "show": "Deep Space One (SomaFM)",
+        "audio": "https://ice1.somafm.com/deepspaceone-128-mp3",
+        "live": true
+      },
+      {
+        "title": "Groove Salad (SomaFM)",
+        "show": "Groove Salad (SomaFM)",
+        "audio": "https://ice1.somafm.com/groovesalad-128-mp3",
+        "live": true
       }
     ],
     "radio": [

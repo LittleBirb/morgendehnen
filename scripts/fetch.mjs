@@ -90,8 +90,10 @@ let previous = { channels: {} };
 try { previous = JSON.parse(await readFile(OUT, "utf8")); } catch {}
 
 const channels = {};
+// Live-Streams (Radio, Entspannungsmusik) haben "stream" statt "url" und brauchen keinen Feed-Abruf.
+const isLive = (list) => [].concat(list).some((x) => x && x.stream);
 for (const key of Object.keys(config)) {
-  if (key === "radio") continue;
+  if (isLive(config[key])) continue;
   const eps = await allOf(config[key]);
   if (eps.length) {
     channels[key] = eps;
@@ -101,8 +103,9 @@ for (const key of Object.keys(config)) {
     console.warn(`${key}: behalte vorherigen Eintrag`);
   }
 }
-if (config.radio) {
-  channels.radio = [].concat(config.radio).map((r) => ({ title: r.title, show: r.title, audio: r.stream, live: true }));
+for (const key of Object.keys(config)) {
+  if (!isLive(config[key])) continue;
+  channels[key] = [].concat(config[key]).map((r) => ({ title: r.title, show: r.title, audio: r.stream, live: true }));
 }
 
 const data = { updated: new Date().toISOString(), channels };

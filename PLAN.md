@@ -109,3 +109,12 @@ Podcast und Radio laufen weiter (Lo-Fi klingt aus). Eine zufällige Nachricht au
 - Morgens Handy abstecken → Seite öffnet sich → ein Tipp auf eine Stimmung → Routine und Audio laufen ohne weiteres Zutun bis zum Ende.
 - Jeden Tag läuft automatisch die aktuelle Folge.
 - Ansagen sind trotz Podcast verständlich, ohne dass der Podcast unnötig oft unterbrochen wird.
+
+## Zweite Version „Kraft & Dehnen“ (`schmieren-dehn/`)
+Für die Schwester (gleiche Probleme, macht es nicht morgens). Liegt als Unterordner im selben Repo und nutzt dieselben Daten (`../data/today.json`, gleiche GitHub Action). Adresse: `https://littlebirb.github.io/morgendehnen/schmieren-dehn/`. Eigene `localStorage`-Schlüssel (`kraftdehnen-…`), eigener Fortschritt.
+Unterschiede zur Hauptversion:
+- Überschrift „Kraft & Dehnen“, kein „Guten Morgen“ und keine Morgen-Bezüge in den Texten.
+- Nur drei Stimmungen: **Nachrichten** (tagesschau/Was jetzt?), **Wellness** (Entspannungsmusik: SomaFM Drone Zone, Deep Space One, Groove Salad, laut SomaFM werbefrei, zufällig) und **Nichts** (eigene Musik, z. B. Spotify).
+- **Nichts:** Die Audio-Sitzung wird auf `ambient` gestellt und das stille Hintergrund-Audio nicht gestartet, damit Musik aus anderen Apps weiterläuft. Nicht auf dem iPhone getestet; `ambient` folgt dem Stummschalter, und ob die Sprachansage Spotify kurz unterbricht, hängt von iOS ab. Mit Nachrichten/Wellness übernimmt die App wie bisher den Ton.
+- Im „i“-Fenster und in der Übungsliste steht zu jeder Übung, was sie trainiert und „Warum für dich“.
+- Programm, Haltezeiten, Wochenziel, Gong und Nachrichten-Pool sind gleich.
