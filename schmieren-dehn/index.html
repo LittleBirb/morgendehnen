@@ -957,70 +957,81 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       if (step16 === 0) chordIdx = (chordIdx + 1) % CHORDS.length;
     }
   }
-  /* ---------- Wellness-Musik (Web Audio): weiche Flächen, sanfte Glöckchen, leises Meeresrauschen ---------- */
+  /* ---------- Wellness-Musik (Web Audio): kleine Spieluhr-Melodie mit leichter Begleitung und Echo ---------- */
+  // 60 BPM, vier Takte (C – Am – F – G), kein Bass und keine tiefen Flächen, damit nichts dröhnt.
+  var WELL_BEAT = 1.0;
   var WELL_CHORDS = [
-    [48, 55, 59, 62, 64], // Cmaj9
-    [45, 52, 55, 59, 64], // Am9
-    [41, 48, 52, 57, 60], // Fmaj7
-    [43, 50, 55, 59, 64]  // G6
+    [60, 64, 67, 71],  // Cmaj7
+    [57, 60, 64, 67],  // Am7
+    [60, 65, 69, 72],  // F (add6)
+    [59, 62, 67, 71]   // G6
   ];
-  var CHIME_NOTES = [72, 74, 76, 79, 81, 84]; // Pentatonik, klingt immer harmonisch
-  var wellNextChord = 0, wellNextChime = 0, wellChord = 0, waveNodes = null;
-  function wellPad(t, notes) {
-    var dur = 10;
-    notes.forEach(function (m, i) {
-      var f = mtof(m), g = actx.createGain();
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.linearRampToValueAtTime(0.05, t + 3);
-      g.gain.setValueAtTime(0.05, t + dur - 3.5);
-      g.gain.linearRampToValueAtTime(0.0001, t + dur);
-      var o1 = actx.createOscillator(); o1.type = "sine"; o1.frequency.value = f;
-      var o2 = actx.createOscillator(); o2.type = "triangle"; o2.frequency.value = f * 1.004;
-      var g2 = actx.createGain(); g2.gain.value = 0.35;
-      o1.connect(g); o2.connect(g2); g2.connect(g); g.connect(musicBus);
-      o1.start(t); o2.start(t); o1.stop(t + dur + 0.1); o2.stop(t + dur + 0.1);
-    });
+  var WELL_MELODY = [  // [Schlag, MIDI-Note]: ruhige, singbare Linie, am Ende führt sie zurück zum Anfang
+    [[0, 76], [1, 74], [2, 72], [3, 67]],
+    [[0, 69], [1, 72], [2, 76], [3, 72]],
+    [[0, 77], [1, 76], [2, 72], [3, 69]],
+    [[0, 74], [1, 71], [2, 67], [3, 74]]
+  ];
+  var wellNextBar = 0, wellBar = 0, wellFx = null;
+  function wellPluck(t, midi, peak, decay, wet) {
+    var f = mtof(midi), g = actx.createGain();
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.linearRampToValueAtTime(peak, t + 0.006);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + decay);
+    var o1 = actx.createOscillator(); o1.type = "sine"; o1.frequency.value = f;
+    var o2 = actx.createOscillator(); o2.type = "sine"; o2.frequency.value = f * 4; // heller Anschlag wie bei einer Spieluhr
+    var g2 = actx.createGain(); g2.gain.setValueAtTime(0.14, t); g2.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
+    o1.connect(g); o2.connect(g2); g2.connect(g);
+    g.connect(musicBus);
+    if (wellFx) { var s = actx.createGain(); s.gain.value = wet; g.connect(s); s.connect(wellFx.input); }
+    o1.start(t); o2.start(t); o1.stop(t + decay + 0.1); o2.stop(t + 0.4);
   }
-  function wellChime(t) {
-    var m = CHIME_NOTES[Math.floor(Math.random() * CHIME_NOTES.length)], f = mtof(m);
-    [[0, 0.07], [0.45, 0.028], [0.9, 0.012]].forEach(function (e) { // Chime mit leisem Echo
-      var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = f;
+  function wellPad(t, notes) { // sehr leise, hoch und kurz überblendet, nur als Hauch
+    var dur = 4 * WELL_BEAT + 1.5;
+    notes.forEach(function (m) {
       var g = actx.createGain();
-      g.gain.setValueAtTime(0.0001, t + e[0]);
-      g.gain.linearRampToValueAtTime(e[1], t + e[0] + 0.02);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + e[0] + 3.6);
-      o.connect(g); g.connect(musicBus); o.start(t + e[0]); o.stop(t + e[0] + 3.7);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.linearRampToValueAtTime(0.012, t + 1.2);
+      g.gain.linearRampToValueAtTime(0.0001, t + dur);
+      var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = mtof(m + 12);
+      o.connect(g); g.connect(musicBus); o.start(t); o.stop(t + dur + 0.1);
     });
   }
-  function startWaves() {
-    var src = actx.createBufferSource(); src.buffer = noiseBuf; src.loop = true;
-    var bp = actx.createBiquadFilter(); bp.type = "bandpass"; bp.frequency.value = 520; bp.Q.value = 0.35;
-    var wg = actx.createGain(); wg.gain.value = 0.02;
-    var lfo = actx.createOscillator(); lfo.frequency.value = 0.1;
-    var lg = actx.createGain(); lg.gain.value = 0.017;
-    lfo.connect(lg); lg.connect(wg.gain);
-    src.connect(bp); bp.connect(wg); wg.connect(musicBus);
-    src.start(); lfo.start();
-    waveNodes = [src, lfo];
+  function wellBarPlay(t, bar) {
+    var chord = WELL_CHORDS[bar % 4], mel = WELL_MELODY[bar % 4];
+    wellPad(t, chord);
+    mel.forEach(function (n) { // Melodie, ab und zu eine Note weniger, damit es atmet
+      if (Math.random() < 0.9) wellPluck(t + n[0] * WELL_BEAT + (Math.random() - 0.5) * 0.04, n[1], 0.1, 2.6, 0.45);
+    });
+    [0.5, 1.5, 2.5, 3.5].forEach(function (b, i) { // leise Begleitung auf den Zwischenschlägen
+      if (Math.random() < 0.7) wellPluck(t + b * WELL_BEAT, chord[(i + bar) % chord.length], 0.034, 1.3, 0.3);
+    });
   }
   function wellScheduler() {
-    var now = actx.currentTime;
-    while (wellNextChord < now + 1) {
-      wellPad(wellNextChord, WELL_CHORDS[wellChord]);
-      wellChord = (wellChord + 1) % WELL_CHORDS.length;
-      wellNextChord += 8; // 2 s Überblendung
+    while (wellNextBar < actx.currentTime + 1) {
+      wellBarPlay(wellNextBar, wellBar);
+      wellBar++; wellNextBar += 4 * WELL_BEAT;
     }
-    while (wellNextChime < now + 1) {
-      wellChime(wellNextChime);
-      wellNextChime += 3 + Math.random() * 4;
-    }
+  }
+  function wellFxOn() { // dezentes Echo für Raum, ohne Dröhnen (Tiefen werden abgeschnitten)
+    var input = actx.createGain();
+    var delay = actx.createDelay(1.5); delay.delayTime.value = 0.42;
+    var fb = actx.createGain(); fb.gain.value = 0.38;
+    var lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 2600;
+    var hp = actx.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 350;
+    input.connect(delay); delay.connect(lp); lp.connect(hp); hp.connect(fb); fb.connect(delay); hp.connect(musicBus);
+    wellFx = { input: input, nodes: [input, delay, fb, lp, hp] };
+  }
+  function wellFxOff() {
+    var fx = wellFx; wellFx = null;
+    if (fx) setTimeout(function () { fx.nodes.forEach(function (n) { try { n.disconnect(); } catch (e) {} }); }, 3500);
   }
   function musicTarget() { return musicMuted ? 0 : MUSIC_VOL; }
   function startMusic(style) {
     if (!actx || schedTimer) return;
     if (style === "wellness") {
-      startWaves();
-      wellNextChord = actx.currentTime + 0.1; wellNextChime = actx.currentTime + 4; wellChord = 0;
+      wellFxOn();
+      wellNextBar = actx.currentTime + 0.3; wellBar = 0;
       schedTimer = setInterval(wellScheduler, 200);
     } else {
       if (!crackleSrc) startCrackle();
@@ -1035,10 +1046,9 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     musicBus.gain.cancelScheduledValues(actx.currentTime);
     musicBus.gain.setTargetAtTime(0, actx.currentTime, 0.6);
     var timer = schedTimer; schedTimer = null;
-    var waves = waveNodes; waveNodes = null;
+    wellFxOff();
     setTimeout(function () {
       if (timer) clearInterval(timer);
-      if (waves) waves.forEach(function (n) { try { n.stop(); } catch (e) {} });
       if (!schedTimer && crackleSrc) { try { crackleSrc.stop(); } catch (e) {} crackleSrc = null; }
     }, 2500);
   }
