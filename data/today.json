@@ -1,29 +1,29 @@
 {
-  "updated": "2026-11-04T21:41:06.734Z",
+  "updated": "2026-11-05T12:40:38.155Z",
   "channels": {
     "news": [
       {
-        "title": "Die US-Demokraten jubeln. Der Rest der Welt auch? (Update)",
+        "title": "Generalstreik in Frankreich: Liberté, Égalité, Protesté",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/95347e71-56a3-4963-8184-a508de6a99b3/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=95347e71-56a3-4963-8184-a508de6a99b3&feed=Xtqjn37O",
-        "duration": 679,
-        "published": "2026-11-04T16:02:50.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/3d8f6ae8-0d8a-4803-8476-1bb6be42a48c/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=3d8f6ae8-0d8a-4803-8476-1bb6be42a48c&feed=Xtqjn37O",
+        "duration": 774,
+        "published": "2026-11-05T04:55:00.000Z"
       },
       {
-        "title": "Midterms: Schlappe für Trump / Cyberangriffe auf Supermärkte / Blitzer gegen Handy am Steuer",
+        "title": "Aiwanger tot / Übergriffe in Fahrschulen / Videoüberwachung Schlachthöfe / Betrugsmasche 116117",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/04/9d21e601-fde1-48e8-b365-7cec83c36db6/9d21e601-fde1-48e8-b365-7cec83c36db6_MP3-128.mp3",
-        "duration": 922,
-        "published": "2026-11-04T04:00:29.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/05/b042e6e0-dc5c-42c1-8f2c-9aa370e92737/b042e6e0-dc5c-42c1-8f2c-9aa370e92737_MP3-128.mp3",
+        "duration": 902,
+        "published": "2026-11-05T04:00:22.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Mindful Labeling Meditation",
+        "title": "Phone Breathing",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20068541-mindful-labeling-meditation.mp3",
-        "duration": 527,
-        "published": "2026-11-04T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20068543-phone-breathing.mp3",
+        "duration": 510,
+        "published": "2026-11-05T10:00:00.000Z"
       }
     ],
     "welt": [
@@ -35,11 +35,11 @@
         "published": "2026-11-04T14:00:01.000Z"
       },
       {
-        "title": "That's A Funny Story: The Moth Podcast",
+        "title": "Speaking of Death: The Moth Radio Hour",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208751/8208751_2026-04-13-032651.192.mp3?rssID=6066",
-        "duration": 1923,
-        "published": "2026-10-30T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208752/8208752_2026-04-13-032752.192.mp3?rssID=6066",
+        "duration": 3057,
+        "published": "2026-10-27T07:25:00.000Z",
         "skipShort": true
       }
     ],
