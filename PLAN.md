@@ -118,3 +118,20 @@ Unterschiede zur Hauptversion:
 - **Nichts:** Die Audio-Sitzung wird auf `ambient` gestellt und das stille Hintergrund-Audio nicht gestartet, damit Musik aus anderen Apps weiterläuft. Nicht auf dem iPhone getestet; `ambient` folgt dem Stummschalter, und ob die Sprachansage Spotify kurz unterbricht, hängt von iOS ab. Mit Nachrichten/Wellness übernimmt die App wie bisher den Ton.
 - Im „i“-Fenster und in der Übungsliste steht zu jeder Übung, was sie trainiert und der „Nutzen“. Eigener Nachrichten-Pool: allgemein lebensfroh und gegen Gedankenkreisen.
 - Programm, Haltezeiten, Wochenziel, Gong sind gleich.
+
+### „Kraft & Dehnen“: drei Programme (A, B, C)
+Die Schwester mag Abwechslung. Jede Übung gehört zu einer **Zone** (`slot`); alle Varianten einer Zone trainieren dieselben Muskeln und haben dieselben Zeiten, deshalb ist jedes Programm ca. 12,3 Min. (kurze Runde 4,9 Min.). Nach jeder vollen Runde folgt das nächste Programm (A → B → C → A), die kurze Runde ändert nichts. Der Fortschritt im „i“-Fenster zählt nach Zone und läuft über alle Programme zusammen.
+
+| Zone | A | B | C | Zeit pro Seite |
+|---|---|---|---|---|
+| Brustwirbelsäule | Buch aufklappen (Seitlage) | Vierfüßler-Rotation | Drehung im Sitzen | 45 s |
+| Oberschenkel-Rückseite | Liegend, Handtuch | Bein hoch am Türrahmen | Ferse auf Stuhl, Rücken gerade | 60 s |
+| Hüftbeuger | Kniender Ausfallschritt | Rückenlage an der Bettkante | Stehender Ausfallschritt | 60 s |
+| Brustmuskel (beide Seiten zugleich) | Türrahmen | Hände hinterm Rücken | Ellbogen hinterm Kopf öffnen | 60 s einmal |
+| Wade tief (Soleus) | Wand | Sitzend, Knie nach vorn | Stufe, Ferse senken | 45 s |
+| Fußgewölbe (Kraft) | Kurzer Fuß sitzend | Kurzer Fuß im Stehen | Handtuch-Raffen | 30 s einmal |
+| Hüfte/Gesäß (Kraft) | Seitlage-Beinheben | Einbeinige Brücke | Beinheben im Stand | 30 s |
+| Oberer Rücken (Kraft) | Bauchlage T | Bauchlage Y | Handtuch auseinanderziehen | 45 s einmal |
+| Abschluss | Kindshaltung | Knie zur Brust, wiegen | Beine auf dem Stuhl | 30 s einmal |
+
+Grenzen: Handtuch-Raffen trainiert vor allem die Zehenbeuger, weniger das Gewölbe selbst. Es gibt keine Studie, dass Abwechslung die Wirkung verbessert; sie hilft vermutlich nur beim Dranbleiben. Benötigt werden Stuhl, Handtuch, Türrahmen/Wand, Bettkante und eine Stufe.
