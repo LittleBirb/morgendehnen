@@ -1299,6 +1299,13 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     var out = [], n = 0;
     var ids = PROGRAM[program];
     if (short) ids = ids.filter(function (id) { return SHORT_SLOTS.indexOf(EXERCISES[id].slot) >= 0; });
+    // Reihenfolge bei jedem Start zufällig; nur die Abschluss-Entspannung bleibt am Ende.
+    var body = ids.filter(function (id) { return EXERCISES[id].slot !== "rest"; });
+    var tail = ids.filter(function (id) { return EXERCISES[id].slot === "rest"; });
+    for (var i = body.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1)), tmp = body[i]; body[i] = body[j]; body[j] = tmp;
+    }
+    ids = body.concat(tail);
     ids.forEach(function (id, ei) {
       var ex = EXERCISES[id], hold = short ? ex.short : ex.hold;
       var sides = ex.once ? [""] : SIDES;

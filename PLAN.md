@@ -134,4 +134,6 @@ Die Schwester mag Abwechslung. Jede Übung gehört zu einer **Zone** (`slot`); a
 | Oberer Rücken (Kraft) | Bauchlage T | Bauchlage Y | Handtuch auseinanderziehen | 45 s einmal |
 | Abschluss | Kindshaltung | Knie zur Brust, wiegen | Beine auf dem Stuhl | 30 s einmal |
 
+Die Reihenfolge der Übungen innerhalb eines Programms wird bei jedem Start zufällig gemischt; nur die Abschluss-Entspannung bleibt am Ende (auch in der kurzen Runde).
+
 Grenzen: Handtuch-Raffen trainiert vor allem die Zehenbeuger, weniger das Gewölbe selbst. Es gibt keine Studie, dass Abwechslung die Wirkung verbessert; sie hilft vermutlich nur beim Dranbleiben. Benötigt werden Stuhl, Handtuch, Türrahmen/Wand, Bettkante und eine Stufe.
