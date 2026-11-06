@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kraft &amp; Dehnen</title>
+<title>Schmieren-Dehn</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
@@ -100,7 +100,7 @@ button:focus-visible, summary:focus-visible { outline: 3px solid var(--sun); out
 
 /* Start */
 h1 {
-  font-size: clamp(2.6rem, 11vw, 3.4rem);
+  font-size: clamp(2.1rem, 9.2vw, 3.4rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -109,6 +109,7 @@ h1 {
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
 }
+.subtitle { color: var(--muted); margin: -0.4rem 0 1.25rem; font-size: 0.95rem; }
 h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--sun); font-size: 0.6em; }
 .lede { color: var(--muted); margin: 0 0 1.75rem; max-width: 26rem; }
 
@@ -302,7 +303,8 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
 
 <!-- Startansicht -->
 <main class="wrap" id="home">
-  <h1>Kraft &amp; Dehnen</h1>
+  <h1>Schmieren-Dehn</h1>
+  <p class="subtitle">Kraft &amp; Dehnen</p>
 
   <section class="week" aria-label="Wochenziel">
     <div class="week-head"><div class="wk-title"><strong>Diese Woche</strong><button class="info-btn small js-weekinfo" aria-label="Details zur Woche">i</button></div><span class="js-weekcount">0 von 5 Runden</span></div>
