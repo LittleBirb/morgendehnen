@@ -1,38 +1,38 @@
 {
-  "updated": "2026-11-05T13:26:15.551Z",
+  "updated": "2026-11-06T12:23:40.453Z",
   "channels": {
     "news": [
       {
-        "title": "Generalstreik in Frankreich: Liberté, Égalité, Protesté",
+        "title": "Warum bei den Midterms auch Netanjahu verloren hat",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/3d8f6ae8-0d8a-4803-8476-1bb6be42a48c/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=3d8f6ae8-0d8a-4803-8476-1bb6be42a48c&feed=Xtqjn37O",
-        "duration": 774,
-        "published": "2026-11-05T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/8800efe9-c9d3-447f-9514-788f354417f4/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=8800efe9-c9d3-447f-9514-788f354417f4&feed=Xtqjn37O",
+        "duration": 756,
+        "published": "2026-11-06T04:55:00.000Z"
       },
       {
-        "title": "Aiwanger tot / Übergriffe in Fahrschulen / Videoüberwachung Schlachthöfe / Betrugsmasche 116117",
+        "title": "Polizei ermittelt nach Bergrettung / Schock bei der Nebenkostenabrechnung / Spazierclubs",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/05/b042e6e0-dc5c-42c1-8f2c-9aa370e92737/b042e6e0-dc5c-42c1-8f2c-9aa370e92737_MP3-128.mp3",
-        "duration": 902,
-        "published": "2026-11-05T04:00:22.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/06/bb401363-a0b4-481f-957c-de35827a650d/bb401363-a0b4-481f-957c-de35827a650d_MP3-128.mp3",
+        "duration": 911,
+        "published": "2026-11-06T04:46:17.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Phone Breathing",
+        "title": "Open Monitoring Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20068543-phone-breathing.mp3",
-        "duration": 510,
-        "published": "2026-11-05T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20075794-open-monitoring-meditation.mp3",
+        "duration": 640,
+        "published": "2026-11-06T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Freundschaften pflegen - Aber wie?",
+        "title": "Mehr Zeit beim Arzt - Wäre dann wirklich alles besser?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/04/c4acc836-59fb-478d-8f06-b080a4cbf81c/c4acc836-59fb-478d-8f06-b080a4cbf81c_MP3-128.mp3",
-        "duration": 1231,
-        "published": "2026-11-04T14:00:01.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/05/f6425993-15c3-4801-8083-def8a52dc51f/f6425993-15c3-4801-8083-def8a52dc51f_MP3-128.mp3",
+        "duration": 1523,
+        "published": "2026-11-05T14:00:31.000Z"
       },
       {
         "title": "Speaking of Death: The Moth Radio Hour",
