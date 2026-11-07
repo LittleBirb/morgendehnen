@@ -798,13 +798,24 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     }
     playGong();
   }
+  var gongShape = null;
+  function gongCurve() {
+    if (!gongShape) {
+      gongShape = new Float32Array(2048);
+      for (var i = 0; i < 2048; i++) { var x = i * 2 / 2047 - 1; gongShape[i] = Math.tanh(2.5 * x) / Math.tanh(2.5); }
+    }
+    return gongShape;
+  }
   function playGong() {
     var t = actx.currentTime, g = actx.createGain();
     var lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 1100; lp.Q.value = 0.5;
     g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(0.9, t + 0.06);
+    g.gain.linearRampToValueAtTime(0.62, t + 0.06); // Eingangspegel für die weiche Sättigung unten
     g.gain.exponentialRampToValueAtTime(0.0001, t + 3.6);
-    g.connect(lp); lp.connect(actx.destination);
+    // Weiche Sättigung statt hartem Übersteuern: ca. 25–30 % lauter als vorher, ohne Knacken
+    var shaper = actx.createWaveShaper(); shaper.curve = gongCurve(); shaper.oversample = "4x";
+    var post = actx.createGain(); post.gain.value = 0.95;
+    g.connect(lp); lp.connect(shaper); shaper.connect(post); post.connect(actx.destination);
     [[196, 1], [294.5, 0.45], [393, 0.3], [590, 0.12]].forEach(function (p, i) {
       var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = p[0]; o.detune.value = i ? i * 3 : 0;
       var og = actx.createGain(); og.gain.value = p[1];

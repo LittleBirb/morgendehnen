@@ -137,3 +137,7 @@ Die Schwester mag Abwechslung. Jede Übung gehört zu einer **Zone** (`slot`); a
 Die Reihenfolge der Übungen innerhalb eines Programms wird bei jedem Start zufällig gemischt; nur die Abschluss-Entspannung bleibt am Ende (auch in der kurzen Runde).
 
 Grenzen: Handtuch-Raffen trainiert vor allem die Zehenbeuger, weniger das Gewölbe selbst. Es gibt keine Studie, dass Abwechslung die Wirkung verbessert; sie hilft vermutlich nur beim Dranbleiben. Benötigt werden Stuhl, Handtuch, Türrahmen/Wand, Bettkante und eine Stufe.
+
+
+### Gong-Lautstärke
+Der Gong lief vorher bei Spitzenwerten um 1,7 und damit hart übersteuert. Jetzt: Eingangspegel 0,62, weiche Sättigung (WaveShaper, tanh) und Ausgangspegel 0,95. Messung offline: ca. 24–27 % mehr Lautstärke (RMS) bei Spitze 0,95; in der App gemessen RMS ca. 0,32 gegenüber 0,27 vorher. Der Hintergrund (Podcast/Radio) lässt sich auf iOS nicht leiser stellen (olume ist schreibgeschützt), deshalb wurde der Gong angehoben. In beiden Versionen gleich.
