@@ -1,45 +1,45 @@
 {
-  "updated": "2026-11-06T13:09:36.527Z",
+  "updated": "2026-11-07T11:16:49.550Z",
   "channels": {
     "news": [
       {
-        "title": "Warum bei den Midterms auch Netanjahu verloren hat",
+        "title": "Deshalb verlieren Autokraten gerade weltweit Wahlen",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/8800efe9-c9d3-447f-9514-788f354417f4/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=8800efe9-c9d3-447f-9514-788f354417f4&feed=Xtqjn37O",
-        "duration": 756,
-        "published": "2026-11-06T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/46ac57c2-8284-4130-aceb-8d3795669df2/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=46ac57c2-8284-4130-aceb-8d3795669df2&feed=Xtqjn37O",
+        "duration": 778,
+        "published": "2026-11-07T04:55:00.000Z"
       },
       {
-        "title": "Polizei ermittelt nach Bergrettung / Schock bei der Nebenkostenabrechnung / Spazierclubs",
+        "title": "Polizei ermittelt nach Bergrettung",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/06/bb401363-a0b4-481f-957c-de35827a650d/bb401363-a0b4-481f-957c-de35827a650d_MP3-128.mp3",
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/06/00ffcaeb-b61e-4295-8646-819a7a49319c/00ffcaeb-b61e-4295-8646-819a7a49319c_MP3-128.mp3",
         "duration": 911,
         "published": "2026-11-06T04:46:17.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Open Monitoring Meditation",
+        "title": "Walking Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20075794-open-monitoring-meditation.mp3",
-        "duration": 640,
-        "published": "2026-11-06T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20075801-walking-meditation.mp3",
+        "duration": 606,
+        "published": "2026-11-07T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Mehr Zeit beim Arzt - Wäre dann wirklich alles besser?",
+        "title": "Karrierewechsel - Neuer Job, neues Glück?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/05/f6425993-15c3-4801-8083-def8a52dc51f/f6425993-15c3-4801-8083-def8a52dc51f_MP3-128.mp3",
-        "duration": 1523,
-        "published": "2026-11-05T14:00:31.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/05/9cf4d3e8-e64f-4a00-89e7-227ffb60b669/9cf4d3e8-e64f-4a00-89e7-227ffb60b669_MP3-128.mp3",
+        "duration": 2124,
+        "published": "2026-11-06T14:00:02.000Z"
       },
       {
-        "title": "Speaking of Death: The Moth Radio Hour",
+        "title": "Ghosted: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208752/8208752_2026-04-13-032752.192.mp3?rssID=6066",
-        "duration": 3057,
-        "published": "2026-10-27T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208748/8208748_2026-04-13-032548.192.mp3?rssID=6066",
+        "duration": 1349,
+        "published": "2026-10-23T07:25:00.000Z",
         "skipShort": true
       }
     ],
