@@ -1,29 +1,29 @@
 {
-  "updated": "2026-11-08T12:06:26.207Z",
+  "updated": "2026-11-09T13:16:04.375Z",
   "channels": {
     "news": [
       {
-        "title": "Was Sie jetzt über Ilse Aigner wissen müssen",
+        "title": "Türkei oder Australien – Hauptsache Klimakonferenz",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/5bfad71c-a83f-4cff-b62e-14705dc2253e/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=5bfad71c-a83f-4cff-b62e-14705dc2253e&feed=Xtqjn37O",
-        "duration": 841,
-        "published": "2026-11-08T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/8d48d203-062c-4792-9df3-a86740fefcb8/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=8d48d203-062c-4792-9df3-a86740fefcb8&feed=Xtqjn37O",
+        "duration": 744,
+        "published": "2026-11-09T04:55:00.000Z"
       },
       {
-        "title": "Ermittlungen nach Bergrettung /Schock bei Nebenkostenabrechnung / Spazierclubs",
+        "title": "Ilse Aigner wird wohl Bundespräsidentin / Demokratie-Umfrage / Verschleppter Infekt",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/06/00ffcaeb-b61e-4295-8646-819a7a49319c/00ffcaeb-b61e-4295-8646-819a7a49319c_MP3-128.mp3",
-        "duration": 911,
-        "published": "2026-11-06T04:46:17.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/09/45a6a517-0cc3-4b9b-b8bc-c84f2dee1a10/45a6a517-0cc3-4b9b-b8bc-c84f2dee1a10_MP3-128.mp3",
+        "duration": 900,
+        "published": "2026-11-09T05:00:26.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Meditation on Impermanence",
+        "title": "Meditation for Relaxation & Stress Release",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20075806-meditation-on-impermanence.mp3",
-        "duration": 589,
-        "published": "2026-11-08T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20075811-meditation-for-relaxation-stress-release.mp3",
+        "duration": 638,
+        "published": "2026-11-09T10:00:00.000Z"
       }
     ],
     "welt": [
@@ -35,11 +35,11 @@
         "published": "2026-11-06T14:00:02.000Z"
       },
       {
-        "title": "Mortality: The Moth Radio Hour",
+        "title": "Looking the Part: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208753/8208753_2026-04-13-032753.192.mp3?rssID=6066",
-        "duration": 3043,
-        "published": "2026-10-20T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208747/8208747_2026-04-13-032447.192.mp3?rssID=6066",
+        "duration": 876,
+        "published": "2026-10-16T07:25:00.000Z",
         "skipShort": true
       }
     ],
