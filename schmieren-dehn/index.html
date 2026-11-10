@@ -109,6 +109,7 @@ h1 {
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
 }
+.diag { color: var(--muted); font-size: 0.7rem; opacity: 0.85; margin: 0.9rem 0 0; word-break: break-word; }
 .subtitle { color: var(--muted); margin: -0.4rem 0 1.25rem; font-size: 0.95rem; }
 h1::after { content: " ✿"; -webkit-text-fill-color: var(--sun); color: var(--sun); font-size: 0.6em; }
 .lede { color: var(--muted); margin: 0 0 1.75rem; max-width: 26rem; }
@@ -332,6 +333,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     <p class="fine">„Rechts“ und „links“ meinen immer die Seite, die du gerade dehnst oder trainierst. Dehn sanft bis zu einem deutlichen Ziehen, nie bis es wehtut, und nicht wippen. Wie stark du dehnst, macht laut Studien kaum einen Unterschied; die Zeit pro Muskel zählt.</p>
     <p class="fine">Kein Ton? Prüf den Stummschalter am iPhone.</p>
   </details>
+  <p class="diag js-diag"></p>
 </main>
 
 <!-- Übungsansicht -->
@@ -362,6 +364,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   <p class="next js-next"></p>
   <p class="now js-now"></p>
   <p class="notice js-notice" role="status" hidden></p>
+  <p class="diag js-diag"></p>
 
   <div class="controls">
     <button class="ctrl main" id="pause">Pause</button>
@@ -897,21 +900,36 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   var hasSpeech = "speechSynthesis" in window, sayToken = 0, podHeld = false;
 
   /* ---------- Aufgenommene Stimme (voice/*.wav, mit Piper erzeugt), Rückfall auf die Handy-Stimme ---------- */
-  var voiceMap = null, voiceBufs = {}, voiceLoading = {}, voiceNodes = [], pendingMsg = null;
+  var voiceMap = null, voiceBufs = {}, voiceLoading = {}, voiceRaw = {}, voiceNodes = [], pendingMsg = null;
+  // Kleine Statuszeile (Startseite und Übungsansicht), damit man auf dem Handy sieht, was gerade passiert
+  var diag = { voice: "lädt …", last: "–", gong: "–" };
+  function renderDiag() {
+    var txt = "Stimme: " + diag.voice + " · Ton: " + (actx ? actx.state : "aus") + " · zuletzt: " + diag.last + " · Gong: " + diag.gong;
+    document.querySelectorAll(".js-diag").forEach(function (el) { el.textContent = txt; });
+  }
   var VOICE_CONSTANTS = ["Los geht's mit:", "Als Nächstes:", "Seite wechseln.", "Und halten.", "Noch zehn Sekunden.", "Geschafft.", "rechte Seite", "linke Seite"];
   try {
-    fetch("voice/manifest.json").then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (m) { voiceMap = m; }).catch(function () { voiceMap = null; });
+    fetch("voice/manifest.json").then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (m) { voiceMap = m; diag.voice = "Aufnahme bereit (" + Object.keys(m).length + ")"; renderDiag(); prefetchVoice(); })
+      .catch(function (e) { voiceMap = null; diag.voice = "Handy-Stimme (Aufnahme: " + (e && e.message) + ")"; renderDiag(); });
   } catch (e) {}
-  // Lädt und dekodiert eine Sprachdatei (nur einmal).
+  // Lädt die Bytes einer Sprachdatei schon vor dem ersten Tipp (ohne AudioContext), damit der Start schnell geht.
+  function rawClip(file) {
+    if (!voiceRaw[file]) {
+      voiceRaw[file] = fetch("voice/" + file)
+        .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.arrayBuffer(); })
+        .catch(function (e) { delete voiceRaw[file]; throw e; });
+    }
+    return voiceRaw[file];
+  }
+  // Dekodiert eine Sprachdatei (nur einmal).
   function ensureClip(file) {
     if (voiceBufs[file]) return Promise.resolve(voiceBufs[file]);
     if (!voiceLoading[file]) {
-      voiceLoading[file] = fetch("voice/" + file)
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+      voiceLoading[file] = rawClip(file)
         .then(function (ab) {
           return new Promise(function (res, rej) {
-            var p = actx.decodeAudioData(ab, res, rej);
+            var p = actx.decodeAudioData(ab.slice(0), res, rej);
             if (p && p.catch) p.catch(rej);
           });
         })
@@ -919,6 +937,10 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
         .catch(function (e) { delete voiceLoading[file]; throw e; });
     }
     return voiceLoading[file];
+  }
+  function prefetchVoice() {
+    if (!voiceMap) return;
+    programVoiceTexts().forEach(function (t) { var f = voiceMap[t]; if (f) rawClip(f).catch(function () {}); });
   }
   function preloadVoice(texts) {
     if (!voiceMap || !actx) return;
@@ -978,12 +1000,15 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     if (pauseAudio) { podHeld = true; podPause(); setTimeout(done, 30000); }
     var files = voiceMap && actx ? parts.map(function (p) { return voiceMap[p]; }) : null;
     if (files && files.every(Boolean)) {
-      var limit = new Promise(function (_, rej) { setTimeout(function () { rej(new Error("zu langsam")); }, 2500); });
+      var limit = new Promise(function (_, rej) { setTimeout(function () { rej(new Error("zu langsam")); }, 5000); });
       Promise.race([Promise.all(files.map(ensureClip)), limit]).then(function (bufs) {
-        if (my === sayToken && !finished) playClips(bufs, done);
-      }).catch(function () { if (my === sayToken && !finished) speakSynth(parts, my, done); });
+        if (my === sayToken && !finished) { diag.last = "Aufnahme"; renderDiag(); playClips(bufs, done); }
+      }).catch(function (e) {
+        if (my === sayToken && !finished) { diag.last = "Handy-Stimme (" + (e && e.message) + ")"; renderDiag(); speakSynth(parts, my, done); }
+      });
       return;
     }
+    diag.last = "Handy-Stimme (" + (voiceMap ? "Satz ohne Aufnahme" : "keine Aufnahmen geladen") + ")"; renderDiag();
     speakSynth(parts, my, done);
   }
 
@@ -1078,36 +1103,36 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   // Tiefer, weicher Klangschalen-Gong. Nach einer Sprachausgabe kann iOS den AudioContext
   // unterbrechen – deshalb vorher bei Bedarf wieder aufwecken.
   function gong() {
-    if (!actx) return;
+    if (!actx) { diag.gong = "kein Audio"; renderDiag(); return; }
     if (actx.state !== "running") {
-      try { actx.resume().then(playGong).catch(function () {}); } catch (e) {}
+      try { actx.resume().then(function () { playGong(); }).catch(function (e) { diag.gong = "resume: " + (e && e.message); renderDiag(); }); } catch (e) {}
       return;
     }
     playGong();
   }
-  var gongShape = null;
-  function gongCurve() {
-    if (!gongShape) {
-      gongShape = new Float32Array(2048);
-      for (var i = 0; i < 2048; i++) { var x = i * 2 / 2047 - 1; gongShape[i] = Math.tanh(2.5 * x) / Math.tanh(2.5); }
+  // Der Gong wird einmal als Klangdatei im Speicher berechnet (weiche Töne mit sanfter Sättigung) und dann wie die
+  // Sprachdateien abgespielt. Das ist auf dem iPhone robuster als eine Kette aus Oszillatoren und Filtern.
+  var gongBuf = null, gongRate = 0;
+  function makeGongBuffer() {
+    var sr = actx.sampleRate, len = Math.floor(sr * 3.8), buf = actx.createBuffer(1, len, sr), d = buf.getChannelData(0);
+    var partials = [[196, 1], [294.5, 0.45], [393, 0.3], [590, 0.12]], norm = Math.tanh(2.5);
+    for (var i = 0; i < len; i++) {
+      var t = i / sr;
+      var env = t < 0.06 ? 0.62 * t / 0.06 : 0.62 * Math.pow(0.0001 / 0.62, (t - 0.06) / 3.54);
+      var s = 0;
+      for (var k = 0; k < partials.length; k++) s += partials[k][1] * Math.sin(2 * Math.PI * partials[k][0] * (1 + k * 0.0017) * t);
+      var x = Math.max(-1, Math.min(1, s * env));
+      d[i] = 0.95 * Math.tanh(2.5 * x) / norm;
     }
-    return gongShape;
+    return buf;
   }
   function playGong() {
-    var t = actx.currentTime, g = actx.createGain();
-    var lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 1100; lp.Q.value = 0.5;
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(0.62, t + 0.06); // Eingangspegel für die weiche Sättigung unten
-    g.gain.exponentialRampToValueAtTime(0.0001, t + 3.6);
-    // Weiche Sättigung statt hartem Übersteuern: ca. 25–30 % lauter als vorher, ohne Knacken
-    var shaper = actx.createWaveShaper(); shaper.curve = gongCurve(); shaper.oversample = "4x";
-    var post = actx.createGain(); post.gain.value = 0.95;
-    g.connect(lp); lp.connect(shaper); shaper.connect(post); post.connect(actx.destination);
-    [[196, 1], [294.5, 0.45], [393, 0.3], [590, 0.12]].forEach(function (p, i) {
-      var o = actx.createOscillator(); o.type = "sine"; o.frequency.value = p[0]; o.detune.value = i ? i * 3 : 0;
-      var og = actx.createGain(); og.gain.value = p[1];
-      o.connect(og); og.connect(g); o.start(t); o.stop(t + 3.7);
-    });
+    try {
+      if (!gongBuf || gongRate !== actx.sampleRate) { gongBuf = makeGongBuffer(); gongRate = actx.sampleRate; }
+      var src = actx.createBufferSource(); src.buffer = gongBuf; src.connect(actx.destination); src.start();
+      diag.gong = "ok";
+    } catch (e) { diag.gong = "Fehler: " + (e && e.message); }
+    renderDiag();
   }
 
   /* ---------- Lo-Fi-Musik (Web Audio) ---------- */
@@ -1392,6 +1417,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     program = p;
     try { localStorage.setItem("kraftdehnen-next", p); } catch (e) {}
     renderProgram();
+    prefetchVoice();
   }
 
   function buildSteps(short) {
@@ -1448,6 +1474,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     // Sprachdateien für dieses Programm und den Schlusssatz schon laden, damit die Stimme nicht wechselt
     pendingMsg = AFFIRMATIONS[Math.floor(Math.random() * AFFIRMATIONS.length)];
     preloadVoice(programVoiceTexts().concat([pendingMsg]));
+    renderDiag();
     soundMuted = false; musicMuted = false; setMuteLabel();
     running = true; pausedAt = null; podHeld = false; afterglow = false;
     el.doneNow.hidden = el.stopAudio.hidden = true;
@@ -1597,6 +1624,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
 
   document.getElementById("swapProg").addEventListener("click", function () { setProgram(nextProgram()); });
   renderProgram();
+  renderDiag();
   document.getElementById("stop").addEventListener("click", stop);
   document.getElementById("back").addEventListener("click", function () { endAfterglow(); show(home); });
   el.stopAudio.addEventListener("click", endAfterglow);
