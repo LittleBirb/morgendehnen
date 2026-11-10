@@ -141,3 +141,7 @@ Grenzen: Handtuch-Raffen trainiert vor allem die Zehenbeuger, weniger das Gewöl
 
 ### Gong-Lautstärke
 Der Gong lief vorher bei Spitzenwerten um 1,7 und damit hart übersteuert. Jetzt: Eingangspegel 0,62, weiche Sättigung (WaveShaper, tanh) und Ausgangspegel 0,95. Messung offline: ca. 24–27 % mehr Lautstärke (RMS) bei Spitze 0,95; in der App gemessen RMS ca. 0,32 gegenüber 0,27 vorher. Der Hintergrund (Podcast/Radio) lässt sich auf iOS nicht leiser stellen (olume ist schreibgeschützt), deshalb wurde der Gong angehoben. In beiden Versionen gleich.
+
+
+### Stimme in „Schmieren-Dehn“
+Sprechtempo 0,9 statt 0,95. Die Standardstimme wird nach Qualität gewählt (Premium/Enhanced/Erweitert zuerst, die einfache Standardstimme „Anna“ zuletzt). Unter „Die Übungen“ gibt es eine Auswahl der deutschen Stimmen des Geräts mit „Probe hören“; die Wahl wird gespeichert. Grenze: Safari am iPhone zeigt Webseiten oft nur wenige Stimmen, heruntergeladene Premium-Stimmen erscheinen dort nicht zuverlässig. Auf dem iPhone nicht getestet.

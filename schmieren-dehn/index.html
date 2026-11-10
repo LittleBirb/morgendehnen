@@ -331,6 +331,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     <ol class="list" id="exList"></ol>
     <p class="fine">„Rechts“ und „links“ meinen immer die Seite, die du gerade dehnst oder trainierst. Dehn sanft bis zu einem deutlichen Ziehen, nie bis es wehtut, und nicht wippen. Wie stark du dehnst, macht laut Studien kaum einen Unterschied; die Zeit pro Muskel zählt.</p>
     <p class="fine">Kein Ton? Prüf den Stummschalter am iPhone.</p>
+    <p class="fine" id="voiceRow" hidden>Klingt die Stimme blechern? Probier eine andere: <select id="voiceSel" aria-label="Stimme"></select> <button class="ghost" id="voiceTest" type="button">Probe hören</button></p>
   </details>
 </main>
 
@@ -861,17 +862,47 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   });
 
   /* ---------- Sprache ---------- */
-  var deVoice = null;
+  var deVoice = null, deVoices = [], VOICE_KEY = "kraftdehnen-voicename";
+  // Bewertung: hochwertige Stimmen zuerst (falls das Gerät sie anbietet), die einfache Standard-Stimme „Anna“ zuletzt.
+  function voiceScore(v) {
+    var n = v.name.toLowerCase(), s = /^de[-_]de/i.test(v.lang) ? 5 : 0;
+    if (/premium|enhanced|erweitert|verbessert|neural|natural/.test(n)) s += 100;
+    if (/siri/.test(n)) s += 60;
+    [["helena", 30], ["katja", 26], ["petra", 25], ["yannick", 20], ["markus", 15], ["anna", 10]].forEach(function (p) { if (n.indexOf(p[0]) >= 0) s += p[1]; });
+    return s;
+  }
+  function fillVoiceSelect() {
+    var sel = document.getElementById("voiceSel"), row = document.getElementById("voiceRow");
+    if (!sel || !row) return;
+    row.hidden = deVoices.length < 1;
+    sel.textContent = "";
+    deVoices.forEach(function (v) {
+      var o = document.createElement("option");
+      o.value = v.name; o.textContent = v.name + (v.localService ? "" : " (online)");
+      o.selected = !!deVoice && v.name === deVoice.name;
+      sel.appendChild(o);
+    });
+  }
   function pickVoice() {
     if (!("speechSynthesis" in window)) return;
-    var vs = speechSynthesis.getVoices().filter(function (v) { return /^de/i.test(v.lang); });
-    deVoice = vs.find(function (v) { return /anna|petra|helena|katja/i.test(v.name); }) ||
-              vs.find(function (v) { return v.localService; }) || vs[0] || null;
+    deVoices = speechSynthesis.getVoices().filter(function (v) { return /^de/i.test(v.lang); });
+    var saved = null; try { saved = localStorage.getItem(VOICE_KEY); } catch (e) {}
+    deVoice = deVoices.filter(function (v) { return v.name === saved; })[0] ||
+              deVoices.slice().sort(function (a, b) { return voiceScore(b) - voiceScore(a); })[0] || null;
+    fillVoiceSelect();
   }
   if ("speechSynthesis" in window) {
     pickVoice();
     speechSynthesis.onvoiceschanged = pickVoice;
   }
+  document.getElementById("voiceSel").addEventListener("change", function (e) {
+    deVoice = deVoices.filter(function (v) { return v.name === e.target.value; })[0] || deVoice;
+    try { localStorage.setItem(VOICE_KEY, e.target.value); } catch (er) {}
+    say("Los geht’s: Hüftbeuger, rechte Seite. Das Knie bleibt über dem Fuß.", false);
+  });
+  document.getElementById("voiceTest").addEventListener("click", function () {
+    say("Los geht’s: Hüftbeuger, rechte Seite. Das Knie bleibt über dem Fuß.", false);
+  });
   var hasSpeech = "speechSynthesis" in window, sayToken = 0, podHeld = false;
   // Bricht laufende Ansage ab; setzt den Podcast fort, falls er für die Ansage pausiert war.
   function cancelSpeech(keepHeld) {
@@ -893,7 +924,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     var u = new SpeechSynthesisUtterance(text);
     u.lang = "de-DE";
     if (deVoice) u.voice = deVoice;
-    u.rate = 0.95;
+    u.rate = 0.9; // etwas langsamer klingt weniger abgehackt
     u.onstart = function () { if (my === sayToken) duck(true); };
     u.onend = done;
     u.onerror = done;
