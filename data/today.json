@@ -1,38 +1,38 @@
 {
-  "updated": "2026-11-09T14:13:36.345Z",
+  "updated": "2026-11-10T12:54:15.551Z",
   "channels": {
     "news": [
       {
-        "title": "Türkei oder Australien – Hauptsache Klimakonferenz",
+        "title": "Friedensverhandlungen: Donald Trump probiert es wieder",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/8d48d203-062c-4792-9df3-a86740fefcb8/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=8d48d203-062c-4792-9df3-a86740fefcb8&feed=Xtqjn37O",
-        "duration": 744,
-        "published": "2026-11-09T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/a8b79791-5360-453e-8c34-56078d376d5f/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=a8b79791-5360-453e-8c34-56078d376d5f&feed=Xtqjn37O",
+        "duration": 780,
+        "published": "2026-11-10T04:55:00.000Z"
       },
       {
-        "title": "Ilse Aigner wird wohl Bundespräsidentin / Demokratie-Umfrage / Verschleppter Infekt",
+        "title": "Boom der KI-Rechenzentren / Bratwurststeuer für Feuerwehren? / Abwrackprämie für Weinberge",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/09/45a6a517-0cc3-4b9b-b8bc-c84f2dee1a10/45a6a517-0cc3-4b9b-b8bc-c84f2dee1a10_MP3-128.mp3",
-        "duration": 900,
-        "published": "2026-11-09T05:00:26.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/10/2eca4112-a2af-443e-8016-489953ee71be/2eca4112-a2af-443e-8016-489953ee71be_MP3-128.mp3",
+        "duration": 905,
+        "published": "2026-11-10T05:00:46.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Meditation for Relaxation & Stress Release",
+        "title": "Mindfulness Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20075811-meditation-for-relaxation-stress-release.mp3",
-        "duration": 638,
-        "published": "2026-11-09T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20089689-mindfulness-meditation.mp3",
+        "duration": 544,
+        "published": "2026-11-10T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Karrierewechsel - Neuer Job, neues Glück?",
+        "title": "Vitamin D - Muss ich jetzt supplementieren?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/05/9cf4d3e8-e64f-4a00-89e7-227ffb60b669/9cf4d3e8-e64f-4a00-89e7-227ffb60b669_MP3-128.mp3",
-        "duration": 2124,
-        "published": "2026-11-06T14:00:02.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/05/7f969507-f79a-4250-b95b-0385f176a25d/7f969507-f79a-4250-b95b-0385f176a25d_MP3-128.mp3",
+        "duration": 1428,
+        "published": "2026-11-09T14:00:29.000Z"
       },
       {
         "title": "Looking the Part: The Moth Podcast",
