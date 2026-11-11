@@ -1,45 +1,45 @@
 {
-  "updated": "2026-11-10T13:42:00.118Z",
+  "updated": "2026-11-11T12:04:20.088Z",
   "channels": {
     "news": [
       {
-        "title": "Friedensverhandlungen: Donald Trump probiert es wieder",
+        "title": "Weltklimakonferenz: Und wo ist Merz?",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/a8b79791-5360-453e-8c34-56078d376d5f/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=a8b79791-5360-453e-8c34-56078d376d5f&feed=Xtqjn37O",
-        "duration": 780,
-        "published": "2026-11-10T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/1f538ded-f2ee-494d-bdb8-bde3e61c2c84/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=1f538ded-f2ee-494d-bdb8-bde3e61c2c84&feed=Xtqjn37O",
+        "duration": 729,
+        "published": "2026-11-11T05:00:00.000Z"
       },
       {
-        "title": "Boom der KI-Rechenzentren / Bratwurststeuer für Feuerwehren? / Abwrackprämie für Weinberge",
+        "title": "Influencer-Werbung in der Kritik / Rekord bei Sportvereinen / Passkeys besser als Passwort",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/10/2eca4112-a2af-443e-8016-489953ee71be/2eca4112-a2af-443e-8016-489953ee71be_MP3-128.mp3",
-        "duration": 905,
-        "published": "2026-11-10T05:00:46.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/11/f8ae8d05-a42f-4973-a10c-65ec4a00faf7/f8ae8d05-a42f-4973-a10c-65ec4a00faf7_MP3-128.mp3",
+        "duration": 911,
+        "published": "2026-11-11T05:00:54.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Mindfulness Meditation",
+        "title": "Yoga Nidra",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20089689-mindfulness-meditation.mp3",
-        "duration": 544,
-        "published": "2026-11-10T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20104821-yoga-nidra.mp3",
+        "duration": 836,
+        "published": "2026-11-11T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Vitamin D - Muss ich jetzt supplementieren?",
+        "title": "Blutzucker-Spitzen - Muss ich die genauer kontrollieren?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/05/7f969507-f79a-4250-b95b-0385f176a25d/7f969507-f79a-4250-b95b-0385f176a25d_MP3-128.mp3",
-        "duration": 1428,
-        "published": "2026-11-09T14:00:29.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/10/3bb5a3b6-024a-4956-a397-89522cfaa085/3bb5a3b6-024a-4956-a397-89522cfaa085_MP3-128.mp3",
+        "duration": 1583,
+        "published": "2026-11-10T14:00:02.000Z"
       },
       {
-        "title": "Looking the Part: The Moth Podcast",
+        "title": "Squaring Up: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208747/8208747_2026-04-13-032447.192.mp3?rssID=6066",
-        "duration": 876,
-        "published": "2026-10-16T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208745/8208745_2026-04-13-032145.192.mp3?rssID=6066",
+        "duration": 944,
+        "published": "2026-10-09T07:25:00.000Z",
         "skipShort": true
       }
     ],
