@@ -1,45 +1,45 @@
 {
-  "updated": "2026-11-11T12:54:05.176Z",
+  "updated": "2026-11-12T13:08:18.243Z",
   "channels": {
     "news": [
       {
-        "title": "Weltklimakonferenz: Und wo ist Merz?",
+        "title": "Getötete Soldaten: Zahlen, die Putin nie preisgeben wollte",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/1f538ded-f2ee-494d-bdb8-bde3e61c2c84/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=1f538ded-f2ee-494d-bdb8-bde3e61c2c84&feed=Xtqjn37O",
-        "duration": 729,
-        "published": "2026-11-11T05:00:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/dd2e2a93-8afc-469a-9893-c1a103ca3582/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=dd2e2a93-8afc-469a-9893-c1a103ca3582&feed=Xtqjn37O",
+        "duration": 769,
+        "published": "2026-11-12T04:55:00.000Z"
       },
       {
-        "title": "Influencer-Werbung in der Kritik / Rekord bei Sportvereinen / Passkeys besser als Passwort",
+        "title": "Regierung ändert Steuerpläne / Sexuelle Gewalt in der Bundeswehr / EU gegen digitale Tricks",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/11/f8ae8d05-a42f-4973-a10c-65ec4a00faf7/f8ae8d05-a42f-4973-a10c-65ec4a00faf7_MP3-128.mp3",
-        "duration": 911,
-        "published": "2026-11-11T05:00:54.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/12/460b36e7-baf6-4499-8bbc-e41e30408f37/460b36e7-baf6-4499-8bbc-e41e30408f37_MP3-128.mp3",
+        "duration": 926,
+        "published": "2026-11-12T05:00:02.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Yoga Nidra",
+        "title": "Open Eye Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20104821-yoga-nidra.mp3",
-        "duration": 836,
-        "published": "2026-11-11T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20104828-open-eye-meditation.mp3",
+        "duration": 580,
+        "published": "2026-11-12T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Blutzucker-Spitzen - Muss ich die genauer kontrollieren?",
+        "title": "Kunst und Kultur - Stärkt das wirklich Geist und Intellekt?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/10/3bb5a3b6-024a-4956-a397-89522cfaa085/3bb5a3b6-024a-4956-a397-89522cfaa085_MP3-128.mp3",
-        "duration": 1583,
-        "published": "2026-11-10T14:00:02.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/11/d00192e5-0a58-483d-8df4-8f0d64329855/d00192e5-0a58-483d-8df4-8f0d64329855_MP3-128.mp3",
+        "duration": 1565,
+        "published": "2026-11-11T14:00:02.000Z"
       },
       {
-        "title": "Squaring Up: The Moth Podcast",
+        "title": "A Love Note to NJ: The Moth Radio Hour",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208745/8208745_2026-04-13-032145.192.mp3?rssID=6066",
-        "duration": 944,
-        "published": "2026-10-09T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208755/8208755_2026-04-13-033155.192.mp3?rssID=6066",
+        "duration": 3015,
+        "published": "2026-10-06T07:25:00.000Z",
         "skipShort": true
       }
     ],
