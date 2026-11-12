@@ -903,8 +903,15 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
   var voiceMap = null, voiceBufs = {}, voiceLoading = {}, voiceRaw = {}, voiceNodes = [], pendingMsg = null;
   // Kleine Statuszeile (Startseite und Übungsansicht), damit man auf dem Handy sieht, was gerade passiert
   var diag = { voice: "lädt …", last: "–", gong: "–" };
+  var voiceNoticeShown = false;
+  // Sichtbarer Hinweis (einmal pro Runde), wenn statt der Aufnahme die Handy-Stimme spricht
+  function voiceFallbackNotice(reason) {
+    if (voiceNoticeShown) return;
+    voiceNoticeShown = true;
+    setNotice("Aufnahme-Stimme nicht verfügbar (" + reason + "), es spricht die Handy-Stimme.");
+  }
   function renderDiag() {
-    var txt = "Stimme: " + diag.voice + " · Ton: " + (actx ? actx.state : "aus") + " · zuletzt: " + diag.last + " · Gong: " + diag.gong;
+    var txt = "v2026-11-12 · Stimme: " + diag.voice + " · Ton: " + (actx ? actx.state : "aus") + " · zuletzt: " + diag.last + " · Gong: " + diag.gong;
     document.querySelectorAll(".js-diag").forEach(function (el) { el.textContent = txt; });
   }
   var VOICE_CONSTANTS = ["Los geht's mit:", "Als Nächstes:", "Seite wechseln.", "Und halten.", "Noch zehn Sekunden.", "Geschafft.", "rechte Seite", "linke Seite"];
@@ -1004,11 +1011,12 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
       Promise.race([Promise.all(files.map(ensureClip)), limit]).then(function (bufs) {
         if (my === sayToken && !finished) { diag.last = "Aufnahme"; renderDiag(); playClips(bufs, done); }
       }).catch(function (e) {
-        if (my === sayToken && !finished) { diag.last = "Handy-Stimme (" + (e && e.message) + ")"; renderDiag(); speakSynth(parts, my, done); }
+        if (my === sayToken && !finished) { diag.last = "Handy-Stimme (" + (e && e.message) + ")"; renderDiag(); voiceFallbackNotice((e && e.message) || "Fehler"); speakSynth(parts, my, done); }
       });
       return;
     }
     diag.last = "Handy-Stimme (" + (voiceMap ? "Satz ohne Aufnahme" : "keine Aufnahmen geladen") + ")"; renderDiag();
+    voiceFallbackNotice(voiceMap ? "Satz ohne Aufnahme" : "Aufnahmen nicht geladen: " + diag.voice);
     speakSynth(parts, my, done);
   }
 
@@ -1478,6 +1486,7 @@ ol.list li span { color: var(--muted); font-size: 0.95rem; }
     soundMuted = false; musicMuted = false; setMuteLabel();
     running = true; pausedAt = null; podHeld = false; afterglow = false;
     el.doneNow.hidden = el.stopAudio.hidden = true;
+    voiceNoticeShown = false;
     setNotice(""); el.now.textContent = "";
     var synth = chosen === "lofi" || chosen === "wellness"; // Musik wird in der App erzeugt, kein Stream, keine Werbung
     var eps = (synth || own) ? [] : episodesFor(chosen);
