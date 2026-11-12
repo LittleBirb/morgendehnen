@@ -122,17 +122,19 @@ Unterschiede zur Hauptversion:
 ### „Kraft & Dehnen“: drei Programme (A, B, C)
 Die Schwester mag Abwechslung. Jede Übung gehört zu einer **Zone** (`slot`); alle Varianten einer Zone trainieren dieselben Muskeln und haben dieselben Zeiten, deshalb ist jedes Programm ca. 12,3 Min. (kurze Runde 4,9 Min.). Nach jeder vollen Runde folgt das nächste Programm (A → B → C → A), die kurze Runde ändert nichts. Der Fortschritt im „i“-Fenster zählt nach Zone und läuft über alle Programme zusammen.
 
-| Zone | A | B | C | Zeit pro Seite |
+﻿| Zone | A | B | C | Zeit |
 |---|---|---|---|---|
-| Brustwirbelsäule | Buch aufklappen (Seitlage) | Vierfüßler-Rotation | Drehung im Sitzen | 45 s |
-| Oberschenkel-Rückseite | Liegend, Handtuch | Bein hoch am Türrahmen | Ferse auf Stuhl, Rücken gerade | 60 s |
-| Hüftbeuger | Kniender Ausfallschritt | Rückenlage an der Bettkante | Stehender Ausfallschritt | 60 s |
-| Brustmuskel (beide Seiten zugleich) | Türrahmen | Hände hinterm Rücken | Ellbogen hinterm Kopf öffnen | 60 s einmal |
-| Wade tief (Soleus) | Wand | Sitzend, Knie nach vorn | Stufe, Ferse senken | 45 s |
-| Fußgewölbe (Kraft) | Kurzer Fuß sitzend | Kurzer Fuß im Stehen | Handtuch-Raffen | 30 s einmal |
-| Hüfte/Gesäß (Kraft) | Seitlage-Beinheben | Einbeinige Brücke | Beinheben im Stand | 30 s |
-| Oberer Rücken (Kraft) | Bauchlage T | Bauchlage Y | Handtuch auseinanderziehen | 45 s einmal |
-| Abschluss | Kindshaltung | Knie zur Brust, wiegen | Beine auf dem Stuhl | 30 s einmal |
+| Brustwirbelsäule | Buch aufklappen (Seitlage) | Sphinx (Bauchlage auf Unterarmen) | Katze-Kuh | 45 s je Seite (A), B/C beidseitig 60 s |
+| Oberschenkel-Rückseite | Liegend, Handtuch | Langsitz mit Handtuch | Hürdensitz | 60 s je Seite (A, C), B beidseitig 90 s |
+| Hüftbeuger | Kniender Ausfallschritt | Rückenlage, Knie zur Brust, anderes Bein lang | Seitlage, Fuß zum Po | 60 s je Seite |
+| Brustmuskel | Türrahmen | Rückenlage auf Handtuchrolle, Arme offen | Rückenlage, Hände im Nacken | A 60 s, B 90 s, C 75 s (beidseitig) |
+| Wade tief | Wand, Knie gebeugt | Langsitz, Handtuch um den Fußballen | Halbknien, Knie nach vorn | 45 s je Seite |
+| Fußgewölbe (Kraft) | Kurzer Fuß | Zehen-Piano | Handtuch-Raffen | 30–40 s, einmal |
+| Hüfte/Gesäß (Kraft) | Seitlage-Beinheben | Einbeinige Brücke | Hydrant im Vierfüßler | 30 s je Seite |
+| Oberer Rücken (Kraft) | Bauchlage T | Bauchlage Y | Bird-Dog | 45 s, einmal |
+| Abschluss | Kindshaltung | Knie zur Brust, wiegen | Rückenlage, Fußsohlen zusammen | 30–45 s, einmal |
+
+B und C bestehen fast nur aus Mattenübungen und sind bewusst andere Bewegungen als A (nicht nur Abwandlungen). Beidseitige Übungen dauern länger, damit alle drei Programme ca. 12 Min. haben (A 12,3, B 12,1, C 12,0).
 
 Die Reihenfolge der Übungen innerhalb eines Programms wird bei jedem Start zufällig gemischt; nur die Abschluss-Entspannung bleibt am Ende (auch in der kurzen Runde).
 
@@ -146,13 +148,5 @@ Der Gong lief vorher bei Spitzenwerten um 1,7 und damit hart übersteuert. Jetzt
 ### Stimme in „Schmieren-Dehn“
 Sprechtempo 0,9 statt 0,95. Die Standardstimme wird nach Qualität gewählt (Premium/Enhanced/Erweitert zuerst, die einfache Standardstimme „Anna“ zuletzt). Unter „Die Übungen“ gibt es eine Auswahl der deutschen Stimmen des Geräts mit „Probe hören“; die Wahl wird gespeichert. Grenze: Safari am iPhone zeigt Webseiten oft nur wenige Stimmen, heruntergeladene Premium-Stimmen erscheinen dort nicht zuverlässig. Auf dem iPhone nicht getestet.
 
-### Aufgenommene Stimme in „Schmieren-Dehn“ (ersetzt die Handy-Stimme)
-Die Ansagen spielt die App jetzt aus Sprachdateien ab (`schmieren-dehn/voice/`, 100 Sätze, ca. 11 MB, 16 kHz). Erzeugt mit **Piper** (MIT-Lizenz) und der deutschen Frauenstimme **Kerstin** (Qualität „low“, CC0), Einstellungen `--length_scale 0.9 --noise_scale 0.9 --noise_w 1.0` (etwas schneller, lebendiger), Lautstärke normalisiert, Stille am Rand gekürzt. `manifest.json` ordnet jeden Satz (exakter Text) seiner Datei zu.
-- **Ablauf:** `say([...])` bekommt eine Liste von Sätzen (z. B. „Als Nächstes:“, Übungsname, „rechte Seite“, Anleitung). Gibt es für alle eine Datei, werden sie über Web Audio nacheinander abgespielt (mischt sich im Modus „Nichts“ mit der Audio-Sitzung „ambient“); sonst oder bei Ladefehlern nach 2,5 s spricht die Handy-Stimme den ganzen Satz. Die Dateien für das aktuelle Programm und den Schlusssatz werden beim Start geladen.
-- **Neu erzeugen:** Wenn sich Übungstexte oder Sprüche ändern, müssen die zugehörigen Sätze neu aufgenommen werden (sonst spricht dafür die Handy-Stimme). Piper-Aufruf pro Satz, danach normalisieren und `manifest.json` neu schreiben (Skripte lagen im Arbeitsordner der Sitzung, nicht im Projekt).
-- **Grenzen:** Klingt nach Computerstimme; nicht auf dem iPhone getestet. Die Stimmenauswahl in der Oberfläche wurde entfernt (die Handy-Stimme ist nur noch Rückfall). Thorsten (männlich, „medium“) lief nur mit gekürzter Konfiguration (Doppellaute entfernt), Ramona/Eva K wurden nicht ausprobiert.
-
-### Fehlersuche Stimme/Gong in „Schmieren-Dehn“ (iPhone: weiter „Anna“, Gong fehlte)
-- **Statuszeile:** Auf der Startseite (ganz unten) und in der Übungsansicht steht eine kleine graue Zeile, z. B. „Stimme: Aufnahme bereit (100) · Ton: running · zuletzt: Aufnahme · Gong: ok“. Sie zeigt, ob die Aufnahmen geladen sind, den Zustand des Audio-Kontexts (`running`/`suspended`/`interrupted`), womit zuletzt gesprochen wurde (mit Fehlergrund) und ob der Gong lief. Gedacht zur Fehlersuche, kann später entfernt werden.
-- **Vorab-Laden:** Die Sprachdateien des aktuellen Programms werden schon beim Öffnen der Seite geladen (nicht erst beim Tippen); Zeitlimit für das Laden beim ersten Satz 5 s statt 2,5 s, danach Handy-Stimme.
-- **Gong:** wird jetzt einmal als Klangdatei im Speicher berechnet (gleiche Töne, gleiche weiche Sättigung, Messung Spitze 0,95, RMS 0,31) und wie die Sprachdateien abgespielt, statt über eine Kette aus Oszillatoren, Filter und `WaveShaper`. Vermutung: Die Kette könnte auf iOS Probleme machen; nicht bestätigt. Die Hauptversion („Morgendehnen“) hat noch die alte Kette.
+### Verworfen: eigene Sprachaufnahmen
+Versuch (10.–12.11.): 100 Sätze mit Piper und der Stimme Kerstin aufgenommen und in `schmieren-dehn/voice/` abgespielt. Auf dem iPhone sprach trotzdem weiter die Handy-Stimme „Anna“, der Spruch am Ende und der Gong fehlten; die Ursache blieb ungeklärt. Entscheidung der Nutzerin: keine Aufnahmen, es bleibt bei der Handy-Stimme. Code und Dateien wurden entfernt (Stand vorher: Commit 6959853 mit Stimmenauswahl). Die Heruntergeladenen Werkzeuge lagen nur im Arbeitsordner der Sitzung.
