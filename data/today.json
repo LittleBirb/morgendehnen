@@ -1,45 +1,45 @@
 {
-  "updated": "2026-11-12T13:56:11.948Z",
+  "updated": "2026-11-13T12:32:21.727Z",
   "channels": {
     "news": [
       {
-        "title": "Getötete Soldaten: Zahlen, die Putin nie preisgeben wollte",
+        "title": "Nvidia war Jensen Huang – was wird Nvidia jetzt?",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/dd2e2a93-8afc-469a-9893-c1a103ca3582/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=dd2e2a93-8afc-469a-9893-c1a103ca3582&feed=Xtqjn37O",
-        "duration": 769,
-        "published": "2026-11-12T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/623ada3f-057c-46aa-9dc9-8c92628eef55/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=623ada3f-057c-46aa-9dc9-8c92628eef55&feed=Xtqjn37O",
+        "duration": 837,
+        "published": "2026-11-13T04:55:00.000Z"
       },
       {
-        "title": "Regierung ändert Steuerpläne / Sexuelle Gewalt in der Bundeswehr / EU gegen digitale Tricks",
+        "title": "Millionen Kinder gedopt / Nvidia-Skandal: worum es geht / Abpflastern fürs Klima",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/12/460b36e7-baf6-4499-8bbc-e41e30408f37/460b36e7-baf6-4499-8bbc-e41e30408f37_MP3-128.mp3",
-        "duration": 926,
-        "published": "2026-11-12T05:00:02.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/13/1e9bc34e-7c37-4975-b2b0-9cbeee181ff4/1e9bc34e-7c37-4975-b2b0-9cbeee181ff4_MP3-128.mp3",
+        "duration": 880,
+        "published": "2026-11-13T05:00:14.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Open Eye Meditation",
+        "title": "Mindfulness Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20104828-open-eye-meditation.mp3",
-        "duration": 580,
-        "published": "2026-11-12T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20115477-mindfulness-meditation.mp3",
+        "duration": 503,
+        "published": "2026-11-13T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Kunst und Kultur - Stärkt das wirklich Geist und Intellekt?",
+        "title": "Wie wir bei Daily arbeiten -  Verdienen wir Geld durch Werbung?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/11/d00192e5-0a58-483d-8df4-8f0d64329855/d00192e5-0a58-483d-8df4-8f0d64329855_MP3-128.mp3",
-        "duration": 1565,
-        "published": "2026-11-11T14:00:02.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/11/dedcf7bd-46d1-4fda-b8ed-99f2ee692187/dedcf7bd-46d1-4fda-b8ed-99f2ee692187_MP3-128.mp3",
+        "duration": 1275,
+        "published": "2026-11-12T14:00:32.000Z"
       },
       {
-        "title": "A Love Note to NJ: The Moth Radio Hour",
+        "title": "Powering Through It: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208755/8208755_2026-04-13-033155.192.mp3?rssID=6066",
-        "duration": 3015,
-        "published": "2026-10-06T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208735/8208735_2026-04-13-031535.192.mp3?rssID=6066",
+        "duration": 829,
+        "published": "2026-11-13T08:50:00.000Z",
         "skipShort": true
       }
     ],
