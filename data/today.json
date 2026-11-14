@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-13T13:21:39.996Z",
+  "updated": "2026-11-14T11:41:33.890Z",
   "channels": {
     "news": [
       {
-        "title": "Nvidia war Jensen Huang – was wird Nvidia jetzt?",
+        "title": "Ja, Nein, Vielleicht – Wie hält es das BSW mit der AfD in Sachsen-Anhalt?",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/623ada3f-057c-46aa-9dc9-8c92628eef55/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=623ada3f-057c-46aa-9dc9-8c92628eef55&feed=Xtqjn37O",
-        "duration": 837,
-        "published": "2026-11-13T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/ac4ab75b-f866-4009-8ad2-933698d83edc/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=ac4ab75b-f866-4009-8ad2-933698d83edc&feed=Xtqjn37O",
+        "duration": 792,
+        "published": "2026-11-14T04:55:00.000Z"
       },
       {
         "title": "Millionen Kinder gedopt / Nvidia-Skandal: worum es geht / Abpflastern fürs Klima",
@@ -19,27 +19,27 @@
     ],
     "meditation": [
       {
-        "title": "Mindfulness Meditation",
+        "title": "Walking Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20115477-mindfulness-meditation.mp3",
-        "duration": 503,
-        "published": "2026-11-13T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20120918-walking-meditation.mp3",
+        "duration": 731,
+        "published": "2026-11-14T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Wie wir bei Daily arbeiten -  Verdienen wir Geld durch Werbung?",
+        "title": "Blau und Rosa - Schaden Geschlechterklischees unseren Kindern?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/11/dedcf7bd-46d1-4fda-b8ed-99f2ee692187/dedcf7bd-46d1-4fda-b8ed-99f2ee692187_MP3-128.mp3",
-        "duration": 1275,
-        "published": "2026-11-12T14:00:32.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/12/d6c4ec02-d6bb-457a-a3fa-61de5790db58/d6c4ec02-d6bb-457a-a3fa-61de5790db58_MP3-128.mp3",
+        "duration": 1633,
+        "published": "2026-11-13T14:00:43.000Z"
       },
       {
-        "title": "Powering Through It: The Moth Podcast",
+        "title": "Moth StorySLAM 25th Anniversary Highlights: The Moth Radio Hour",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208735/8208735_2026-04-13-031535.192.mp3?rssID=6066",
-        "duration": 829,
-        "published": "2026-11-13T08:50:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208742/8208742_2026-04-13-031942.192.mp3?rssID=6066",
+        "duration": 3015,
+        "published": "2026-11-10T08:50:00.000Z",
         "skipShort": true
       }
     ],
