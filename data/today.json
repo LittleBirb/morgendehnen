@@ -1,38 +1,38 @@
 {
-  "updated": "2026-11-16T13:55:22.850Z",
+  "updated": "2026-11-17T13:45:41.336Z",
   "channels": {
     "news": [
       {
-        "title": "Hubertus Heil will an die Spitze der SPD. Aber will das auch die SPD?",
+        "title": "Facharzttermin gegen Geld: die Zukunft für Kassenpatienten?",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/d535b44a-d471-489c-9825-eb077d3f15a6/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=d535b44a-d471-489c-9825-eb077d3f15a6&feed=Xtqjn37O",
-        "duration": 813,
-        "published": "2026-11-16T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/258fd6d4-6e64-41af-bcb3-62d50041921b/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=258fd6d4-6e64-41af-bcb3-62d50041921b&feed=Xtqjn37O",
+        "duration": 765,
+        "published": "2026-11-17T04:55:00.000Z"
       },
       {
-        "title": "Die Folgen des Microsoft-Ausfalls / Echte Rabatte zu Black Friday? / Notruf per Kaffeemaschine",
+        "title": "EU-Abschiebezentrum in Ruanda / München testet autonomen Linienbus / Pattinson als James Bond",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/16/0450afc7-9817-4f7a-99d4-9f4286a84aea/0450afc7-9817-4f7a-99d4-9f4286a84aea_MP3-128.mp3",
-        "duration": 925,
-        "published": "2026-11-16T05:00:27.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/17/fa262c70-4973-4554-a792-21ec5a5b18d5/fa262c70-4973-4554-a792-21ec5a5b18d5_MP3-128.mp3",
+        "duration": 915,
+        "published": "2026-11-17T05:00:44.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Mindfulness Meditation",
+        "title": "Mindfulness Meditation for Deep Presence",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20120913-mindfulness-meditation.mp3",
-        "duration": 553,
-        "published": "2026-11-16T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20133198-mindfulness-meditation-for-deep-presence.mp3",
+        "duration": 520,
+        "published": "2026-11-17T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Blau und Rosa - Schaden Geschlechterklischees unseren Kindern?",
+        "title": "Arzttermin per App -  Werden wir damit ungerechter behandelt?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/12/d6c4ec02-d6bb-457a-a3fa-61de5790db58/d6c4ec02-d6bb-457a-a3fa-61de5790db58_MP3-128.mp3",
-        "duration": 1633,
-        "published": "2026-11-13T14:00:43.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/13/35915fd3-3d73-4e50-8b18-446fc057ef53/35915fd3-3d73-4e50-8b18-446fc057ef53_MP3-128.mp3",
+        "duration": 1258,
+        "published": "2026-11-16T14:00:44.000Z"
       },
       {
         "title": "On The Job: The Moth Radio Hour",
