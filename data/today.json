@@ -1,29 +1,29 @@
 {
-  "updated": "2026-11-18T14:27:43.243Z",
+  "updated": "2026-11-19T13:47:02.797Z",
   "channels": {
     "news": [
       {
-        "title": "Welchen Kurs schlagen die USA im Irankrieg ein?",
+        "title": "Wir haben »GTA VI« schon durchgespielt",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/9f11f271-b5f7-4ae3-bc6f-e7aaa166bfdf/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=9f11f271-b5f7-4ae3-bc6f-e7aaa166bfdf&feed=Xtqjn37O",
-        "duration": 760,
-        "published": "2026-11-18T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/a7239b87-2560-4fbf-b8df-7ac97d5f257a/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=a7239b87-2560-4fbf-b8df-7ac97d5f257a&feed=Xtqjn37O",
+        "duration": 803,
+        "published": "2026-11-19T04:55:00.000Z"
       },
       {
-        "title": "Wer wird neuer FIFA-Boss? / KI bei Bewerbungen / Teure Weihnachtszeit",
+        "title": "Stromsteuersenkung kommt doch / GTA 6 ist da / Mit Herbstlaub Geld verdienen",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/18/fb64fc45-6626-4d14-8553-9d92126937d5/fb64fc45-6626-4d14-8553-9d92126937d5_MP3-128.mp3",
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/19/962992d6-c1d4-4fde-bd90-c55d65124672/962992d6-c1d4-4fde-bd90-c55d65124672_MP3-128.mp3",
         "duration": 889,
-        "published": "2026-11-18T05:00:32.000Z"
+        "published": "2026-11-19T05:00:14.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Guide Body Scan",
+        "title": "Mindfulness Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20133202-guide-body-scan.mp3",
-        "duration": 691,
-        "published": "2026-11-18T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20133209-mindfulness-meditation.mp3",
+        "duration": 674,
+        "published": "2026-11-19T10:00:00.000Z"
       }
     ],
     "welt": [
@@ -35,11 +35,11 @@
         "published": "2026-11-18T14:00:24.000Z"
       },
       {
-        "title": "That's A Funny Story: The Moth Podcast",
+        "title": "Speaking of Death: The Moth Radio Hour",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208751/8208751_2026-04-13-032651.192.mp3?rssID=6066",
-        "duration": 1923,
-        "published": "2026-10-30T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208752/8208752_2026-04-13-032752.192.mp3?rssID=6066",
+        "duration": 3057,
+        "published": "2026-10-27T07:25:00.000Z",
         "skipShort": true
       }
     ],
