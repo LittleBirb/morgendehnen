@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-20T14:16:55.740Z",
+  "updated": "2026-11-21T12:56:38.471Z",
   "channels": {
     "news": [
       {
-        "title": "Weltklimakonferenz: Doch kein fossiler Ausstieg?",
+        "title": "Spezial »Der Wahlkreis«: Was darf Protest? Und was kann er?",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/6a5f4344-2d33-4c35-abd5-c13556c700d8/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=6a5f4344-2d33-4c35-abd5-c13556c700d8&feed=Xtqjn37O",
-        "duration": 782,
-        "published": "2026-11-20T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/2b867b41-5b45-4da2-82bb-7ac08bbf6616/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=2b867b41-5b45-4da2-82bb-7ac08bbf6616&feed=Xtqjn37O",
+        "duration": 4767,
+        "published": "2026-11-21T10:55:00.000Z"
       },
       {
         "title": "Erneut Gen Z Proteste / Strengere Regeln beim Ratenkauf / No-Show-Gebühr im Restaurant",
@@ -19,27 +19,27 @@
     ],
     "meditation": [
       {
-        "title": "5 Senses Meditation",
+        "title": "Eyes-Open Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20133215-5-senses-meditation.mp3",
-        "duration": 642,
-        "published": "2026-11-20T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20133216-eyes-open-meditation.mp3",
+        "duration": 440,
+        "published": "2026-11-21T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Haustier als Familienmitglied - Tut das Tieren gut?",
+        "title": "Fit für später - Dein Future-Me sagt danke!",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/18/7ec3c315-13f9-44c4-b25e-2cb9c6aa4867/7ec3c315-13f9-44c4-b25e-2cb9c6aa4867_MP3-128.mp3",
-        "duration": 1214,
-        "published": "2026-11-19T14:00:07.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/19/7578f102-562b-4b3f-8b7f-4b0b7d180d8d/7578f102-562b-4b3f-8b7f-4b0b7d180d8d_MP3-128.mp3",
+        "duration": 3208,
+        "published": "2026-11-20T14:00:06.000Z"
       },
       {
-        "title": "Speaking of Death: The Moth Radio Hour",
+        "title": "Ghosted: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208752/8208752_2026-04-13-032752.192.mp3?rssID=6066",
-        "duration": 3057,
-        "published": "2026-10-27T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208748/8208748_2026-04-13-032548.192.mp3?rssID=6066",
+        "duration": 1349,
+        "published": "2026-10-23T07:25:00.000Z",
         "skipShort": true
       }
     ],
