@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-21T13:39:54.007Z",
+  "updated": "2026-11-22T12:47:50.093Z",
   "channels": {
     "news": [
       {
-        "title": "Spezial »Der Wahlkreis«: Was darf Protest? Und was kann er?",
+        "title": "Der Fall Nvidia: Ein Mann fällt. Und reißt alles mit sich (Hörtipp)",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/2b867b41-5b45-4da2-82bb-7ac08bbf6616/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=2b867b41-5b45-4da2-82bb-7ac08bbf6616&feed=Xtqjn37O",
-        "duration": 4767,
-        "published": "2026-11-21T10:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/c2325d06-4cb7-492d-8ed4-53bba1e809ee/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=c2325d06-4cb7-492d-8ed4-53bba1e809ee&awSourceEpisodeId=9d680b9f-857a-4575-be5e-f46fb7decc10&feed=Xtqjn37O",
+        "duration": 2805,
+        "published": "2026-11-22T10:55:00.000Z"
       },
       {
         "title": "Erneut Gen Z Proteste / Strengere Regeln beim Ratenkauf / No-Show-Gebühr im Restaurant",
@@ -19,11 +19,11 @@
     ],
     "meditation": [
       {
-        "title": "Eyes-Open Meditation",
+        "title": "Visualization Meditation for Relaxation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20133216-eyes-open-meditation.mp3",
-        "duration": 440,
-        "published": "2026-11-21T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20133226-visualization-meditation-for-relaxation.mp3",
+        "duration": 446,
+        "published": "2026-11-22T10:00:00.000Z"
       }
     ],
     "welt": [
@@ -35,11 +35,11 @@
         "published": "2026-11-20T14:00:06.000Z"
       },
       {
-        "title": "Ghosted: The Moth Podcast",
+        "title": "Mortality: The Moth Radio Hour",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208748/8208748_2026-04-13-032548.192.mp3?rssID=6066",
-        "duration": 1349,
-        "published": "2026-10-23T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208753/8208753_2026-04-13-032753.192.mp3?rssID=6066",
+        "duration": 3043,
+        "published": "2026-10-20T07:25:00.000Z",
         "skipShort": true
       }
     ],
