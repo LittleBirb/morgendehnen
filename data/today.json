@@ -1,45 +1,45 @@
 {
-  "updated": "2026-11-22T13:32:05.076Z",
+  "updated": "2026-11-23T15:13:04.280Z",
   "channels": {
     "news": [
       {
-        "title": "Der Fall Nvidia: Ein Mann fällt. Und reißt alles mit sich (Hörtipp)",
+        "title": "Woran die Weltklimakonferenz gescheitert ist",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/c2325d06-4cb7-492d-8ed4-53bba1e809ee/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=c2325d06-4cb7-492d-8ed4-53bba1e809ee&awSourceEpisodeId=9d680b9f-857a-4575-be5e-f46fb7decc10&feed=Xtqjn37O",
-        "duration": 2805,
-        "published": "2026-11-22T10:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/f59ba55e-646d-4d00-890c-9528af499587/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=f59ba55e-646d-4d00-890c-9528af499587&feed=Xtqjn37O",
+        "duration": 784,
+        "published": "2026-11-23T04:55:00.000Z"
       },
       {
-        "title": "Erneut Gen Z Proteste / Strengere Regeln beim Ratenkauf / No-Show-Gebühr im Restaurant",
+        "title": "Weltklimakonferenz ohne Einigung und Bilanz von Social-Media-Verboten",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/20/a0ee9e7a-2d2b-402e-bcaa-5baf3af933cf/a0ee9e7a-2d2b-402e-bcaa-5baf3af933cf_MP3-128.mp3",
-        "duration": 922,
-        "published": "2026-11-20T05:00:14.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/23/66d834ad-2a58-451d-921d-c3d7e1b98627/66d834ad-2a58-451d-921d-c3d7e1b98627_MP3-128.mp3",
+        "duration": 896,
+        "published": "2026-11-23T05:00:11.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Visualization Meditation for Relaxation",
+        "title": "Curiosity Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20133226-visualization-meditation-for-relaxation.mp3",
-        "duration": 446,
-        "published": "2026-11-22T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20133220-curiosity-meditation.mp3",
+        "duration": 498,
+        "published": "2026-11-23T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Fit für später - Dein Future-Me sagt danke!",
+        "title": "Schale und Kerne - Sollten wir alles mitessen?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/19/7578f102-562b-4b3f-8b7f-4b0b7d180d8d/7578f102-562b-4b3f-8b7f-4b0b7d180d8d_MP3-128.mp3",
-        "duration": 3208,
-        "published": "2026-11-20T14:00:06.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/20/3cd472e5-dae7-4aa7-97a0-4892a5692953/3cd472e5-dae7-4aa7-97a0-4892a5692953_MP3-128.mp3",
+        "duration": 1525,
+        "published": "2026-11-23T14:00:03.000Z"
       },
       {
-        "title": "Mortality: The Moth Radio Hour",
+        "title": "Togetherness: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208753/8208753_2026-04-13-032753.192.mp3?rssID=6066",
-        "duration": 3043,
-        "published": "2026-10-20T07:25:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208736/8208736_2026-04-13-031636.192.mp3?rssID=6066",
+        "duration": 1004,
+        "published": "2026-11-20T08:50:00.000Z",
         "skipShort": true
       }
     ],
