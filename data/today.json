@@ -1,38 +1,38 @@
 {
-  "updated": "2026-11-23T16:22:22.958Z",
+  "updated": "2026-11-24T15:10:42.839Z",
   "channels": {
     "news": [
       {
-        "title": "Nvidia holt Jensen Huang zurück",
+        "title": "Der Alltag wird teurer. Aber ist das schon Krise?",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/fb4ab7ae-5a52-49df-aae1-4f6f78762123/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=fb4ab7ae-5a52-49df-aae1-4f6f78762123&feed=Xtqjn37O",
-        "duration": 651,
-        "published": "2026-11-23T15:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/f954ba10-9426-49d3-9725-ce17498d38df/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=f954ba10-9426-49d3-9725-ce17498d38df&feed=Xtqjn37O",
+        "duration": 736,
+        "published": "2026-11-24T04:55:00.000Z"
       },
       {
-        "title": "Weltklimakonferenz ohne Einigung und Bilanz von Social-Media-Verboten",
+        "title": "Bombendrohungen an Schulen / Bahn zufrieden mit Sicherheitskonzept / Heizen mit dem Fußballplatz",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/23/66d834ad-2a58-451d-921d-c3d7e1b98627/66d834ad-2a58-451d-921d-c3d7e1b98627_MP3-128.mp3",
-        "duration": 896,
-        "published": "2026-11-23T05:00:11.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/24/29e47ffe-9b41-4b0a-87e7-1e601a7d5ab3/29e47ffe-9b41-4b0a-87e7-1e601a7d5ab3_MP3-128.mp3",
+        "duration": 918,
+        "published": "2026-11-24T04:42:16.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Curiosity Meditation",
+        "title": "Meditation for Managing Stress",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20133220-curiosity-meditation.mp3",
-        "duration": 498,
-        "published": "2026-11-23T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20169999-meditation-for-managing-stress.mp3",
+        "duration": 546,
+        "published": "2026-11-24T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Schale und Kerne - Sollten wir alles mitessen?",
+        "title": "Extrem verpeilt - Steckt ADHS dahinter?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/20/3cd472e5-dae7-4aa7-97a0-4892a5692953/3cd472e5-dae7-4aa7-97a0-4892a5692953_MP3-128.mp3",
-        "duration": 1525,
-        "published": "2026-11-23T14:00:03.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/23/5bb16733-84c7-440b-a4a5-a6f7baf56dfc/5bb16733-84c7-440b-a4a5-a6f7baf56dfc_MP3-128.mp3",
+        "duration": 1351,
+        "published": "2026-11-24T14:00:40.000Z"
       },
       {
         "title": "Togetherness: The Moth Podcast",
