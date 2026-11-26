@@ -1,29 +1,29 @@
 {
-  "updated": "2026-11-25T15:55:54.663Z",
+  "updated": "2026-11-26T14:16:40.103Z",
   "channels": {
     "news": [
       {
-        "title": "Kinder, Küche, Krieg: Frauen im Nationalsozialismus",
+        "title": "Vorwürfe gegen Springer-Chef Döpfner: Eine fast steuerfreie Milliarde?",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/b2c2d653-1c32-4b4b-bd21-59f7e6ca5ce9/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=b2c2d653-1c32-4b4b-bd21-59f7e6ca5ce9&feed=Xtqjn37O",
-        "duration": 801,
-        "published": "2026-11-25T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/e75e98f4-df39-4a16-95be-88479f5b79fe/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=e75e98f4-df39-4a16-95be-88479f5b79fe&feed=Xtqjn37O",
+        "duration": 763,
+        "published": "2026-11-26T04:55:00.000Z"
       },
       {
-        "title": "Mehr Gewalt gegen Frauen / Retouren-Flut wegen Black Week und Weihnachten / P+R-Angebote im Test",
+        "title": "Schlag gegen Internetgruppe „Terror 18“/ Neue Regeln gegen Medikamentenmangel / Männerschuppen",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/25/79d36d5b-5315-402c-9a03-f61a90d8f09e/79d36d5b-5315-402c-9a03-f61a90d8f09e_MP3-128.mp3",
-        "duration": 924,
-        "published": "2026-11-25T05:00:30.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/26/4db817da-7677-42d4-8876-abecae60e4de/4db817da-7677-42d4-8876-abecae60e4de_MP3-128.mp3",
+        "duration": 883,
+        "published": "2026-11-26T04:47:51.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "4-2-4 Breathing and Mindfulness",
+        "title": "Gratitude Meditation",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20175781-4-2-4-breathing-and-mindfulness.mp3",
-        "duration": 625,
-        "published": "2026-11-25T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20182924-gratitude-meditation.mp3",
+        "duration": 526,
+        "published": "2026-11-26T10:00:00.000Z"
       }
     ],
     "welt": [
@@ -35,11 +35,11 @@
         "published": "2026-11-25T14:00:08.000Z"
       },
       {
-        "title": "The Vietnam War: The Moth Radio Hour",
+        "title": "Powering Through It: The Moth Podcast",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208740/8208740_2026-04-13-031940.192.mp3?rssID=6066",
-        "duration": 3054,
-        "published": "2026-11-17T08:50:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208735/8208735_2026-04-13-031535.192.mp3?rssID=6066",
+        "duration": 829,
+        "published": "2026-11-13T08:50:00.000Z",
         "skipShort": true
       }
     ],
