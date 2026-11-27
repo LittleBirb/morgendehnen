@@ -1,38 +1,38 @@
 {
-  "updated": "2026-11-26T15:37:25.134Z",
+  "updated": "2026-11-27T14:12:04.111Z",
   "channels": {
     "news": [
       {
-        "title": "Vorwürfe gegen Springer-Chef Döpfner: Eine fast steuerfreie Milliarde?",
+        "title": "Und wieder mal droht Russland mit dem Atomkrieg",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/e75e98f4-df39-4a16-95be-88479f5b79fe/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=e75e98f4-df39-4a16-95be-88479f5b79fe&feed=Xtqjn37O",
-        "duration": 763,
-        "published": "2026-11-26T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/280d00ae-64da-4a2c-b2b3-5f79f2c8de0e/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=280d00ae-64da-4a2c-b2b3-5f79f2c8de0e&feed=Xtqjn37O",
+        "duration": 812,
+        "published": "2026-11-27T04:55:00.000Z"
       },
       {
-        "title": "Schlag gegen Internetgruppe „Terror 18“/ Neue Regeln gegen Medikamentenmangel / Männerschuppen",
+        "title": "Anschlag auf Synagoge geplant / Warum viele Kitas schließen müssen / Skisaison beginnt",
         "show": "15 Minuten",
-        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/26/4db817da-7677-42d4-8876-abecae60e4de/4db817da-7677-42d4-8876-abecae60e4de_MP3-128.mp3",
-        "duration": 883,
-        "published": "2026-11-26T04:47:51.000Z"
+        "audio": "https://sportschau-podcast.ard-mcdn.de/weltweit/nfsk/2026/11/27/0476e0c2-8ffb-442a-8178-b183a81b0355/0476e0c2-8ffb-442a-8178-b183a81b0355_MP3-128.mp3",
+        "duration": 886,
+        "published": "2026-11-27T04:55:49.000Z"
       }
     ],
     "meditation": [
       {
-        "title": "Gratitude Meditation",
+        "title": "Guided Meditation for Stress Release and Calm",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20182924-gratitude-meditation.mp3",
-        "duration": 526,
-        "published": "2026-11-26T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20182932-guided-meditation-for-stress-release-and-calm.mp3",
+        "duration": 510,
+        "published": "2026-11-27T10:00:00.000Z"
       }
     ],
     "welt": [
       {
-        "title": "Vitamin D - Brauche ich jetzt Supplements?",
+        "title": "Klimaschutz - Überfordert er unsere Wirtschaft ?",
         "show": "Quarks Daily",
-        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/26/b0f3a888-9b95-4029-9762-909bcefc19b7/b0f3a888-9b95-4029-9762-909bcefc19b7_MP3-128.mp3",
-        "duration": 1002,
-        "published": "2026-11-26T14:00:23.000Z"
+        "audio": "https://wdrmedien-a.akamaihd.net/media/p/public/weltweit/2026/11/25/99b69c4b-5c85-4200-b9e9-16c3961ea557/99b69c4b-5c85-4200-b9e9-16c3961ea557_MP3-128.mp3",
+        "duration": 1639,
+        "published": "2026-11-27T14:00:13.000Z"
       },
       {
         "title": "Powering Through It: The Moth Podcast",
