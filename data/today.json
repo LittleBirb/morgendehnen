@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-27T15:28:38.196Z",
+  "updated": "2026-11-28T13:29:23.693Z",
   "channels": {
     "news": [
       {
-        "title": "Und wieder mal droht Russland mit dem Atomkrieg",
+        "title": "Spezial: Mutter, Mitwisserin, Mörderin: Frauen im Nationalsozialismus",
         "show": "Was jetzt?",
-        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/280d00ae-64da-4a2c-b2b3-5f79f2c8de0e/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=280d00ae-64da-4a2c-b2b3-5f79f2c8de0e&feed=Xtqjn37O",
-        "duration": 812,
-        "published": "2026-11-27T04:55:00.000Z"
+        "audio": "https://zeitonline.simplecastaudio.com/b4b9795f-4b37-4d4f-bbfe-62b735703af8/episodes/dfe71428-3b7b-4abc-b83d-607296756759/audio/128/default.mp3?aid=rss_feed&awCollectionId=b4b9795f-4b37-4d4f-bbfe-62b735703af8&awEpisodeId=dfe71428-3b7b-4abc-b83d-607296756759&awSourceEpisodeId=156fc082-c75c-47e2-97b9-048f83f6ce5d&feed=Xtqjn37O",
+        "duration": 1705,
+        "published": "2026-11-28T11:00:00.000Z"
       },
       {
         "title": "Anschlag auf Synagoge geplant / Warum viele Kitas schließen müssen / Skisaison beginnt",
@@ -19,11 +19,11 @@
     ],
     "meditation": [
       {
-        "title": "Guided Meditation for Stress Release and Calm",
+        "title": "Meditation for Focus and Non-Judgment",
         "show": "Mindful Minutes",
-        "audio": "https://www.buzzsprout.com/2343146/episodes/20182932-guided-meditation-for-stress-release-and-calm.mp3",
-        "duration": 510,
-        "published": "2026-11-27T10:00:00.000Z"
+        "audio": "https://www.buzzsprout.com/2343146/episodes/20182939-meditation-for-focus-and-non-judgment.mp3",
+        "duration": 577,
+        "published": "2026-11-28T10:00:00.000Z"
       }
     ],
     "welt": [
@@ -35,11 +35,11 @@
         "published": "2026-11-27T14:00:13.000Z"
       },
       {
-        "title": "Powering Through It: The Moth Podcast",
+        "title": "Moth StorySLAM 25th Anniversary Highlights: The Moth Radio Hour",
         "show": "The Moth",
-        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208735/8208735_2026-04-13-031535.192.mp3?rssID=6066",
-        "duration": 829,
-        "published": "2026-11-13T08:50:00.000Z",
+        "audio": "https://pdst.fm/e/tracking.swap.fm/track/v9Uiw3bGr54f6BVZKSyc/pscrb.fm/rss/p/serve.castfire.com/audio/8208742/8208742_2026-04-13-031942.192.mp3?rssID=6066",
+        "duration": 3015,
+        "published": "2026-11-10T08:50:00.000Z",
         "skipShort": true
       }
     ],
